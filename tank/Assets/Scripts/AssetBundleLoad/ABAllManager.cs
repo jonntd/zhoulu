@@ -20,8 +20,9 @@ public class ABAllManager : MonoBehaviour
     {
         //string path = ABPlatform.GetPrefixPath() + "/";
         string path = ABPath.GetPrefixPath() + "Windows";
-
+        string path1 = ABPath.GetPrefixPath() + "assets/Art/Resources/character/weapon/weapon002.unity3d".ToLower();//;
         StartCoroutine(LoadManifestAssets(path));
+        StartCoroutine(LoadAssets(path1));
     }
 
     IEnumerator LoadManifestAssets(string path)
@@ -37,6 +38,28 @@ public class ABAllManager : MonoBehaviour
             _assetBundleManifestObject = obs[0] as AssetBundleManifest;
 
             LoadDependencies();
+        }
+        else
+        {
+            Debug.Log(www.error);
+        }
+    }
+
+    IEnumerator LoadAssets(string path)
+    {
+        WWW www = new WWW(path);
+
+        yield return www;
+
+        if (www.error == null)
+        {
+            Object[] obs = www.assetBundle.LoadAllAssets();
+
+
+            GameObject ab=www.assetBundle.LoadAsset("weapon002") as GameObject;
+            Instantiate(ab);
+            ab.name = "new obj";
+
         }
         else
         {

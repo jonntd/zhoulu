@@ -40,24 +40,6 @@ namespace IAssetBundle
                 case BuildTarget.Android:
                     return "Android";
                 case BuildTarget.iOS:
-                    return "IOS";
-                case BuildTarget.WebPlayer:
-                    return "WebPlayer";
-                case BuildTarget.StandaloneWindows:
-                case BuildTarget.StandaloneWindows64:
-                    return "Windows";
-                default:
-                    return null;
-            }
-        }
-
-        public static string getPlatformFolderForAssetBundles(BuildTarget target)
-        {
-            switch (target)
-            {
-                case BuildTarget.Android:
-                    return "Android";
-                case BuildTarget.iOS:
                     return "iOS";
                 case BuildTarget.WebPlayer:
                     return "WebPlayer";
@@ -69,7 +51,7 @@ namespace IAssetBundle
             }
         }
 
-        public static string getPlatformFolderForAssetBundles(RuntimePlatform platform)
+        public static string getPlatformFolder(RuntimePlatform platform)
         {
             switch (platform)
             {
@@ -111,7 +93,7 @@ namespace IAssetBundle
     public class ABPath
     {
         private static string _bundlePathCache = string.Empty;
-        private static string _AssetBundlesOutputPath = "AssetBundels";
+        private static string _AssetBundlesOutputPath = "AssetBundles";
         public static string bundlePath
         {
             get
@@ -145,22 +127,21 @@ namespace IAssetBundle
 
         public static string getTestPath()
         {
-            return Application.dataPath + "/Art/Raw/Characters/weapon/weapon001"; 
+            return Application.dataPath + "/Art/Resources/character/weapon"; 
         }
 
         public static string GetPrefixPath()
         {
             string platformFolderForAssetBundles =
 #if UNITY_EDITOR
-            ABPlatform.getPlatformFolderForAssetBundles(EditorUserBuildSettings.activeBuildTarget);
+            ABPlatform.getPlatformFolder(EditorUserBuildSettings.activeBuildTarget);
 #else
-			ABPlatform.getPlatformFolderForAssetBundles(Application.platform);
+			ABPlatform.getPlatformFolder(Application.platform);
 #endif
 
             // Set base downloading url.
             string relativePath = GetRelativePath();
-            relativePath = relativePath + "/AssetBundles/" + platformFolderForAssetBundles + "/";
-            Debug.Log(relativePath);
+            relativePath = relativePath +"/"+ _AssetBundlesOutputPath +"/"+ platformFolderForAssetBundles + "/";
             return relativePath;
         }
 
