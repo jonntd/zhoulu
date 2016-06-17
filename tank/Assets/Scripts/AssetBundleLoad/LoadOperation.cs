@@ -28,27 +28,85 @@ namespace IAssetBundle
         public abstract T getAsset<T>() where T : Object;
     }
 
-    public class WWWLoadAssetOperation:AssetLoadOperation
+    public abstract class WWWLoadOperation : LoadOperation
     {
-        protected WWW www;
-        protected string _download_error = null;
+        public bool done { get; private set; }
 
-        public override T getAsset<T>()
+        public string assetBundleName { get; private set; }
+
+        public LABInfo assetBundle { get; protected set; }
+
+        public string error { get; protected set; }
+
+        public WWWLoadOperation(string assetBundleName)
         {
-            return null;
+            this.assetBundleName = assetBundleName;
         }
 
         public override bool Update()
         {
-            return false ;
+            if (!done && downloadIsDone)
+            {
+                FinishDownload();
+                done = true;
+            }
+
+            return !done;
         }
 
         protected override bool IsDone()
         {
-            return false;
+            return done;
         }
 
+        protected abstract bool downloadIsDone { get; }
+
+        protected abstract void FinishDownload();
+
+        public abstract string GetSourceURL();
     }
+
+    public class AssetBundleDownloadFromWebOperation : WWWLoadOperation
+    {
+        WWW _www;
+        string _url;
+
+        public AssetBundleDownloadFromWebOperation(string assetBundleName, WWW www)
+            : base(assetBundleName)
+        {
+            if (www == null)
+                throw new System.ArgumentNullException("www");
+            _url = www.url;
+            this._www = www;
+        }
+
+        protected override bool downloadIsDone { get { return _www != null && _www.isDone; } }
+
+        protected override void FinishDownload()
+        {
+            error = _www.error;
+            if (!string.IsNullOrEmpty(error))
+            {
+                return;
+            }
+               
+
+            AssetBundle bundle = _www.assetBundle;
+            if (bundle == null)
+                error = string.Format("{0} is not a valid asset bundle.", assetBundleName);
+            else
+                assetBundle = new LABInfo(_www.assetBundle);
+
+            _www.Dispose();
+            _www = null;
+        }
+
+        public override string GetSourceURL()
+        {
+            return _url;
+        }
+    }
+
 
     public class AssetOperationFull : AssetLoadOperation
     {
@@ -78,8 +136,8 @@ namespace IAssetBundle
             if (_request == null)
                 return false;
 
-            
-            LABInfo bundle =null; //ABManager.GetLoadedAssetBundle(m_AssetBundleName, out _download_error);
+
+            LABInfo bundle = null; //ABManager.GetLoadedAssetBundle(m_AssetBundleName, out _download_error);
             if (bundle != null)
             {
                 _request = bundle._asset_bundle.LoadAssetAsync(_asset_name, _type);

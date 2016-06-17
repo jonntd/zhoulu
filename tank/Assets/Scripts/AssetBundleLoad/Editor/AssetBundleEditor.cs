@@ -213,7 +213,7 @@ public class AnalysisAssetBundel
         {
             if (files[i] is DirectoryInfo)
             {
-                Pack(files[i].FullName);
+                //Pack(files[i].FullName);
             }
             else
             {

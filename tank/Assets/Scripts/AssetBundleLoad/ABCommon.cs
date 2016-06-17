@@ -72,6 +72,34 @@ namespace IAssetBundle
 
     public class ABhelper
     {
+        /// <summary>
+        /// 加载本地资源 编辑器下使用
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static T LoadAssetAtPath<T>(string path) where T : Object
+        {
+            return AssetDatabase.LoadAssetAtPath<T>(path);
+        }
+
+        /// <summary>
+        /// 在指定目录下保存文件 编辑下使用
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="obj"></param>
+        public static void SaveAssetAtPath(string path,Object obj)
+        {
+            string folder = path.Substring(0, path.LastIndexOf("/"));
+            string absolute_folder = ABhelper.assetRelativeToAbsolute(folder);
+
+            if (!Directory.Exists(absolute_folder))
+                Directory.CreateDirectory(absolute_folder);
+
+            AssetDatabase.CreateAsset(obj, path);
+        }
+
+
         public static string absoluteToAssetRelative(string path)
         {
             string relativePath = "Assets/" + path.Substring(Application.dataPath.Length + 1);
@@ -100,16 +128,16 @@ namespace IAssetBundle
             {
                 if (string.IsNullOrEmpty(_bundlePathCache))
                 {
-                    
-                #if UNITY_ANDROID
+
+#if UNITY_ANDROID
 		            _bundlePathCache = string.Format("jar:file://{0}!/assets/", Application.dataPath);
-                #elif UNITY_IPHONE
+#elif UNITY_IPHONE
                     _bundlePathCache = string.Format("{0}/Raw/", Application.dataPath);
-                #elif UNITY_STANDALONE_WIN || UNITY_EDITOR
+#elif UNITY_STANDALONE_WIN || UNITY_EDITOR
                     _bundlePathCache = string.Format("file://{0}/StreamingAssets/", Application.dataPath);
-                #else
+#else
                     _bundlePathCache = string.Format("file://{0}/../AssetBundles/", Application.dataPath);
-                #endif
+#endif
                 }
                 return _bundlePathCache;
             }
@@ -127,25 +155,25 @@ namespace IAssetBundle
 
         public static string getTestPath()
         {
-            return Application.dataPath + "/Art/Resources/character/weapon"; 
+            return Application.dataPath + "/Art/Resources/character/weapon";
         }
 
         public static string GetPrefixPath()
         {
             string platformFolderForAssetBundles =
 #if UNITY_EDITOR
-            ABPlatform.getPlatformFolder(EditorUserBuildSettings.activeBuildTarget);
+ ABPlatform.getPlatformFolder(EditorUserBuildSettings.activeBuildTarget);
 #else
 			ABPlatform.getPlatformFolder(Application.platform);
 #endif
 
             // Set base downloading url.
-            string relativePath = GetRelativePath();
-            relativePath = relativePath +"/"+ _AssetBundlesOutputPath +"/"+ platformFolderForAssetBundles + "/";
+            string relativePath = GetStreamingAssetsPath();
+            relativePath = relativePath + "/" + _AssetBundlesOutputPath + "/" + platformFolderForAssetBundles + "/";
             return relativePath;
         }
 
-        public static string GetRelativePath()
+        public static string GetStreamingAssetsPath()
         {
             if (Application.isEditor)
                 return "file://" + System.Environment.CurrentDirectory.Replace("\\", "/");
@@ -156,5 +184,11 @@ namespace IAssetBundle
             else // For standalone player.
                 return "file://" + Application.streamingAssetsPath;
         }
+
+        public static void SetSourceAssetBundleDirectory(string relativePath)
+        {
+            string url = GetStreamingAssetsPath() + relativePath;
+        }
+
     }
 }
