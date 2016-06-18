@@ -5,6 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 #endif
+
+
+[System.Serializable]
 public class AssetBundleWindowConfig : ScriptableObject
 {
     public BuildAssetBundleOptions bundle_options = BuildAssetBundleOptions.None;
@@ -30,6 +33,7 @@ public class AssetBundleWindowFilter
     public bool valid = true;
     public string path = string.Empty;
     public string filter = ".prefab";
+    public ABStrategy _strategy = ABStrategy.NONE;
 
     public bool isInvalid()
     {
@@ -37,5 +41,10 @@ public class AssetBundleWindowFilter
             return true;
         return false;
     }
-
+    public enum ABStrategy
+    {
+        NONE,
+        MODEL,
+    }
 }
+

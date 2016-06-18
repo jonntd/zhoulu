@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using System.IO;
 
@@ -7,25 +8,6 @@ namespace IAssetBundle
 {
     public class ABCommon
     {
-
-        /*
-        public static string GetPrefixPath()
-        {
-            string platformFolderForAssetBundles =
-#if UNITY_EDITOR
-            GetPlatformFolderForAssetBundles(EditorUserBuildSettings.activeBuildTarget);
-#else
-			GetPlatformFolderForAssetBundles(Application.platform);
-#endif
-
-            // Set base downloading url.
-            string relativePath = GetRelativePath();
-            relativePath = relativePath + "/AssetBundles/" + platformFolderForAssetBundles + "/";
-            Debug.Log(relativePath);
-            return relativePath;
-        }
-        */
-
 
 
 
@@ -90,6 +72,7 @@ namespace IAssetBundle
         /// <param name="obj"></param>
         public static void SaveAssetAtPath(string path,Object obj)
         {
+            path = Replace(path);
             string folder = path.Substring(0, path.LastIndexOf("/"));
             string absolute_folder = ABhelper.assetRelativeToAbsolute(folder);
 
@@ -191,4 +174,84 @@ namespace IAssetBundle
         }
 
     }
+
+    public class AssetBundleInfo
+    {
+        public string _name;
+        public string _CRC;
+        public string _hashCode;
+        public List<string> _Dependencies = new List<string>();
+
+        public AssetBundleInfo(string name)
+        {
+
+        }
+    }
+
+    [System.Serializable]
+    public class DependenciesCache : ScriptableObject
+    {
+        public List<AssetBundelDependence> _dependences = new List<AssetBundelDependence>();
+
+        public void addAssetBundle(AssetBundelDependence ab_dep)
+        {
+            _dependences.Add(ab_dep);
+        }
+
+        public void Clear()
+        {
+            _dependences.Clear();
+        }
+    }
+
+    [System.Serializable]
+    public class AssetBundelDependence
+    {
+        public string _assetbundle;
+        public List<string> _dependences;
+        public string _crc;
+        public string _hash;
+        public string _extension;
+
+        public AssetBundelDependence(string assetbundle, string extension)
+        {
+            _assetbundle = assetbundle.Substring(0, assetbundle.Length - extension.Length);
+            _dependences = new List<string>();
+            _crc = string.Empty;
+            _hash = string.Empty;
+            _extension = extension;
+        }
+
+        public string getCRC()
+        {
+            return _crc;
+        }
+
+        public string getHashCode()
+        {
+            return _hash;
+        }
+
+        public void setDependences(string[] deps)
+        {
+            _dependences.Clear();
+            _dependences.AddRange(deps);
+        }
+
+        public void addDependence(string dep)
+        {
+            _dependences.Add(dep);
+        }
+
+        public List<string> getDependence()
+        {
+            return _dependences;
+        }
+
+        public string getExtension()
+        {
+            return _extension;
+        }
+    }
+
 }

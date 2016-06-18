@@ -25,7 +25,7 @@ public class AssetBundleWindow : EditorWindow
     public bool _is_test = false;
     void OnGUI()
     {
-        try
+        //try
         {
             _init();
             GUILayout.BeginHorizontal();
@@ -101,14 +101,13 @@ public class AssetBundleWindow : EditorWindow
 
             if (GUI.changed) EditorUtility.SetDirty(config);
             if (bundle) _build();
-
-
         }
-        catch (System.Exception e)
-        {
-            Close();
-            EditorUtility.DisplayDialog("Error", "Bundle error", "OK");
-        }
+//         catch (System.Exception e)
+//         {
+//             Close();
+//             Debug.LogError(e.Message);
+//             EditorUtility.DisplayDialog("Error", e.Message, "OK");
+//         }
     }
 
     void OnFocus()
@@ -123,12 +122,12 @@ public class AssetBundleWindow : EditorWindow
 
     void OnHierarchyChange()
     {
-        Debug.Log("当Hierarchy视图中的任何对象发生改变时调用一次");
+        //Debug.Log("当Hierarchy视图中的任何对象发生改变时调用一次");
     }
 
     void OnProjectChange()
     {
-        Debug.Log("当Project视图中的资源发生改变时调用一次");
+        //Debug.Log("当Project视图中的资源发生改变时调用一次");
     }
 
     void OnInspectorUpdate()
@@ -173,7 +172,7 @@ public class AssetBundleWindow : EditorWindow
     void _build()
     {
         _save();
-        //BuildAssetBundles();
+        BuildAssetBundle.BuildAssetBundles(config);
     }
 
 

@@ -47,6 +47,10 @@ public class ABAllManager : MonoBehaviour
 
     IEnumerator LoadAssets(string path)
     {
+        while(_assetBundleManifestObject==null)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
         WWW www = new WWW(path);
 
         yield return www;
@@ -88,6 +92,7 @@ public class ABAllManager : MonoBehaviour
                 _dependencies.Add(asset_name, dependencies);
         }
 
+        /*
         foreach(var data in _dependencies)
         {
             string[] deps = data.Value;
@@ -96,7 +101,7 @@ public class ABAllManager : MonoBehaviour
             {
                 Debug.Log("             data.value:" + deps[i]);
             }
-        }
+        }*/
         
     }
 }
