@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using System.IO;
-
+using GameEngine.Tools;
 namespace IAssetBundle
 {
     public class ABCommon
@@ -188,11 +188,11 @@ namespace IAssetBundle
         }
     }
 
-    [System.Serializable]
-    public class DependenciesCache : ScriptableObject
+    public class DependenciesCache 
     {
+        public string dependeneConfig = "Assets/config/dependeneconfig.txt";
         public List<AssetBundelDependence> _dependences = new List<AssetBundelDependence>();
-
+        public Dictionary<string,AssetBundelDependence> _dic_ab_dep=new Dictionary<string,AssetBundelDependence>();
         public void addAssetBundle(AssetBundelDependence ab_dep)
         {
             _dependences.Add(ab_dep);
@@ -202,9 +202,89 @@ namespace IAssetBundle
         {
             _dependences.Clear();
         }
+
+        public string des_ab_name = "AssetBundle Name:";
+        public string des_extension = "Extension:";
+        public string des_crc = "CRC:";
+        public string des_hashcode = "HashCode:";
+        public string des_dep_count = "Dependences Count:";
+        public void saveLine()
+        {
+            List<string> infos = new List<string>();
+            int length=_dependences.Count;
+            for (int i = 0; i < length; i++)
+            {
+                AssetBundelDependence ab_dep = _dependences[i];
+                infos.Add(des_ab_name + ab_dep.getAssetBundleName().ToLower());
+                infos.Add(des_extension + ab_dep.getExtension().ToLower());
+                infos.Add(des_crc + ab_dep.getCRC().ToLower());
+                infos.Add(des_hashcode + ab_dep.getHashCode().ToLower());
+                infos.Add(des_dep_count + ab_dep.getDependence().Count.ToString().ToLower());
+                List<string> ab_dep_s = ab_dep.getDependence();
+                int child_deps = ab_dep_s.Count;
+                for (int j = 0; j < child_deps; j++)
+                {
+                    infos.Add(ab_dep_s[j].ToLower());
+                }
+
+                infos.Add("");
+            }
+
+            ToolsFile.CreateFile(ABhelper.assetRelativeToAbsolute(dependeneConfig), infos);
+        }
+
+        public void resetDependencies(TextAsset asset)
+        {
+
+            List<string> infos = new List<string>();
+            ByteReader reader = new ByteReader(asset);
+            while (reader.canRead)
+            {
+                string tmp_ab_name = reader.ReadLine();
+                if (tmp_ab_name == null) break;
+                if (tmp_ab_name.Trim().Length == 0) continue;
+
+                tmp_ab_name = tmp_ab_name.Substring(des_ab_name.Length);
+
+                string tmp_extension = reader.ReadLine();
+                tmp_extension = tmp_extension.Substring(des_extension.Length);
+
+                string tmp_crc = reader.ReadLine();
+                tmp_crc = tmp_crc.Substring(des_crc.Length);
+
+                string tmp_hashcode = reader.ReadLine();
+                tmp_hashcode = tmp_hashcode.Substring(des_hashcode.Length);
+
+                string tmp_dep_count = reader.ReadLine();
+                tmp_dep_count = tmp_dep_count.Substring(des_dep_count.Length);
+                int count = int.Parse(tmp_dep_count.Trim());
+                AssetBundelDependence ab_dep = new AssetBundelDependence(tmp_ab_name + tmp_extension, tmp_extension);
+                for (int i = 0; i < count; i++)
+                {
+                    string child_dep_name = reader.ReadLine();
+                    ab_dep.addDependence(child_dep_name);
+                }
+                _dependences.Add(ab_dep);
+                _dic_ab_dep.Add(ab_dep.getAssetBundleFullName(), ab_dep);
+               
+            }
+           
+        }
+        
+        public int getDependenciesCount()
+        {
+            return _dependences.Count;
+        }
+
+        public AssetBundelDependence getAssetBundelDependence(string name)
+        {
+            if (_dic_ab_dep.ContainsKey(name))
+                return _dic_ab_dep[name];
+            return null;
+        }
+
     }
 
-    [System.Serializable]
     public class AssetBundelDependence
     {
         public string _assetbundle;
@@ -212,14 +292,26 @@ namespace IAssetBundle
         public string _crc;
         public string _hash;
         public string _extension;
-
+        public string _main_assetbundle_name;
         public AssetBundelDependence(string assetbundle, string extension)
         {
             _assetbundle = assetbundle.Substring(0, assetbundle.Length - extension.Length);
+            _main_assetbundle_name = assetbundle;
             _dependences = new List<string>();
             _crc = string.Empty;
             _hash = string.Empty;
             _extension = extension;
+
+        }
+
+        public string getAssetBundleName()
+        {
+            return _assetbundle;
+        }
+
+        public string getAssetBundleFullName()
+        {
+            return _main_assetbundle_name;
         }
 
         public string getCRC()

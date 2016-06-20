@@ -2,15 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using IAssetBundle;
-
+using GameEngine.Tools;
 public class ABAllManager : MonoBehaviour
 {
-
-
-    public AssetBundleManifest _assetBundleManifestObject = null;
-    public Dictionary<string, string[]> _dependencies = new Dictionary<string,string[]>();
-
-    // Use this for initialization
+    public DependenciesCache _dependece = new DependenciesCache();
+       // Use this for initialization
     void Start()
     {
         initialize();
@@ -19,10 +15,10 @@ public class ABAllManager : MonoBehaviour
     public void initialize()//加载manifest文件，全局只有一个文件
     {
         //string path = ABPlatform.GetPrefixPath() + "/";
-        string path = ABPath.GetPrefixPath() + "Windows";
-        string path1 = ABPath.GetPrefixPath() + "assets/Art/Resources/character/weapon/weapon002.unity3d".ToLower();//;
+        string path = ABPath.GetPrefixPath() + "assetbundleconfig";
+        string name = "weapon001.prefab";
         StartCoroutine(LoadManifestAssets(path));
-        StartCoroutine(LoadAssets(path1));
+        StartCoroutine(LoadAssets(name));
     }
 
     IEnumerator LoadManifestAssets(string path)
@@ -34,10 +30,11 @@ public class ABAllManager : MonoBehaviour
 
         if (www.error == null)
         {
-            Object[] obs = www.assetBundle.LoadAllAssets();
-            _assetBundleManifestObject = obs[0] as AssetBundleManifest;
+            AssetBundle ab = www.assetBundle;
+            Object[] obs = ab.LoadAllAssets();
 
-            LoadDependencies();
+            TextAsset text = obs[0] as TextAsset;
+            _dependece.resetDependencies(text);
         }
         else
         {
@@ -45,12 +42,42 @@ public class ABAllManager : MonoBehaviour
         }
     }
 
-    IEnumerator LoadAssets(string path)
+    IEnumerator LoadAssets(string ab_name)
     {
-        while(_assetBundleManifestObject==null)
+        yield return null;
+        while (_dependece.getDependenciesCount()==0)
         {
             yield return new WaitForSeconds(0.1f);
         }
+
+        AssetBundelDependence ab_dep = _dependece.getAssetBundelDependence(ab_name);
+        List<string> path = ab_dep.getDependence();
+        for (int i = path.Count-1; i >=0; i--)
+        {
+             WWW www = new WWW(path[i]);
+             yield return www;
+
+             if (www.error == null)
+             {
+                 AssetBundle ab = www.assetBundle;
+                 string[] ab_list=ab.GetAllAssetNames();
+                 Object[] obs = www.assetBundle.LoadAllAssets();
+                 if(i==0)
+                 {
+                     GameObject go = obs[0] as GameObject;
+                     GameObject newObj=Instantiate(go);
+                     newObj.name = "new obj";
+                 }
+             }
+             else
+             {
+                 Debug.Log(www.error);
+             }
+        }
+
+       
+
+        /*
         WWW www = new WWW(path);
 
         yield return www;
@@ -68,40 +95,6 @@ public class ABAllManager : MonoBehaviour
         else
         {
             Debug.Log(www.error);
-        }
-    }
-
-    protected void LoadDependencies()
-    {
-        string[] allAssetBundle= _assetBundleManifestObject.GetAllAssetBundles();
-        int length = allAssetBundle.Length;
-
-        for (int i = 0; i < length; i++)
-        {
-            string asset_name = allAssetBundle[i];
-            string[] dependencies = _assetBundleManifestObject.GetAllDependencies(asset_name);
-            if (dependencies.Length == 0)
-            {
-                _dependencies[asset_name]=new string[1];
-                 continue;
-            }
-               
-            if (_dependencies.ContainsKey(asset_name))
-                _dependencies[asset_name] = dependencies;
-            else
-                _dependencies.Add(asset_name, dependencies);
-        }
-
-        /*
-        foreach(var data in _dependencies)
-        {
-            string[] deps = data.Value;
-            Debug.Log("data.key:" + data.Key);
-            for (int i = 0; i < deps.Length; i++)
-            {
-                Debug.Log("             data.value:" + deps[i]);
-            }
         }*/
-        
     }
 }

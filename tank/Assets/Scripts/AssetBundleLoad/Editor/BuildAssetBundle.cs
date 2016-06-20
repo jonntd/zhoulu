@@ -11,36 +11,31 @@ using IAssetBundle;
 public class BuildAssetBundle
 {
     public static DependenciesCache depsCahe = new DependenciesCache();
-    const string dependeneConfig = "Assets/config/dependeneconfig.asset";
+
     public static void BuildAssetBundles(AssetBundleWindowConfig config)
     {
-          ClearAssetBundlesName();
-          depsCahe.Clear();
-          int length = config.filters.Count;
-          for (int i = 0; i < length; i++)
-              AnalysisFile(config.filters[i]);
- 
-         string outputpath = ABPath.OutRelativePath();
- 
-         if (!Directory.Exists(outputpath))
-             Directory.CreateDirectory(outputpath);
+        ClearAssetBundlesName();
+        depsCahe.Clear();
+        int length = config.filters.Count;
+        for (int i = 0; i < length; i++)
+            AnalysisFile(config.filters[i]);
 
-         SaveCacheText();
-         
+        string outputpath = ABPath.OutRelativePath();
 
-         BuildPipeline.BuildAssetBundles(outputpath, config.bundle_options, config.bundle_platform);
-        
+        if (!Directory.Exists(outputpath))
+            Directory.CreateDirectory(outputpath);
+
+        SaveCacheText();
+
+        BuildPipeline.BuildAssetBundles(outputpath, config.bundle_options, config.bundle_platform);
+
         AssetDatabase.Refresh();
     }
 
     public static void SaveCacheText()
     {
-        if (ABhelper.LoadAssetAtPath<DependenciesCache>(dependeneConfig) == null)
-            ABhelper.SaveAssetAtPath(dependeneConfig, depsCahe);
-        else
-            EditorUtility.SetDirty(depsCahe);
-
-        file(dependeneConfig, false);
+        depsCahe.saveLine();
+        file(depsCahe.dependeneConfig, false,"assetbundleconfig".ToLower());
     }
 
     public static void ClearAssetBundlesName()
@@ -69,10 +64,10 @@ public class BuildAssetBundle
         string path = filter.path;
         string tmp_filter = filter.filter;
         if (!filter.valid) return;
-        AnalysisFileInternal(filter.path,filter.filter);
+        AnalysisFileInternal(filter.path, filter.filter);
     }
 
-    public static void AnalysisFileInternal(string path,string filter)
+    public static void AnalysisFileInternal(string path, string filter)
     {
         if (!Directory.Exists(path))
         {
@@ -91,26 +86,23 @@ public class BuildAssetBundle
         }
     }
 
-    public static void calculationDep(string path,string assetname,string extension)
+    public static void calculationDep(string path, string assetname, string extension)
     {
-        
-        string ab_dep_main=file(path);
         AssetBundelDependence ad_dep = new AssetBundelDependence(assetname, extension);
-        ad_dep.addDependence(ab_dep_main);
         string source = ABhelper.Replace(path);
         string source_1 = ABhelper.absoluteToAssetRelative(path);
         source = "Assets" + source.Substring(Application.dataPath.Length);
         string[] deps = AssetDatabase.GetDependencies(source);
         for (int i = 0; i < deps.Length; i++)
         {
-            string ab_dep=file(deps[i], false);
+            string ab_dep = file(deps[i], false);
             if (!string.IsNullOrEmpty(ab_dep))
                 ad_dep.addDependence(ab_dep);
         }
         depsCahe.addAssetBundle(ad_dep);
     }
 
-    public static string file(string path, bool isChange = true)
+    public static string file(string path, bool isChange = true,string asset_name="")
     {
         string source = path;
         string asset_path = source;
@@ -123,7 +115,9 @@ public class BuildAssetBundle
         AssetImporter assetImporter = AssetImporter.GetAtPath(asset_path);
         string assetName = asset_path;
         if (assetName.EndsWith(".cs")) return string.Empty;
-        assetName = assetName.Replace(Path.GetExtension(assetName), ".ab");
+        assetName = string.Format("{0}.{1}", assetName, "ab");
+        if (asset_name.Length > 0)
+            assetName = asset_name;
         assetImporter.assetBundleName = assetName;
         return assetName;
     }
