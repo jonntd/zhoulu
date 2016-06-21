@@ -122,6 +122,7 @@ namespace IAssetBundle
                     _bundlePathCache = string.Format("file://{0}/../AssetBundles/", Application.dataPath);
 #endif
                 }
+                
                 return _bundlePathCache;
             }
         }
@@ -293,6 +294,7 @@ namespace IAssetBundle
         public string _hash;
         public string _extension;
         public string _main_assetbundle_name;
+
         public AssetBundelDependence(string assetbundle, string extension)
         {
             _assetbundle = assetbundle.Substring(0, assetbundle.Length - extension.Length);
