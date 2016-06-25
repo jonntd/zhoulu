@@ -142,7 +142,7 @@ namespace IAssetBundle
             return Application.dataPath + "/Art/Resources/character/weapon";
         }
 
-        public static string GetPrefixPath()
+        public static string getAssetBundelPrePath()
         {
             string platformFolderForAssetBundles =
 #if UNITY_EDITOR
@@ -176,6 +176,7 @@ namespace IAssetBundle
 
     }
 
+    /*
     public class AssetBundleInfo
     {
         public string _name;
@@ -187,7 +188,7 @@ namespace IAssetBundle
         {
 
         }
-    }
+    }*/
 
     public class DependenciesCache 
     {
@@ -290,8 +291,8 @@ namespace IAssetBundle
     {
         public string _assetbundle;
         public List<string> _dependences;
-        public string _crc;
-        public string _hash;
+        public uint _crc;
+        public Hash128 _hash;
         public string _extension;
         public string _main_assetbundle_name;
 
@@ -300,10 +301,9 @@ namespace IAssetBundle
             _assetbundle = assetbundle.Substring(0, assetbundle.Length - extension.Length);
             _main_assetbundle_name = assetbundle;
             _dependences = new List<string>();
-            _crc = string.Empty;
-            _hash = string.Empty;
+           
             _extension = extension;
-
+         
         }
 
         public string getAssetBundleName()
@@ -318,12 +318,12 @@ namespace IAssetBundle
 
         public string getCRC()
         {
-            return _crc;
+            return _crc.ToString();
         }
 
         public string getHashCode()
         {
-            return _hash;
+            return _hash.ToString();
         }
 
         public void setDependences(string[] deps)
@@ -345,6 +345,19 @@ namespace IAssetBundle
         public string getExtension()
         {
             return _extension;
+        }
+
+        public void setCRCAndHashCode(string path)
+        {
+            //path=ABhelper.absoluteToAssetRelative(path);
+            bool crc_flag = BuildPipeline.GetCRCForAssetBundle(path, out _crc);
+            bool hash_flag = BuildPipeline.GetHashForAssetBundle(path, out _hash);
+            if (!crc_flag)
+                Debug.LogError("Error Path CRC:" + path);
+            if (!hash_flag)
+                Debug.LogError("Error Path hash:" + path);
+
+
         }
     }
 

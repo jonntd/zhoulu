@@ -12,10 +12,9 @@ public class ABAllManager : MonoBehaviour
         initialize();
     }
 
-    public void initialize()//加载manifest文件，全局只有一个文件
+    public void initialize()
     {
-        //string path = ABPlatform.GetPrefixPath() + "/";
-        string path = ABPath.GetPrefixPath() + "assetbundleconfig";
+        string path = ABPath.getAssetBundelPrePath() + "assetbundleconfig";
         string name = "weapon001.prefab";
         StartCoroutine(LoadManifestAssets(path));
         StartCoroutine(LoadAssets(name));
@@ -74,27 +73,5 @@ public class ABAllManager : MonoBehaviour
                  Debug.Log(www.error);
              }
         }
-
-       
-
-        /*
-        WWW www = new WWW(path);
-
-        yield return www;
-
-        if (www.error == null)
-        {
-            Object[] obs = www.assetBundle.LoadAllAssets();
-
-
-            GameObject ab=www.assetBundle.LoadAsset("weapon002") as GameObject;
-            Instantiate(ab);
-            ab.name = "new obj";
-
-        }
-        else
-        {
-            Debug.Log(www.error);
-        }*/
     }
 }

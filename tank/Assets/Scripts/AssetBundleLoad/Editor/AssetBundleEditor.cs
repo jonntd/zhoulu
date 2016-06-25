@@ -11,7 +11,7 @@ public class AssetBundleEditor
 {
 
 
-    [MenuItem("Tools/Allen/Asset Bundle")]
+    //[MenuItem("Tools/Allen/Asset Bundle")]
     public static void BuildAssetBundles()
     {
         ClearAssetBundlesName();
@@ -24,6 +24,7 @@ public class AssetBundleEditor
         {
             Directory.CreateDirectory(outputpath);
         }
+
         
         BuildAssetBundleOptions babOption = BuildAssetBundleOptions.ChunkBasedCompression;//编译项目的设置 
 
@@ -106,6 +107,7 @@ public class AssetBundleEditor
         }
 
         AssetImporter assetImporter = AssetImporter.GetAtPath(asset_path);
+      
         string assetName = asset_path;
         if (assetName.EndsWith(".cs")) return;
         assetName = assetName.Replace(Path.GetExtension(assetName), ".unity3d");

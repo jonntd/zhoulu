@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace IAssetBundle
 {
+    /*
     public class LoadAssetBundle
     {
         private AssetBundle _assetbundle;
@@ -44,4 +45,5 @@ namespace IAssetBundle
             return _assetbundle_name;
         }
     }
+    */
 }

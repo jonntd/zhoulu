@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace IAssetBundle
+namespace IAssetBundle.Load
 {
     public class ABManager
     {
@@ -12,15 +12,11 @@ namespace IAssetBundle
         {
             _info = new ABManagerInfo();
         }
-
-        
-
-        
     }
 
     public class ABManagerInfo
     {
-        public Dictionary<string, LABInfo> _loadABs = new Dictionary<string, LABInfo>();
+        public Dictionary<string, AssetBundleGrain> _loadABs = new Dictionary<string, AssetBundleGrain>();
         public Dictionary<string, WWW> _downLoadWWWs = new Dictionary<string, WWW>();
         public Dictionary<string, string> _downLoad_error = new Dictionary<string, string>();
         public Dictionary<string, LoadOperation> _inprogress_operations = new Dictionary<string, LoadOperation>();
@@ -33,7 +29,7 @@ namespace IAssetBundle
             set { _base_downloading_url = value; }
         }
 
-        public void addLoadAB(string key, LABInfo value)
+        public void addLoadAB(string key, AssetBundleGrain value)
         {
             removeLoadAB(key);
             _loadABs.Add(key, value);
@@ -76,7 +72,6 @@ namespace IAssetBundle
         {
             if (_inprogress_operations.ContainsKey(key)) _inprogress_operations.Remove(key);
         }
-
     }
 }
 
