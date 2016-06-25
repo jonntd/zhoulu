@@ -104,7 +104,6 @@ namespace IAssetBundle.Load
             return _path;
         }
 
-
         public T getMainAsset<T>() where T :Object
         {
             My.assert(!string.IsNullOrEmpty(_main_assetbundle),"主资源名称有问题：("+_main_assetbundle+")");
