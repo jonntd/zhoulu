@@ -1,13 +1,7 @@
 ﻿namespace EventDispatcher
 {
-    /// <summary>
-    /// EventListenerData
-    /// </summary>
     public class EventListenerData
     {
-        /// <summary>
-        /// The _event listener.
-        /// </summary>
         private object _eventListener;
         public object eventListener
         {
@@ -22,9 +16,7 @@
             }
         }
 
-        /// <summary>
-        /// 事件名
-        /// </summary>
+
         private string _eventName_string;
         public string eventName
         {
@@ -40,10 +32,6 @@
         }
 
 
-
-        /// <summary>
-        /// 事件委托
-        /// </summary>
         private EventDelegate _eventDelegate;
         public EventDelegate eventDelegate
         {
@@ -72,24 +60,13 @@
             }
         }
 
-        ///<summary>
-        ///     Constructor
-        ///</summary>
-        public EventListenerData(object aEventListener, string aEventName_string, EventDelegate aEventDelegate, EventDispatcherAddMode aEventListeningMode)
+        public EventListenerData(object aEventListener, string aEventName_string, EventDelegate aEventDelegate, EventDispatcherAddMode eventListentInModel)
         {
             _eventListener = aEventListener;
             _eventName_string = aEventName_string;
             _eventDelegate = aEventDelegate;
-            _eventListeningMode = aEventListeningMode;
+            _eventListeningMode = eventListentInModel;
         }
 
-        /// <summary>
-        /// Deconstructor
-        /// </summary>
-        //~EventListenerData ( )
-        //{
-        //Debug.Log ("EventListenerData.deconstructor()");
-
-        //}
     }
 }

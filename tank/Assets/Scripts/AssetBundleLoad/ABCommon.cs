@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using System.IO;
+using Object = UnityEngine.Object;
+using System;
 using GameEngine.Tools;
 namespace IAssetBundle
 {
@@ -237,7 +239,7 @@ namespace IAssetBundle
 
         public void resetDependencies(TextAsset asset)
         {
-
+            /*
             List<string> infos = new List<string>();
             ByteReader reader = new ByteReader(asset);
             while (reader.canRead)
@@ -270,7 +272,7 @@ namespace IAssetBundle
                 _dic_ab_dep.Add(ab_dep.getAssetBundleFullName(), ab_dep);
                
             }
-           
+           */
         }
         
         public int getDependenciesCount()

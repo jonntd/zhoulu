@@ -1,4 +1,6 @@
-﻿namespace EventDispatcher
+﻿
+
+namespace EventDispatcher
 {
     /// <summary>
     /// IEventDispatcher 事件分发接口，添加移除分发

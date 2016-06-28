@@ -33,13 +33,13 @@ namespace GameEngine.Tools
         public static List<string> readConfigFile(TextAsset asset)
         {
             List<string> infos = new List<string>();
-            ByteReader reader = new ByteReader(asset);
+         /*   ByteReader reader = new ByteReader(asset);
             while(reader.canRead)
             {
                 string line = reader.ReadLine();
                 if (line == null) break;
                 infos.Add(line);
-            }
+            }*/
             return infos;
         }
 
