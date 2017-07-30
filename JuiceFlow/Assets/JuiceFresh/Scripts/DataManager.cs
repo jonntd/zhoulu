@@ -66,7 +66,11 @@ public class DataManager
         }
     }
 
-
+    public void game_load_m_level_map()
+    {
+        load_level();
+    }
+    
 }
 
 

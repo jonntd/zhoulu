@@ -529,6 +529,7 @@ public class InitScript : MonoBehaviour
             return;
         if (!GameObject.Find("CanvasGlobal").transform.Find("MenuPlay").gameObject.activeSelf && !GameObject.Find("CanvasGlobal").transform.Find("GemsShop").gameObject.activeSelf && !GameObject.Find("CanvasGlobal").transform.Find("LiveShop").gameObject.activeSelf)
         {
+            RandomManager.instance.ResetLevel(args.Number);
             PlayerPrefs.SetInt("OpenLevel", args.Number);
             PlayerPrefs.Save();
             LevelManager.THIS.MenuPlayEvent();

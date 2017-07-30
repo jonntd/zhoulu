@@ -61,7 +61,13 @@ public class LevelMakerEditor : EditorWindow
     private InitScript initscript;
 
 
-    [MenuItem("Window/Juice Fresh editor/Update Data")]
+    [MenuItem("Window/Juice Fresh editor/重置生命为5")]
+    public static void AddLife()
+    {
+        PlayerPrefs.SetInt("Lifes", 5);
+    }
+
+    [MenuItem("Window/Juice Fresh editor/更新本地数据")]
     public static void UpdateCSV()
     {
         /*  LevelConfigManager.Instance.parse_text();
