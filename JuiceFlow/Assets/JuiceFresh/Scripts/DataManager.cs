@@ -7,8 +7,30 @@ using UnityEngine;
 
 public class DataManager
 {
+    public void load_level(int level)
+    {
+        TextAsset mapText = Resources.Load("level") as TextAsset;
+        string text = mapText.text;
+        string[] lines = text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
+        for (int i = 1; i < lines.Length; i++)
+        {
+
+        }
+    }
+
+}
 
 
+public class MLevelInfo
+{
+    public int level;
+    public string limit;
+    //Limit weight mode stars target-score target-collect target-collectnums target-item target-itemnum target-cagehp target-collectnums
+    public void reset_info(string[] lines)
+    {
+        level = int.Parse(lines[0]);
+        limit = lines[1];
+    }
 }
 
 public class ExcelLevel
@@ -85,7 +107,7 @@ public class ExcelLevel
             else if (line.StartsWith("COLOR LIMIT "))
             {
                 string blocksString = line.Replace("COLOR LIMIT", string.Empty).Trim();
-                _excel_color_limit=new ExcelColorLimit();
+                _excel_color_limit = new ExcelColorLimit();
                 _excel_color_limit.SetInfo(blocksString);
                 /*colorLimit = int.Parse(blocksString);*/
             }
