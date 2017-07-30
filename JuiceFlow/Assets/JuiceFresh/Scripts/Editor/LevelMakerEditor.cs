@@ -64,10 +64,13 @@ public class LevelMakerEditor : EditorWindow
     [MenuItem("Window/Juice Fresh editor/Update Data")]
     public static void UpdateCSV()
     {
-        LevelConfigManager.Instance.parse_text();
-        LevelInfo info = new LevelInfo();
-        info.LoadDataFromLocal(1);
-        info.SaveMap();
+        /*  LevelConfigManager.Instance.parse_text();
+          LevelInfo info = new LevelInfo();
+          info.LoadDataFromLocal(1);
+          info.SaveMap();*/
+        ExcelLevel tes=new ExcelLevel();
+        tes.LoadDataFromLocal(2);
+        tes.Save();
     }
 
     [MenuItem("Window/Juice Fresh editor/Open Editor")]
