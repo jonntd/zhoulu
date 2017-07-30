@@ -68,9 +68,9 @@ public class LevelMakerEditor : EditorWindow
           LevelInfo info = new LevelInfo();
           info.LoadDataFromLocal(1);
           info.SaveMap();*/
-        ExcelLevel tes=new ExcelLevel();
-        tes.LoadDataFromLocal(2);
-        tes.Save();
+
+
+        DataManager.megre_data();
     }
 
     [MenuItem("Window/Juice Fresh editor/Open Editor")]

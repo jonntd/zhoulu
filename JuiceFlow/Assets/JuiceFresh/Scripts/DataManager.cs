@@ -7,30 +7,113 @@ using UnityEngine;
 
 public class DataManager
 {
-    public void load_level(int level)
+    public static DataManager instance = new DataManager();
+
+    public Dictionary<int, MLevelInfo> m_level_map = new Dictionary<int, MLevelInfo>();
+    public Dictionary<int, ExcelLevel> excel_map = new Dictionary<int, ExcelLevel>();
+    public static void megre_data()
     {
+        instance._megre_data();
+    }
+
+    public void _megre_data()
+    {
+        load_level();
+        load_local_level();
+        foreach (var level_info in m_level_map)
+        {
+            MLevelInfo out_level = level_info.Value;
+            int level_id = level_info.Key;
+            excel_map[level_id].merge_data(out_level);
+        }
+
+        save_all();
+    }
+
+    public void save_all()
+    {
+        foreach (var info in excel_map)
+        {
+            info.Value.Save();
+        }
+    }
+
+    public void load_level()
+    {
+        m_level_map.Clear();
         TextAsset mapText = Resources.Load("level") as TextAsset;
         string text = mapText.text;
         string[] lines = text.Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
         for (int i = 1; i < lines.Length; i++)
         {
-
+            if (lines[i].Length < 10) continue;
+            MLevelInfo level_info = new MLevelInfo();
+            string[] contents = lines[i].Split();
+            level_info.reset_info(contents);
+            m_level_map.Add(level_info.LvID, level_info);
         }
     }
+
+    public void load_local_level()
+    {
+        excel_map.Clear();
+        foreach (var level_info in m_level_map)
+        {
+            int level_id = level_info.Key;
+            ExcelLevel excel_info = new ExcelLevel();
+            excel_info.LoadDataFromLocal(level_id);
+            excel_map.Add(level_id, excel_info);
+        }
+    }
+
 
 }
 
 
 public class MLevelInfo
 {
-    public int level;
+
+    public int LvID;
     public string limit;
-    //Limit weight mode stars target-score target-collect target-collectnums target-item target-itemnum target-cagehp target-collectnums
+    public List<int> weight;
+    public int mode;
+    public string stars;
+    public string target_score;
+    public string target_collect;
+    public string target_collectnums;
+    public string target_item;
+    public string target_itemnum;
+    public string target_cagehp;
+    public string target_bombos;
     public void reset_info(string[] lines)
     {
-        level = int.Parse(lines[0]);
+        LvID = int.Parse(lines[0]);
         limit = lines[1];
+        _parse_weight(lines[2]);
+        mode = int.Parse(lines[3]);
+        stars = lines[4];
+        target_score = lines[5]; ;
+        target_collect = lines[6]; ;
+        target_collectnums = lines[7]; ;
+        target_item = lines[8];
+        target_itemnum = lines[9];
+        target_cagehp = lines[10];
+        target_bombos = lines[11];
     }
+
+    public void _parse_weight(string wei)
+    {
+        weight = new List<int>();
+        //TODO 这里很奇怪，有了转义字符在，所以被迫这样
+        wei = wei.Substring(1, wei.Length - 2);
+        //wei = wei.Substring(1, wei.Length - 2);
+        string[] result = wei.Split(',');
+        for (int i = 0; i < result.Length; i++)
+        {
+            weight.Add(int.Parse(result[i]));
+        }
+    }
+
 }
 
 public class ExcelLevel
@@ -53,7 +136,7 @@ public class ExcelLevel
     public ExcelGages _target_gages;
     public ExcelGetStars _target_get_stars;
     public ExcelBombs _target_bombs;
-
+    //public ExcelBombs _target_bombs;
     public List<string> maps = new List<string>();
     public bool LoadDataFromLocal(int currentLevel)
     {
@@ -222,7 +305,7 @@ public class ExcelLevel
     public void Save()
     {
         string name = "msm_" + levelNumber;
-
+        saveString = "";
 
         add_text("MODE " + (int)target);
 
@@ -257,7 +340,7 @@ public class ExcelLevel
 
         for (int i = 0; i < maps.Count; i++)
         {
-            add_text(maps[i], i == maps.Count - 1);
+            add_text(maps[i], true);
         }
 
         if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor)
@@ -265,7 +348,7 @@ public class ExcelLevel
             //Write to file
             string activeDir = Application.dataPath + @"/JuiceFresh/Resources/Levels/";
             string newPath = System.IO.Path.Combine(activeDir, levelNumber + ".txt");
-            StreamWriter sw = new StreamWriter(newPath);
+            StreamWriter sw = new StreamWriter(newPath, false);
             sw.Write(saveString);
             sw.Close();
         }
@@ -277,9 +360,68 @@ public class ExcelLevel
     {
         saveString += add;
         if (!is_r)
-            saveString += "\r\n";
+        {
+            //saveString += "\r\n";
+            saveString += "\n";
+        }
+
     }
 
+    public void merge_data(MLevelInfo level_info)
+    {
+        if (level_info.LvID != levelNumber)
+        {
+            Debug.LogError("ID不一致");
+            return;
+        }
+
+        target = (Target)level_info.mode;
+        _excel_limit.SetInfo(level_info.limit);
+        _excel_color_limit.SetInfo("6");            //颜色限制
+        _excel_stars.SetInfo(level_info.stars);
+
+        if (target == Target.SCORE)
+        {
+            if (_target_get_stars == null)
+                _target_get_stars = new ExcelGetStars();
+            _target_get_stars.SetInfo(level_info.target_score);
+        }
+        else if (target == Target.COLLECT)
+        {
+            if (_target_collect_items == null || _target_collect_count == null)
+            {
+                _target_collect_items = new ExcelCollectItem();
+                _target_collect_count = new ExcelCollectCount();
+            }
+
+            _target_collect_items.SetInfo(level_info.target_collect);
+            _target_collect_count.SetInfo(level_info.target_collectnums);
+        }
+        else if (target == Target.ITEMS)
+        {
+            if (_target_collect_items == null || _target_collect_count == null)
+            {
+                _target_collect_items = new ExcelCollectItem();
+                _target_collect_count = new ExcelCollectCount();
+            }
+            _target_collect_items.SetInfo(level_info.target_item);
+            _target_collect_count.SetInfo(level_info.target_itemnum);
+        }
+        else if (target == Target.CAGES)
+        {
+            if (_target_gages == null)
+                _target_gages = new ExcelGages();
+            _target_gages.SetInfo(level_info.target_cagehp);
+        }
+        else if (target == Target.BOMBS)
+        {
+            if (_target_bombs == null)
+                _target_bombs = new ExcelBombs();
+            _target_bombs.SetInfo(level_info.target_bombos);
+        }
+
+        Save();
+    }
 }
 
 public interface ExcelInfo
@@ -493,7 +635,6 @@ public class ExcelBombs : ExcelInfo
     }
 
 }
-
 #endregion
 
 
