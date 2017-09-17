@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using UnityEngine.Analytics;
 #endif
 
-public class EventsListener : MonoBehaviour {
+public class EventsListener : MonoBehaviour
+{
 
-    void OnEnable() {
+    void OnEnable()
+    {
         LevelManager.OnMapState += OnMapState;
         LevelManager.OnEnterGame += OnEnterGame;
         LevelManager.OnLevelLoaded += OnLevelLoaded;
@@ -19,7 +21,8 @@ public class EventsListener : MonoBehaviour {
 
     }
 
-    void OnDisable() {
+    void OnDisable()
+    {
         LevelManager.OnMapState -= OnMapState;
         LevelManager.OnEnterGame -= OnEnterGame;
         LevelManager.OnLevelLoaded -= OnLevelLoaded;
@@ -32,29 +35,45 @@ public class EventsListener : MonoBehaviour {
     }
 
     #region GAME_EVENTS
-    void OnMapState() {
+    void OnMapState()
+    {
     }
-    void OnEnterGame() {
+    void OnEnterGame()
+    {
         AnalyticsEvent("OnEnterGame", LevelManager.THIS.currentLevel);
+        Debug.Log(string.Format("关卡[{0}]开始", LevelManager.THIS.currentLevel.ToString()));
+        StatisticsManager.StartLevel(LevelManager.THIS.currentLevel.ToString());
     }
-    void OnLevelLoaded() {
+    void OnLevelLoaded()
+    {
     }
-    void OnMenuPlay() {
+    void OnMenuPlay()
+    {
     }
-    void OnMenuComplete() {
+    void OnMenuComplete()
+    {
+
     }
-    void OnStartPlay() {
+    void OnStartPlay()
+    {
     }
-    void OnWin() {
+    void OnWin()
+    {
         AnalyticsEvent("OnWin", LevelManager.THIS.currentLevel);
+        StatisticsManager.FinishLevel(LevelManager.THIS.currentLevel.ToString());
+        Debug.Log(string.Format("关卡[{0}]通关", LevelManager.THIS.currentLevel.ToString()));
     }
-    void OnLose() {
+    void OnLose()
+    {
         AnalyticsEvent("OnLose", LevelManager.THIS.currentLevel);
+        StatisticsManager.FailLevel(LevelManager.THIS.currentLevel.ToString());
+        Debug.Log(string.Format("关卡[{0}]失败", LevelManager.THIS.currentLevel.ToString()));
     }
 
     #endregion
 
-    void AnalyticsEvent(string _event, int level) {
+    void AnalyticsEvent(string _event, int level)
+    {
 #if UNITY_ANALYTICS
         Dictionary<string, object> dic = new Dictionary<string, object>();
         dic.Add(_event, level);
