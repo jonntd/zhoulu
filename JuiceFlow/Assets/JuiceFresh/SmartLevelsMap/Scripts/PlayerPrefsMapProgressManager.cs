@@ -5,21 +5,27 @@ public class PlayerPrefsMapProgressManager : IMapProgressManager
 {
     private string GetLevelKey(int number)
     {
-        return string.Format("Level.{0:000}.StarsCount", number);
+        string result = "Level.{0:000}.StarsCount";
+        return string.Format(result, number);
     }
 
     public int LoadLevelStarsCount(int level)
     {
-        return PlayerPrefs.GetInt(GetLevelKey(level), 0);
+        string key = GetLevelKey(level);
+        int result = PlayerPrefs.GetInt(key, 0);
+        return result;
     }
 
     public void SaveLevelStarsCount(int level, int starsCount)
     {
-        PlayerPrefs.SetInt(GetLevelKey(level), starsCount);
+        string key = GetLevelKey(level);
+        int value = starsCount;
+        PlayerPrefs.SetInt(key, value);
     }
 
     public void ClearLevelProgress(int level)
     {
-        PlayerPrefs.DeleteKey(GetLevelKey(level));
+        string key = GetLevelKey(level);
+        PlayerPrefs.DeleteKey(key);
     }
 }

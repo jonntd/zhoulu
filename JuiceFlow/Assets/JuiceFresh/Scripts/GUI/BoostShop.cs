@@ -15,6 +15,17 @@ public enum BoostType
     None
 }
 
+public class BoostTypeDes
+{
+    /*public static string GetBoosType(BoostType type)
+    {
+        if (type == BoostType.ExtraMoves)
+        {
+            return "ExtraMoves_移动步数";
+        }
+    }*/
+}
+
 public class BoostShop : MonoBehaviour
 {
     public Sprite[] icons;
