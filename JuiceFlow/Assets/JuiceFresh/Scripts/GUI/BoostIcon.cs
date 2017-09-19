@@ -9,6 +9,12 @@ public class BoostIcon : MonoBehaviour
     bool check;
     public Text price;
 
+    void Awake()
+    {
+      
+
+    }
+
     void OnEnable()
     {
         if (name != "Main Camera")
@@ -34,6 +40,7 @@ public class BoostIcon : MonoBehaviour
             return;
         if (BoostCount() > 0)
         {
+            StatisticsManager.Use(type.ToString(), 1, 0);
             if (type != BoostType.Colorful_bomb && type != BoostType.Stripes && !LevelManager.THIS.DragBlocked)
                 LevelManager.THIS.ActivatedBoost = this;
             if (type == BoostType.Colorful_bomb)
@@ -121,16 +128,18 @@ public class BoostIcon : MonoBehaviour
 
     void Update()
     {
-        if (boostCount != null)
+        if (boostCount == null)
         {
-            boostCount.text = "" + PlayerPrefs.GetInt("" + type);
-            if (!check)
-            {
-                if (BoostCount() > 0)
-                    ShowPlus(false);
-                else
-                    ShowPlus(true);
-            }
+            Debug.Log(gameObject.name + "_");
+            return;
+        }
+        boostCount.text = "" + PlayerPrefs.GetInt("" + type);
+        if (!check)
+        {
+            if (BoostCount() > 0)
+                ShowPlus(false);
+            else
+                ShowPlus(true);
         }
     }
 }

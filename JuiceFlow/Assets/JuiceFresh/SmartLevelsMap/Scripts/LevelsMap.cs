@@ -30,6 +30,7 @@ public class LevelsMap : MonoBehaviour
     public void Awake()
     {
         _instance = this;
+        
     }
 
     public void OnDestroy()
