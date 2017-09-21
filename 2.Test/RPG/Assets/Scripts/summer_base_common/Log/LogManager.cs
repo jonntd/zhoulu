@@ -115,12 +115,12 @@ namespace Summer
 
     public enum EDebugLevel
     {
-        ENone,
-        ELog,
-        EWaring,
-        EError,
-        EAsset,
-        EMax,
+        e_none,
+        e_log,
+        e_waring,
+        e_error,
+        e_asset,
+        e_max,
     }
 
 }

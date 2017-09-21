@@ -13,8 +13,11 @@ namespace Summer
         buff_detach,                        //
         buff_attach,                        //
 
-
-
+        //TODO 是否可以把这个完全的消息机制剥离到单独某个地方
+        //camera镜头特效 
+        camera_effect_radial_blur,          // 径向模糊:图像旋转成从中心辐射。
+        camera_effect_motion_blur,          // 运动模糊镜头特效
+        camera_shake,                       // 镜头震动
         max,
     };
 
