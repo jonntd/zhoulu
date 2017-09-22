@@ -6,7 +6,8 @@ namespace Summer
 {
 
     /// <summary>
-    /// 查找目标
+    /// 查找目标 
+    /// TODO 通过依赖连来查找目标  范围/敌友/等等其他条件 一次次把结果传递
     /// </summary>
     public class FindTargetEntites : ASkillAction
     {
@@ -21,6 +22,11 @@ namespace Summer
         public override void OnExit()
         {
 
+        }
+
+        public override void OnUpdate(float dt)
+        {
+            
         }
     }
 

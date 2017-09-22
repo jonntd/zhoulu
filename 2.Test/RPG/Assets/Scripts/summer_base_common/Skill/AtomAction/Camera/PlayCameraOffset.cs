@@ -15,6 +15,11 @@ namespace Summer
         {
 
         }
+
+        public override void OnUpdate(float dt)
+        {
+            
+        }
     }
 
 }

@@ -29,6 +29,11 @@ namespace Summer
 
         }
 
+        public override void OnUpdate(float dt)
+        {
+            
+        }
+
         public override void Destroy()
         {
             EventSkillDataFactory.Pop(_data);

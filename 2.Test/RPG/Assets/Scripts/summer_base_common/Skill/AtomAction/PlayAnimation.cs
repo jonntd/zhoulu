@@ -32,7 +32,10 @@ namespace Summer
             _data = null;
         }
 
-
+        public override void OnUpdate(float dt)
+        {
+            
+        }
     }
 
 }

@@ -37,6 +37,11 @@ namespace Summer
             EventSkillDataFactory.Pop(_data);
             _data = null;
         }
+
+        public override void OnUpdate(float dt)
+        {
+            
+        }
     }
 
     public class PlaySoundActionByAnimation : PlaySoundAction
