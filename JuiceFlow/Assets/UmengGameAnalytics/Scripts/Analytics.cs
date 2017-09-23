@@ -119,7 +119,7 @@ namespace Umeng
         _EventWithLabel(eventId, label);
 #elif UNITY_ANDROID
             Agent.CallStatic("onEvent", Context, eventId, label);
-            StatisticsMgr.des += "onEvent";
+            //StatisticsMgr.des += "onEvent";
 #endif
         }
 

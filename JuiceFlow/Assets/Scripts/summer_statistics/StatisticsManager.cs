@@ -28,8 +28,8 @@ public class StatisticsManager
     public static void StartLevel(string level)
     {
         GA.StartLevel(level);
-        StatisticsMgr.des += "Lvstart"+ level;
-        GA.Event("Lvstart",level);
+        //StatisticsMgr.des += "Lvstart"+ level;
+        GA.Event("Lvstart", level);
         Debug.Log("进入关卡");
     }
     /// <summary>
@@ -39,6 +39,7 @@ public class StatisticsManager
     public static void FinishLevel(string level)
     {
         GA.FinishLevel(level);
+        GA.Event("Lvpass", level);
         Debug.Log("通过关卡");
     }
     /// <summary>
@@ -48,6 +49,7 @@ public class StatisticsManager
     public static void FailLevel(string level)
     {
         GA.FailLevel(level);
+        GA.Event("Lvfail", level);
         Debug.Log("未通过关卡.");
     }
 
@@ -60,7 +62,8 @@ public class StatisticsManager
     public static void Use(string item, int amount, double price)
     {
         GA.Use(item, amount, price);
-        Debug.Log(string.Format("道具名称：{0}  道具数量：{1}  道具单价：{2}", item,amount, price));
+        GA.Event("Item" + item, item);
+        Debug.Log(string.Format("道具名称：{0}  道具数量：{1}  道具单价：{2}", item, amount, price));
     }
 
 
@@ -73,5 +76,10 @@ public class StatisticsManager
     public static void Buy(string item, int amount, double price)
     {
         GA.Buy(item, amount, price);
+    }
+
+    public static void BuyLive()
+    {
+        GA.Event("fulllives", "1");
     }
 }

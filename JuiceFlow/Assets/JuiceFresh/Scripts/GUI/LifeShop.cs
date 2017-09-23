@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class LifeShop : MonoBehaviour
 {
-	public int CostIfRefill = 12;
+	public int CostIfRefill = 250;
 	// Use this for initialization
 	void OnEnable ()
 	{

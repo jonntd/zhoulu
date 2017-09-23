@@ -473,6 +473,7 @@ public class AnimationManager : MonoBehaviour {
         if (InitScript.Gems >= int.Parse(button.transform.Find("Price").GetComponent<Text>().text)) {
             InitScript.Instance.SpendGems(int.Parse(button.transform.Find("Price").GetComponent<Text>().text));
             InitScript.Instance.RestoreLifes();
+            StatisticsManager.BuyLive();
             CloseMenu();
         }
         else {
