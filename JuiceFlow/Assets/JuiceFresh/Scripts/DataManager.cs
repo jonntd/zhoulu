@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public class DataManager
@@ -356,8 +358,9 @@ public class ExcelLevel
             sw.Write(saveString);
             sw.Close();
         }
+#if UNITY_EDITOR
         AssetDatabase.Refresh();
-
+#endif
     }
 
     public void add_text(string add, bool is_r = false)

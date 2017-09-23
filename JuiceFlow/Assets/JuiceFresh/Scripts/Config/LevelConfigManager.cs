@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
@@ -208,7 +207,9 @@ public class LevelInfo
             sw.Write(saveString);
             sw.Close();
         }
-        AssetDatabase.Refresh();
+#if UNITY_EDITOR
+        UnityEditor.AssetDatabase.Refresh();
+#endif
     }
 
     public bool LoadDataFromLocal(int currentLevel)

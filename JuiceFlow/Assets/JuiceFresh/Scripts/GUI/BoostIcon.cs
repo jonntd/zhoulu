@@ -130,7 +130,7 @@ public class BoostIcon : MonoBehaviour
     {
         if (boostCount == null)
         {
-            Debug.Log(gameObject.name + "_");
+            //Debug.Log(gameObject.name + "_");
             return;
         }
         boostCount.text = "" + PlayerPrefs.GetInt("" + type);
