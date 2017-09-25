@@ -8,7 +8,7 @@ namespace Summer
     /// </summary>
     public class BuffToCount : Buff
     {
-        public override void Init(BuffConf conf)
+        public override void Init(BuffCnf conf)
         {
             base.Init(conf);
         }

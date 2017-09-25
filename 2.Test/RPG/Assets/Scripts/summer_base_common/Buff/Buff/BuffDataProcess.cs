@@ -6,7 +6,7 @@ public class BuffDataProcessValue : Buff
 {
     public float _cumulative_data;                  //累加
     protected BuffParamValueData _param = new BuffParamValueData();
-    public override void Init(BuffConf conf)
+    public override void Init(BuffCnf conf)
     {
         base.Init(conf);
         _refresh_param();
@@ -33,7 +33,7 @@ public class BuffDataUpdateProcess : Buff
 
     public float _cumulative_data;                  //累加
 
-    public override void Init(BuffConf conf)
+    public override void Init(BuffCnf conf)
     {
         base.Init(conf);
         _refresh_param();
