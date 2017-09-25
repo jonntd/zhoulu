@@ -13,7 +13,7 @@ public class StatisticsManager
     public static void AppKeyAndChannelId(string appKey, string channelId)
     {
         GA.StartWithAppKeyAndChannelId(appKey, channelId);
-        Debug.Log("开始统计 默认发送策略为启动时发送");
+        Debug.Log("=================开始统计 默认发送策略为启动时发送=========================");
     }
 
     public static void SetLogEnabled(bool opne)
@@ -30,7 +30,7 @@ public class StatisticsManager
         GA.StartLevel(level);
         //StatisticsMgr.des += "Lvstart"+ level;
         GA.Event("Lvstart", level);
-        Debug.Log("进入关卡");
+        Debug.Log("进入关卡"+ level);
     }
     /// <summary>
     /// 通过关卡.
@@ -40,7 +40,7 @@ public class StatisticsManager
     {
         GA.FinishLevel(level);
         GA.Event("Lvpass", level);
-        Debug.Log("通过关卡");
+        Debug.Log("通过关卡"+ level);
     }
     /// <summary>
     /// 未通过关卡.
@@ -50,7 +50,7 @@ public class StatisticsManager
     {
         GA.FailLevel(level);
         GA.Event("Lvfail", level);
-        Debug.Log("未通过关卡.");
+        Debug.Log("未通过关卡."+ level);
     }
 
     /// <summary>
@@ -81,5 +81,6 @@ public class StatisticsManager
     public static void BuyLive()
     {
         GA.Event("fulllives", "1");
+        GA.Event("Item8", "1");
     }
 }
