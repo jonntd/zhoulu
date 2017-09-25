@@ -8,15 +8,15 @@ namespace GeneratorCnf.Scripts
 {
     public class TableData
     {
-
-        
-
-        public static EClassDefine ParseTable(List<string> contents, string file_name)
+        public const string EXTENDS = "BaseCsv";        //强制继承BaseCsv
+        public static EClassTableDefine ParseTable(List<string> contents, string file_name)
         {
             Program.Log("file_name:" + file_name);
-            EClassDefine cd = new EClassDefine();
+            EClassTableDefine cd = new EClassTableDefine();
+            cd.using_str.Add("using System.IO;");
             cd.comment = file_name;
             cd.name = file_name;
+            cd.extend = EXTENDS;
             string[] dess = contents[0].Split(CodeTool.separator);
             string[] var_attrs = contents[1].Split(CodeTool.separator);
             string[] var_names = contents[2].Split(CodeTool.separator);

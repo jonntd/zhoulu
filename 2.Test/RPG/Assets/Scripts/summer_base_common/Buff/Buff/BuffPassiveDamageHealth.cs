@@ -6,7 +6,7 @@ public class BuffPassiveDamageHealth : Buff
 {
     private BuffParamData _param = new BuffParamData();
 
-    public override void Init(BuffConf conf)
+    public override void Init(BuffCnf conf)
     {
         base.Init(conf);
         _refresh_param();

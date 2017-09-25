@@ -147,7 +147,8 @@ public class BuffContainer : MonoBehaviour
                 //存在buff，可叠加buff，加一层layer，并判断是否需要refresh_timer
                 //刷新数据
                 exist_buff.AddLayer();
-                if (exist_buff._conf.refresh_on_attach)
+                if (true)//强制刷新
+                //if (exist_buff._conf.refresh_on_attach)
                 {
                     //refresh timer
                     _remove_expire_timer(exist_buff._bid);

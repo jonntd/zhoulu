@@ -49,6 +49,8 @@
     <Compile Include="Scripts\CodeGenerator.cs" />
     <Compile Include="Scripts\CodeTool.cs" />
     <Compile Include="Scripts\ResConfig.cs" />
+    <Compile Include="Scripts\StaticCnfFactory.cs" />
+    <Compile Include="Scripts\TableClassTool.cs" />
     <Compile Include="Scripts\TableData.cs" />
   </ItemGroup>
   <ItemGroup>

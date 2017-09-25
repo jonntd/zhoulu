@@ -4,3 +4,9 @@ D:\github\GeneratorCnf\GeneratorCnf\bin\Debug\GeneratorCnf.pdb
 D:\github\GeneratorCnf\GeneratorCnf\obj\Debug\GeneratorCnf.csprojResolveAssemblyReference.cache
 D:\github\GeneratorCnf\GeneratorCnf\obj\Debug\GeneratorCnf.exe
 D:\github\GeneratorCnf\GeneratorCnf\obj\Debug\GeneratorCnf.pdb
+D:\github\zhoulu\3.Tool\GeneratorCnf\GeneratorCnf\bin\Debug\GeneratorCnf.exe.config
+D:\github\zhoulu\3.Tool\GeneratorCnf\GeneratorCnf\obj\Debug\GeneratorCnf.exe
+D:\github\zhoulu\3.Tool\GeneratorCnf\GeneratorCnf\obj\Debug\GeneratorCnf.pdb
+D:\github\zhoulu\3.Tool\GeneratorCnf\GeneratorCnf\bin\Debug\GeneratorCnf.exe
+D:\github\zhoulu\3.Tool\GeneratorCnf\GeneratorCnf\bin\Debug\GeneratorCnf.pdb
+D:\github\zhoulu\3.Tool\GeneratorCnf\GeneratorCnf\obj\Debug\GeneratorCnf.csprojResolveAssemblyReference.cache
