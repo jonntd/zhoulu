@@ -39,7 +39,7 @@ namespace GeneratorCnf.Scripts
         public string comment;                                      // 描述
         public EAccessLimit access_limit;                           // 访问权限
         public string name;                                         // 变量名
-        public string attribute;                                  // 变量的类型
+        public string attribute;                                    // 变量的类型
 
         //public CodeTypeReference type;                              // 类型
         //public ECompileType compile_type = ECompileType.member;     // 编译类型
@@ -83,6 +83,78 @@ namespace GeneratorCnf.Scripts
 
             return sb.ToString();
         }
+
+        public string ToWrite(string tab)
+        {
+            string length_name = string.Empty;
+            StringBuilder sb = new StringBuilder();
+            switch (attribute)
+            {
+                case "int":
+                    sb.AppendLine(tab + string.Format("{0} = reader.ReadInt32();", name));
+                    break;
+                case "int[]":
+                    length_name = string.Format("length_{0}", name);
+                    sb.AppendLine(tab + string.Format("int {0} = reader.ReadInt32();", length_name));
+                    sb.AppendLine(tab + string.Format("{0} = new int[{1}];", name, length_name));
+
+                    sb.AppendLine(tab + string.Format("for(int i = 0; i < {0}; i++)", length_name));
+                    sb.AppendLine(tab + "{");
+                    sb.AppendLine(tab + string.Format("{0}[i] = reader.ReadInt32();", name));
+                    sb.AppendLine(tab + "}");
+
+                    break;
+                case "float":
+                    sb.AppendLine(tab + string.Format("{0} = reader.ReadSingle();", name));
+
+                    break;
+                case "float[]":
+
+                    length_name = string.Format("length_{0}", name);
+                    sb.AppendLine(tab + string.Format("int {0} = reader.ReadInt32();", length_name));
+                    sb.AppendLine(tab + string.Format("{0} = new string[{1}];", name, length_name));
+
+                    sb.AppendLine(string.Format("for(int i = 0; i < {0}; i++)", length_name));
+                    sb.AppendLine(tab + "{");
+                    sb.AppendLine(tab + tab + string.Format("{0}[i] = reader.ReadSingle();", name));
+                    sb.AppendLine(tab + "}");
+                    break;
+                case "string":
+                    sb.AppendLine(tab + string.Format("{0} = reader.ReadString();", name));
+                    break;
+                case "string[]":
+                    length_name = string.Format("length_{0}", name);
+                    sb.AppendLine(tab + string.Format("int {0} = reader.ReadInt32();", length_name));
+                    sb.AppendLine(tab + string.Format("{0} = new string[{1}];", name, length_name));
+
+                    sb.AppendLine(tab + string.Format("for(int i = 0; i < {0}; i++)", length_name));
+                    sb.AppendLine(tab + "{");
+                    sb.AppendLine(tab + string.Format("{0}[i] = reader.ReadString();", name));
+                    sb.AppendLine(tab + "}");
+                    break;
+                case "bool":
+                    sb.AppendLine(string.Format("{0} = reader.ReadBoolean();", name));
+                    break;
+                case "bool[]":
+                    length_name = string.Format("length_{0}", name);
+                    sb.AppendLine(tab + string.Format("int {0} = reader.ReadInt32();", length_name));
+                    sb.AppendLine(tab + string.Format("{0} = new bool[{1}];", name, length_name));
+
+                    sb.AppendLine(tab + string.Format("for(int i = 0; i < {0}; i++)", length_name));
+
+                    sb.AppendLine(tab + "for(int i = 0; i < length; i++)");
+                    sb.AppendLine(tab + "{");
+                    sb.AppendLine(tab + tab + string.Format("{0}[i] = reader.ReadBoolean();", name));
+                    sb.AppendLine(tab + "}");
+                    break;
+                default:
+                    Program.Error("--------非法属性|字段[{0}]---------", name);
+                    break;
+            }
+            return sb.ToString();
+        }
+
+
     }
 
     public class ETypeUtil
@@ -136,6 +208,8 @@ namespace GeneratorCnf.Scripts
     /// </summary>
     public class EClassDefine
     {
+        public List<string> using_str = new List<string>();
+        public string extend;                       //继承
         public string comment;                      //注释
         public string name;                         //类名字
         public List<EVariable> variables            //变量
@@ -144,13 +218,23 @@ namespace GeneratorCnf.Scripts
             = new List<EProperty>();
 
         public const string TAB = "\t";
-        public string ToDes(string tab)
+        public virtual string ToDes(string tab)
         {
+
+
             string ttab = tab + TAB;
             StringBuilder sb = new StringBuilder();
 
+            for (int i = 0; i < using_str.Count; i++)
+            {
+                sb.AppendLine(using_str[i]);
+            }
+
             //TODO 这里的Cnf和外部的cnf要统一化 实际是有问题的
-            sb.AppendLine(string.Format("public class {0}", comment));
+            if (string.IsNullOrEmpty(extend))
+                sb.AppendLine(string.Format("public class {0}", comment));
+            else
+                sb.AppendLine(string.Format("public class {0} : {1}", comment, extend));
             sb.AppendLine("{");
             for (int i = 0; i < variables.Count; i++)
             {

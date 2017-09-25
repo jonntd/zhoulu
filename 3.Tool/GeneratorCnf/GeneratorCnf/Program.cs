@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GeneratorCnf.Scripts;
 namespace GeneratorCnf
 {
+    /// <summary>
+    /// 慢慢分解这些内容
+    /// 
+    /// 这代码惨不忍睹呀！这代码惨不忍睹呀！这代码惨不忍睹呀！这代码惨不忍睹呀！这代码惨不忍睹呀！这代码惨不忍睹呀！这代码惨不忍睹呀！
+    /// 
+    /// 这就是一开始代码没有规划好 各个模块之间的功能导致的问题
+    /// </summary>
     public class Program
     {
         static void Main(string[] args)
@@ -65,13 +69,16 @@ namespace GeneratorCnf
             DirectoryInfo csv_folder = new DirectoryInfo(CodeTool.root_tables_path);
             FileInfo[] csv_files = csv_folder.GetFiles("*.csv", SearchOption.AllDirectories);
 
+            List<string> out_files = new List<string>();
             foreach (FileInfo csv_file in csv_files)
             {
                 string file_name = csv_file.Name;
                 file_name = csv_file.Name.Replace(csv_file.Extension, string.Empty);
                 if (CodeTool.IsIgnoreFile(file_name))
                     continue;
-
+                //默认添加Cnf后缀
+                file_name += "Cnf";
+                out_files.Add(file_name);
                 List<string> content_str_list = new List<string>();
                 using (StreamReader sr = csv_file.OpenText())
                 {
@@ -82,10 +89,15 @@ namespace GeneratorCnf
                 }
 
 
-                EClassDefine class_define = TableData.ParseTable(content_str_list, file_name);
+                EClassTableDefine class_define = TableData.ParseTable(content_str_list, file_name);
                 CodeTool.SaveToCs(class_define);
             }
+
+            string content = StaticCnfFactory.Create(out_files.ToArray());
+            File.WriteAllText(CodeTool.root_out_path + "StaticCnfLoader.cs", content);
         }
+
+
 
         #region Log
         public static
