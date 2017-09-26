@@ -31,14 +31,26 @@ namespace GeneratorCnf.Scripts
             sb.AppendLine(ttab + "}");
 
             // public virtual void InitByBinary(BinaryReader reader)
-            sb.AppendLine(ttab + "public override void InitByBinary(BinaryReader reader)");
+            sb.AppendLine(ttab + "public override void InitByReader(BinaryReader reader)");
             sb.AppendLine(ttab + "{");
             for (int i = 0; i < variables.Count; i++)
             {
                 sb.AppendLine(variables[i].ToWrite(ttab + TAB));
             }
             sb.AppendLine(ttab + "}");
+            
+
+            // public virtual void InitByBinary(BinaryReader reader)
+            sb.AppendLine(ttab + "public override void InitByWriter(BinaryWriter writer)");
+            sb.AppendLine(ttab + "{");
+            for (int i = 0; i < variables.Count; i++)
+            {
+                sb.AppendLine(variables[i].ToRead(ttab + TAB));
+            }
+            sb.AppendLine(ttab + "}");
             sb.AppendLine("}");
+
+
             return sb.ToString();
         }
     }

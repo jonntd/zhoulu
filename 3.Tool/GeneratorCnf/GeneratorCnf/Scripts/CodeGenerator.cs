@@ -69,7 +69,7 @@ namespace GeneratorCnf.Scripts
                 case "bool[]":
                     break;
                 default:
-                    Program.Error("非法属性|字段[{0}]", name);
+                    Program.Error("非法属性:字段[{0}]|属性[{1}]", name, attribute);
                     return false;
             }
             return true;
@@ -154,6 +154,47 @@ namespace GeneratorCnf.Scripts
             return sb.ToString();
         }
 
+        public string ToRead(string tab)
+        {
+            string length = string.Empty;
+            StringBuilder sb = new StringBuilder();
+            switch (attribute)
+            {
+                case "int":
+                case "float":
+                case "bool":
+                    sb.AppendLine(tab + string.Format("writer.Write({0});", name));
+                    break;
+                case "string":
+                    sb.AppendLine(tab + string.Format("writer.Write({0});", name));
+                    //sb.AppendLine(tab + string.Format("string.IsNullOrEmpty({0}) ? \"\" : {0}", name));
+                    break;
+                case "int[]":
+                case "float[]":
+                case "bool[]":
+                    length = string.Format("length_{0}", name);
+                    sb.AppendLine(tab + string.Format("int {0} = {1}.Length;", length, name));
+                    sb.AppendLine(tab + string.Format("writer.Write({0});", length));
+                    sb.AppendLine(tab + string.Format("for(int i=0;i<{0}; i++)", length));
+                    sb.AppendLine(tab + "{");
+                    sb.AppendLine(tab + tab + string.Format("writer.Write({0}[i]);", name));
+                    sb.AppendLine(tab + "}");
+                    break;
+                case "string[]":
+                    length = string.Format("length_{0}", name);
+                    sb.AppendLine(tab + string.Format("int {0} = {1}.Length;", length, name));
+                    sb.AppendLine(tab + string.Format("writer.Write({0});", length));
+                    sb.AppendLine(tab + string.Format("for(int i=0;i<{0}; i++)", length));
+                    sb.AppendLine(tab + "{");
+                    sb.AppendLine(tab + tab + string.Format("writer.Write({0}[i]);", name));
+                    sb.AppendLine(tab + "}");
+                    break;
+                default:
+                    Program.Error("--------非法属性|字段[{0}]---------", name);
+                    break;
+            }
+            return sb.ToString();
+        }
 
     }
 
