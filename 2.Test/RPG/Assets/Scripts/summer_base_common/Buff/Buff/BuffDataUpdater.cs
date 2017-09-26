@@ -34,7 +34,7 @@ public class BuffDataUpdater : Buff
 
     #region Buff -init/add/remove
 
-    public override void Init(BuffConf conf)
+    public override void Init(BuffCnf conf)
     {
         base.Init(conf);
         //LogManager.Assert(conf.type == (int)E_BUFF_TYPE.data_updater, "当前为属性更新Buff,他的数据填写错误ID:{0},类型：{1}", conf.id, conf.type);
@@ -51,7 +51,7 @@ public class BuffDataUpdater : Buff
     {
         base.OnAttach(caster, target);
         _test();
-        LogManager.Log("添加属性Buff,ID:{0},属性类型{1},原始数据:{2}", _conf.id, _conf.type, _tmp_original);
+        LogManager.Log("添加属性Buff,ID:{0},属性类型{1},原始数据:{2}", _conf.id, _conf.sub_type, _tmp_original);
     }
 
     public override void OnDetach()

@@ -182,18 +182,6 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
         m_StoreController = controller;
         // Store specific subsystem, for accessing device-specific store features.
         m_StoreExtensionProvider = extensions;
-
-#if UNITY_ANDROID
-        StatisticsManager.AppKeyAndChannelId("57221625e0f55a2e7c000bdb", "Googleplay");
-        //调试时开启日志 发布时设置为false
-        //GA.SetLogEnabled(false);
-        //GA.SetLogEnabled (true);	
-#elif UNITY_IPHONE
-        StatisticsManager.AppKeyAndChannelId("5939672899f0c7305600068a", "AppStore");
-		//调试时开启日志 发布时设置为false
-		//GA.SetLogEnabled (false);
-		//GA.SetLogEnabled (true);	
-#endif
     }
 
 

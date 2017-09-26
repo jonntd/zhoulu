@@ -152,7 +152,7 @@ public class ResManager : I_TextureLoad, I_AudioLoad, I_PrefabLoad
                 img.SetNativeSize();
             }
             if (callback != null)
-                callback.Invoke(texture); 
+                callback.Invoke(texture);
         };
         LoadAssetAsync(name, res_type, action);
     }
@@ -205,6 +205,22 @@ public class ResManager : I_TextureLoad, I_AudioLoad, I_PrefabLoad
                 complete.Invoke(game_object);
         };
         LoadAssetAsync(name, res_type, action);
+    }
+
+    #endregion
+
+    #region byte[]
+
+    // 独立加载的信息
+    public byte[] LoadByte(string name, E_GameResType res_type)
+    {
+        TextAsset text_asset = LoadAsset<TextAsset>(name, res_type);
+        return text_asset.bytes;
+    }
+
+    public void LoadByteAsync(string name, E_GameResType res_type, Action<TextAsset> callback)
+    {
+        LoadAssetAsync(name, res_type, callback);
     }
 
     #endregion

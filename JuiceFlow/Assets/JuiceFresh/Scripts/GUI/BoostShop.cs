@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 public enum BoostType
 {
-    ExtraMoves,
-    Stripes,
-    ExtraTime,
-    Bomb,
-    Colorful_bomb,
-    Shovel,
-    Energy,
+    ExtraMoves=1,
+    Stripes=2,
+    ExtraTime=3,
+    Bomb=4,
+    Colorful_bomb=5,
+    Shovel=6,
+    Energy=7,
     None
 }
 

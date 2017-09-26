@@ -8,7 +8,7 @@ public class BuffShield : Buff
     BuffParamData _param = new BuffParamData();
 
     public float _real_data = 0;
-    public override void Init(BuffConf conf)
+    public override void Init(BuffCnf conf)
     {
         base.Init(conf);
         _refresh_param();

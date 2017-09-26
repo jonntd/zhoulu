@@ -319,7 +319,7 @@ public class LevelMakerEditor : EditorWindow
 
         PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, defines);
         PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.iOS, defines);
-        PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.WP8, defines);
+        //PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.WP8, defines);
 
     }
     #region GUIRate

@@ -1,129 +1,6 @@
 ﻿using System.Collections.Generic;
 using Summer;
-public class BuffObj
-{
-    public int ID;
-    //replace start
-    /// <summary>
-    /// 名称
-    /// </summary>
-    public string name;
 
-    /// <summary>
-    /// 描述
-    /// </summary>
-    public string dsec;
-
-    /// <summary>
-    /// 图标
-    /// </summary>
-    public string icon;
-
-    /// <summary>
-    /// 特效
-    /// </summary>
-    public string effect;
-
-    /// <summary>
-    /// 音效
-    /// </summary>
-    public string sound;
-
-    /// <summary>
-    /// Buff类型
-    /// </summary>
-    public int buff_type;
-
-    /// <summary>
-    /// Buff子类型
-    /// </summary>
-    public int sub_type;
-
-    /// <summary>
-    /// 作用间隔时间
-    /// </summary>
-    public int interval_time;
-
-    /// <summary>
-    /// 持续时间
-    /// </summary>
-    public int duration;
-
-    /// <summary>
-    /// 参数1
-    /// </summary>
-    public string param1;
-
-    /// <summary>
-    /// 参数2
-    /// </summary>
-    public string param2;
-
-    /// <summary>
-    /// 参数3
-    /// </summary>
-    public string param3;
-
-    /// <summary>
-    /// 参数4
-    /// </summary>
-    public string param4;
-
-    /// <summary>
-    /// 参数5
-    /// </summary>
-    public string param5;
-
-    /// <summary>
-    /// 参数6
-    /// </summary>
-    public string param6;
-
-    /// <summary>
-    /// 参数7
-    /// </summary>
-    public string param7;
-
-    /// <summary>
-    /// 作用对象
-    /// </summary>
-    public int target;
-
-    /// <summary>
-    /// 优先作用
-    /// </summary>
-    public int state_first;
-
-    /// <summary>
-    /// 叠加层数
-    /// </summary>
-    public int over_lay;
-}
-public class BuffConf
-{
-    public BuffObj _obj;
-
-    public BuffConf(BuffObj obj)
-    {
-        _obj = obj;
-    }
-
-    public int id { get { return _obj.ID; } }
-    public int duration { get { return _obj.duration; } }
-
-    public bool multilayer { get { return _obj.over_lay >= 1; } }
-
-    public int max_layer { get { return _obj.over_lay; } }
-
-    public int type { get { return _obj.sub_type; } }
-    public string param1 { get { return _obj.param1; } }
-    public string param2 { get { return _obj.param2; } }
-    public string param3 { get { return _obj.param3; } }
-    public string param4 { get { return _obj.param4; } }
-    public string param5 { get { return _obj.param5; } }
-    public string param6 { get { return _obj.param6; } }
-    public bool refresh_on_attach { get { return true; } }
-}
 
 public class Effect
 {
@@ -133,6 +10,10 @@ public class Effect
     }
 }
 
+/// <summary>
+/// 需要把BuffCnf的数据做一层包装，BuffVbo
+/// 以防止BuffCnf数据改变的时候，对外部的影响降到最低
+/// </summary>
 public class Buff : I_ProcessUpdater
 {
     #region Param
@@ -141,7 +22,7 @@ public class Buff : I_ProcessUpdater
     public float _timeout;                          //超时时间=当前时间+ duration
     public float _left_time;                        //流逝的时间
     public bool _force_expire;                      //过期
-    public BuffConf _conf;
+    public BuffCnf _conf;
     public bool _need_use;
 
     public List<Effect> _effects;
@@ -156,15 +37,15 @@ public class Buff : I_ProcessUpdater
 
     #region virtual Buff -init/add/remove
 
-    public virtual void Init(BuffConf conf)
+    public virtual void Init(BuffCnf conf)
     {
         _conf = conf;
         _expire_duration = _conf.duration;
         _id = conf.id;
-        _max_layer = _conf.max_layer;
+        _max_layer = _conf.over_lay;
         _left_time = 0;
         _use_time = 0;
-        _need_use = !MathHelper.IsZero(_conf._obj.interval_time);
+        _need_use = !MathHelper.IsZero(_conf.interval_time);
     }
 
     //如果出现可以叠加,buff层级
@@ -175,7 +56,7 @@ public class Buff : I_ProcessUpdater
         //层数已到最高，return
         if (_cur_layer >= _max_layer)
         {
-            LogManager.Warning("buff[{0}] layer reach max[{1}]", _conf.id, _conf.max_layer);
+            LogManager.Warning("buff[{0}] layer reach max[{1}]", _conf.id, _conf.over_lay);
             return false;
         }
         _cur_layer++;
@@ -209,7 +90,7 @@ public class Buff : I_ProcessUpdater
     {
         LogManager.Assert(_conf != null, "Init Before GetType");
         if (_conf == null) return (E_BUFF_TYPE.none);
-        return (E_BUFF_TYPE)_conf._obj.sub_type;
+        return (E_BUFF_TYPE)_conf.sub_type;
     }
 
     //过期
@@ -222,7 +103,7 @@ public class Buff : I_ProcessUpdater
     }
 
     //多层 区分叠加和重叠
-    public bool IsMultiLayer() { return _conf.multilayer; }
+    public bool IsMultiLayer() { return _conf.over_lay > 1; }
 
     #region virtual Buff 提供给BuffSst控制
 
@@ -266,7 +147,7 @@ public class Buff : I_ProcessUpdater
     //有些buff只能被使用固定的次数，在使用的时候调用use 预留
     public virtual void Use()
     {
-        _use_time += _conf._obj.interval_time;
+        _use_time += _conf.interval_time;
     }
 
     #endregion
@@ -334,9 +215,9 @@ public class Buff : I_ProcessUpdater
 
     public override string ToString()
     {
-        if (LogManager.open_debug) return _conf._obj.name;
+        if (LogManager.open_debug) return _conf.name;
         return string.Format(
             "id[{0}],name[{4}], owner[{1}] duration[{2}] timeout[{3}]",
-            _id, (_target == null ? "" : _target.ToString()), _expire_duration, _timeout, _conf._obj.name);
+            _id, (_target == null ? "" : _target.ToString()), _expire_duration, _timeout, _conf.name);
     }
 }

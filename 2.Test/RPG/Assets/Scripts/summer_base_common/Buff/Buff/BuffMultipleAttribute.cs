@@ -30,7 +30,7 @@ public class BuffMultipleAttribute : Buff
     #endregion
 
     #region override  Buff 提供给BuffSst控制
-    public override void Init(BuffConf conf)
+    public override void Init(BuffCnf conf)
     {
         base.Init(conf);
         _refresh_param();

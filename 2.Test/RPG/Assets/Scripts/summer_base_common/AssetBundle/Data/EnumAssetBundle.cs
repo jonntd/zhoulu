@@ -10,7 +10,9 @@ namespace Summer
         character_prefab,
         skill_prefab,
         ui_prefab,
-        ui_item_prefab
+        ui_item_prefab,
+        cvs_byte,
+            
     }
 
     public enum E_AssetType

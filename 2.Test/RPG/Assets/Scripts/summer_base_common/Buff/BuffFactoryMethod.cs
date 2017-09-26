@@ -11,8 +11,8 @@ public class BuffFactoryMethod
     public static Buff Create(int buff_id)
     {
         Buff buff = null;
-        BuffObj buff_obj = new BuffObj(); /*StaticData.GetData<BuffObj>(buff_id)*/;
-        E_BUFF_TYPE type = (E_BUFF_TYPE)buff_obj.sub_type;
+        BuffCnf buff_cnf = StaticCnf.FindData<BuffCnf>(buff_id);
+        E_BUFF_TYPE type = (E_BUFF_TYPE)buff_cnf.sub_type;
         switch (type)
         {
             case E_BUFF_TYPE.data_updater:
@@ -55,8 +55,7 @@ public class BuffFactoryMethod
 
         if (buff != null)
         {
-            BuffConf conf = new BuffConf(buff_obj);
-            buff.Init(conf);
+            buff.Init(buff_cnf);
         }
 
 

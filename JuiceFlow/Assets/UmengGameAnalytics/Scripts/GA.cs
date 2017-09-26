@@ -11,11 +11,11 @@ using System.Runtime.InteropServices;
 
 namespace Umeng
 {
-    
+
     /// <summary>
     /// 友盟游戏统计
     /// </summary>
-	public class GA :Analytics
+    public class GA : Analytics
     {
 
 
@@ -26,22 +26,22 @@ namespace Umeng
             Female = 2
         }
 
-		/// <summary>
-		/// 设置玩家等级
-		/// </summary>
-		/// <param name="level">玩家等级</param>
-		public static void SetUserLevel(int level)
-		{
+        /// <summary>
+        /// 设置玩家等级
+        /// </summary>
+        /// <param name="level">玩家等级</param>
+        public static void SetUserLevel(int level)
+        {
 
-			#if UNITY_EDITOR
-			//Debug.Log("SetUserLevel");
-			#elif UNITY_IPHONE
+#if UNITY_EDITOR
+            //Debug.Log("SetUserLevel");
+#elif UNITY_IPHONE
 			_SetUserLevel(level);
-			#elif UNITY_ANDROID
+#elif UNITY_ANDROID
 			Agent.CallStatic("setPlayerLevel", level);
-			#endif
-			
-		}
+#endif
+
+        }
 
 
 
@@ -49,10 +49,10 @@ namespace Umeng
         /// 设置玩家等级
         /// </summary>
         /// <param name="level">玩家等级</param>
-		[Obsolete("SetUserLevel(string level) 已弃用, 请使用 SetUserLevel(int level)")] 
-		public static void SetUserLevel(string level)
+		[Obsolete("SetUserLevel(string level) 已弃用, 请使用 SetUserLevel(int level)")]
+        public static void SetUserLevel(string level)
         {
-			Debug.LogWarning("SetUserLevel(string level) 已弃用, 请使用 SetUserLevel(int level)");
+            Debug.LogWarning("SetUserLevel(string level) 已弃用, 请使用 SetUserLevel(int level)");
 
         }
 
@@ -82,7 +82,7 @@ namespace Umeng
 
 
 
-        
+
         /// <summary>
         /// 玩家进入关卡
         /// </summary>
@@ -180,26 +180,27 @@ namespace Umeng
 #endif
         }
 
-		/// <summary>
-		/// 游戏中真实消费（充值）的时候调用此方法
-		/// </summary>
-		/// <param name="cash">本次消费金额</param>
-		/// <param name="source">来源:AppStore = 1,支付宝 = 2,网银 = 3,财付通 = 4,移动 = 5,联通 = 6,电信 = 7,Paypal = 8,
-		/// 9~100对应渠道请到友盟后台设置本次消费的途径，网银，支付宝 等</param>
-		/// <param name="coin">本次消费等值的虚拟币</param>
-		public static void Pay(double cash, int source, double coin)
-		{
-				if (source < 1 || source > 100) {
-						throw new System.ArgumentException ();
-				}
-				#if UNITY_EDITOR
-				//Debug.Log("Pay");
-				#elif UNITY_IPHONE
+        /// <summary>
+        /// 游戏中真实消费（充值）的时候调用此方法
+        /// </summary>
+        /// <param name="cash">本次消费金额</param>
+        /// <param name="source">来源:AppStore = 1,支付宝 = 2,网银 = 3,财付通 = 4,移动 = 5,联通 = 6,电信 = 7,Paypal = 8,
+        /// 9~100对应渠道请到友盟后台设置本次消费的途径，网银，支付宝 等</param>
+        /// <param name="coin">本次消费等值的虚拟币</param>
+        public static void Pay(double cash, int source, double coin)
+        {
+            if (source < 1 || source > 100)
+            {
+                throw new System.ArgumentException();
+            }
+#if UNITY_EDITOR
+            //Debug.Log("Pay");
+#elif UNITY_IPHONE
 				_PayCashForCoin(cash,source,coin);
-				#elif UNITY_ANDROID
+#elif UNITY_ANDROID
 				Agent.CallStatic("pay",cash , coin, source);
-				#endif
-		}
+#endif
+        }
 
         /// <summary>
         /// 玩家支付货币购买道具
@@ -266,11 +267,11 @@ namespace Umeng
         /// </summary>
         public enum BonusSource
         {
-            
+
             玩家赠送 = 1,
-			Source2 =2,
-			Source3 =3,
-			Source4,
+            Source2 = 2,
+            Source3 = 3,
+            Source4,
             Source5,
             Source6,
             Source7,
@@ -318,50 +319,50 @@ namespace Umeng
 #endif
         }
 
-		//使用sign-In函数后，如果结束该userId的统计，需要调用ProfileSignOff函数
-		public static  void ProfileSignIn(string userId)
-		{
-			#if UNITY_EDITOR
-			//Debug.Log("ProfileSignIn");
-			#elif UNITY_IPHONE
+        //使用sign-In函数后，如果结束该userId的统计，需要调用ProfileSignOff函数
+        public static void ProfileSignIn(string userId)
+        {
+#if UNITY_EDITOR
+            //Debug.Log("ProfileSignIn");
+#elif UNITY_IPHONE
 			_ProfileSignInWithPUID(userId);
-			#elif UNITY_ANDROID
+#elif UNITY_ANDROID
 			Agent.CallStatic("onProfileSignIn", userId);
-			#endif
+#endif
 
 
-		}
+        }
 
-		//使用sign-In函数后，如果结束该userId的统计，需要调用ProfileSignOfff函数
- 		//provider : 不能以下划线"_"开头，使用大写字母和数字标识; 如果是上市公司，建议使用股票代码。
+        //使用sign-In函数后，如果结束该userId的统计，需要调用ProfileSignOfff函数
+        //provider : 不能以下划线"_"开头，使用大写字母和数字标识; 如果是上市公司，建议使用股票代码。
 
-		public static  void ProfileSignIn(string userId,string provider)
-		{
-			#if UNITY_EDITOR
-			//Debug.Log("ProfileSignIn");
-			#elif UNITY_IPHONE
+        public static void ProfileSignIn(string userId, string provider)
+        {
+#if UNITY_EDITOR
+            //Debug.Log("ProfileSignIn");
+#elif UNITY_IPHONE
 			_ProfileSignInWithPUIDAndProvider(userId,provider);
-			#elif UNITY_ANDROID
+#elif UNITY_ANDROID
 			Agent.CallStatic("onProfileSignIn", provider,userId);
-			#endif
+#endif
 
 
-		}
-		
-		//该结束该userId的统计
-		public static  void ProfileSignOff()
-		{
-			#if UNITY_EDITOR
-			//Debug.Log("ProfileSignOff");
-			#elif UNITY_IPHONE
+        }
+
+        //该结束该userId的统计
+        public static void ProfileSignOff()
+        {
+#if UNITY_EDITOR
+            //Debug.Log("ProfileSignOff");
+#elif UNITY_IPHONE
 			_ProfileSignOff();
-			#elif UNITY_ANDROID
+#elif UNITY_ANDROID
 			Agent.CallStatic("onProfileSignOff");
-			#endif
+#endif
 
 
-		
-		}
+
+        }
 
 
 #if	UNITY_IPHONE
