@@ -23,7 +23,7 @@ public class BatchMonsterInfoCnf : BaseCsv
 	{
 		return ID;
 	}
-	public override void InitByBinary(BinaryReader reader)
+	public override void InitByReader(BinaryReader reader)
 	{
 		ID = reader.ReadInt32();
 
@@ -50,6 +50,36 @@ public class BatchMonsterInfoCnf : BaseCsv
 		for(int i = 0; i < length_MonsterLevel; i++)
 		{
 		MonsterLevel[i] = reader.ReadInt32();
+		}
+
+	}
+	public override void InitByWriter(BinaryWriter writer)
+	{
+		writer.Write(ID);
+
+		writer.Write(ChapterID);
+
+		writer.Write(OtherName);
+
+		int length_MonsterBornInfo = MonsterBornInfo.Length;
+		writer.Write(length_MonsterBornInfo);
+		for(int i=0;i<length_MonsterBornInfo; i++)
+		{
+				writer.Write(MonsterBornInfo[i]);
+		}
+
+		int length_MonsterCount = MonsterCount.Length;
+		writer.Write(length_MonsterCount);
+		for(int i=0;i<length_MonsterCount; i++)
+		{
+				writer.Write(MonsterCount[i]);
+		}
+
+		int length_MonsterLevel = MonsterLevel.Length;
+		writer.Write(length_MonsterLevel);
+		for(int i=0;i<length_MonsterLevel; i++)
+		{
+				writer.Write(MonsterLevel[i]);
 		}
 
 	}

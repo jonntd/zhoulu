@@ -80,7 +80,7 @@ public class SpaceInfoCnf : BaseCsv
 	{
 		return ID;
 	}
-	public override void InitByBinary(BinaryReader reader)
+	public override void InitByReader(BinaryReader reader)
 	{
 		ID = reader.ReadInt32();
 
@@ -135,6 +135,64 @@ public class SpaceInfoCnf : BaseCsv
 		for(int i = 0; i < length_bornPos; i++)
 		{
 		bornPos[i] = reader.ReadInt32();
+		}
+
+	}
+	public override void InitByWriter(BinaryWriter writer)
+	{
+		writer.Write(ID);
+
+		writer.Write(skillname);
+
+		writer.Write(OtherName);
+
+		writer.Write(IconName);
+
+		writer.Write(PrefabName);
+
+		writer.Write(type);
+
+		writer.Write(mapName);
+
+		writer.Write(VictoryCondition);
+
+		writer.Write(VictoryConditionPar1);
+
+		writer.Write(VictoryConditionPar2);
+
+		writer.Write(DefeatCondition1);
+
+		writer.Write(DefeatCondition1Par1);
+
+		writer.Write(DefeatCondition1Par2);
+
+		writer.Write(DefeatCondition2);
+
+		writer.Write(DefeatCondition2Par1);
+
+		writer.Write(DefeatCondition2Par2);
+
+		writer.Write(StarCondition1);
+
+		writer.Write(StarCondition1Par1);
+
+		writer.Write(StarCondition1Par2);
+
+		writer.Write(StarCondition2);
+
+		writer.Write(StarCondition2Par1);
+
+		writer.Write(StarCondition2Par2);
+
+		writer.Write(TimeLimit);
+
+		writer.Write(CheckType);
+
+		int length_bornPos = bornPos.Length;
+		writer.Write(length_bornPos);
+		for(int i=0;i<length_bornPos; i++)
+		{
+				writer.Write(bornPos[i]);
 		}
 
 	}

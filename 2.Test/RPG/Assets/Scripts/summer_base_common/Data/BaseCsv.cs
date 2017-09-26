@@ -10,9 +10,14 @@ public class BaseCsv
         return 0;
     }
 
-    public virtual void InitByBinary(BinaryReader reader)
+    public virtual void InitByReader(BinaryReader reader)
     {
 
+    }
+
+    public virtual void InitByWriter(BinaryWriter writer)
+    {
+        
     }
 }
 

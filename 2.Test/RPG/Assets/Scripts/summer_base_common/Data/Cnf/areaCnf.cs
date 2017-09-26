@@ -41,7 +41,7 @@ public class areaCnf : BaseCsv
 	{
 		return ID;
 	}
-	public override void InitByBinary(BinaryReader reader)
+	public override void InitByReader(BinaryReader reader)
 	{
 		ID = reader.ReadInt32();
 
@@ -66,6 +66,33 @@ public class areaCnf : BaseCsv
 		robot_power_k = reader.ReadSingle();
 
 		rebot_x_max = reader.ReadInt32();
+
+	}
+	public override void InitByWriter(BinaryWriter writer)
+	{
+		writer.Write(ID);
+
+		writer.Write(begin);
+
+		writer.Write(end);
+
+		writer.Write(formt);
+
+		writer.Write(robot_first_attack);
+
+		writer.Write(formt_observe);
+
+		writer.Write(npc_hero_id);
+
+		writer.Write(user_head_id);
+
+		writer.Write(robot_level);
+
+		writer.Write(robot_power);
+
+		writer.Write(robot_power_k);
+
+		writer.Write(rebot_x_max);
 
 	}
 }

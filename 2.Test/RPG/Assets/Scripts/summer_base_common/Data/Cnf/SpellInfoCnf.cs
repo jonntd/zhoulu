@@ -71,7 +71,7 @@ public class SpellInfoCnf : BaseCsv
 	{
 		return ID;
 	}
-	public override void InitByBinary(BinaryReader reader)
+	public override void InitByReader(BinaryReader reader)
 	{
 		ID = reader.ReadInt32();
 
@@ -156,6 +156,93 @@ public class SpellInfoCnf : BaseCsv
 		add_sp = reader.ReadInt32();
 
 		cost_sp = reader.ReadInt32();
+
+	}
+	public override void InitByWriter(BinaryWriter writer)
+	{
+		writer.Write(ID);
+
+		writer.Write(skillname);
+
+		writer.Write(OtherName);
+
+		writer.Write(IconName);
+
+		writer.Write(PrefabName);
+
+		writer.Write(hasNextSkill);
+
+		int length_nextSkillid = nextSkillid.Length;
+		writer.Write(length_nextSkillid);
+		for(int i=0;i<length_nextSkillid; i++)
+		{
+				writer.Write(nextSkillid[i]);
+		}
+
+		writer.Write(skilltypes);
+
+		writer.Write(keepTime);
+
+		writer.Write(skillCD);
+
+		writer.Write(weight);
+
+		writer.Write(skillRandge);
+
+		writer.Write(effectList);
+
+		int length_canknock = canknock.Length;
+		writer.Write(length_canknock);
+		for(int i=0;i<length_canknock; i++)
+		{
+				writer.Write(canknock[i]);
+		}
+
+		int length_knockheight = knockheight.Length;
+		writer.Write(length_knockheight);
+		for(int i=0;i<length_knockheight; i++)
+		{
+				writer.Write(knockheight[i]);
+		}
+
+		int length_knockdictance = knockdictance.Length;
+		writer.Write(length_knockdictance);
+		for(int i=0;i<length_knockdictance; i++)
+		{
+				writer.Write(knockdictance[i]);
+		}
+
+		int length_add_buff = add_buff.Length;
+		writer.Write(length_add_buff);
+		for(int i=0;i<length_add_buff; i++)
+		{
+				writer.Write(add_buff[i]);
+		}
+
+		int length_damage_effect = damage_effect.Length;
+		writer.Write(length_damage_effect);
+		for(int i=0;i<length_damage_effect; i++)
+		{
+				writer.Write(damage_effect[i]);
+		}
+
+		int length_lose_super_armor = lose_super_armor.Length;
+		writer.Write(length_lose_super_armor);
+		for(int i=0;i<length_lose_super_armor; i++)
+		{
+				writer.Write(lose_super_armor[i]);
+		}
+
+		int length_damage_factor = damage_factor.Length;
+		writer.Write(length_damage_factor);
+		for(int i=0;i<length_damage_factor; i++)
+		{
+				writer.Write(damage_factor[i]);
+		}
+
+		writer.Write(add_sp);
+
+		writer.Write(cost_sp);
 
 	}
 }

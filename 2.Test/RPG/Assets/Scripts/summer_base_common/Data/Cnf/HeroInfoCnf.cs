@@ -25,9 +25,6 @@ public class HeroInfoCnf : BaseCsv
 	 // PrefabName
 	 public string prefab_name;
 
-	 // 模型缩放
-	 public string scale;
-
 	 // 特效缩放
 	 public int effect_scale;
 
@@ -149,7 +146,7 @@ public class HeroInfoCnf : BaseCsv
 	{
 		return id;
 	}
-	public override void InitByBinary(BinaryReader reader)
+	public override void InitByReader(BinaryReader reader)
 	{
 		id = reader.ReadInt32();
 
@@ -166,8 +163,6 @@ public class HeroInfoCnf : BaseCsv
 		icon_3 = reader.ReadString();
 
 		prefab_name = reader.ReadString();
-
-		scale = reader.ReadString();
 
 		effect_scale = reader.ReadInt32();
 
@@ -255,6 +250,113 @@ public class HeroInfoCnf : BaseCsv
 		for(int i = 0; i < length_upgrade_star_cost; i++)
 		{
 		upgrade_star_cost[i] = reader.ReadInt32();
+		}
+
+	}
+	public override void InitByWriter(BinaryWriter writer)
+	{
+		writer.Write(id);
+
+		writer.Write(hero_name);
+
+		writer.Write(other_name);
+
+		writer.Write(icon);
+
+		writer.Write(icon_1);
+
+		writer.Write(icon_2);
+
+		writer.Write(icon_3);
+
+		writer.Write(prefab_name);
+
+		writer.Write(effect_scale);
+
+		writer.Write(atk_type);
+
+		writer.Write(safe_range);
+
+		writer.Write(radius);
+
+		writer.Write(dead_skill);
+
+		writer.Write(move_speed);
+
+		int length_skillid_list = skillid_list.Length;
+		writer.Write(length_skillid_list);
+		for(int i=0;i<length_skillid_list; i++)
+		{
+				writer.Write(skillid_list[i]);
+		}
+
+		writer.Write(push_valid);
+
+		writer.Write(sex);
+
+		writer.Write(profession);
+
+		writer.Write(property );
+
+		writer.Write(country);
+
+		writer.Write(damage);
+
+		writer.Write(dmg_add);
+
+		writer.Write(defense);
+
+		writer.Write(def_add);
+
+		writer.Write(max_hp);
+
+		writer.Write(hp_add);
+
+		writer.Write(cri_rate);
+
+		writer.Write(anti_cri);
+
+		writer.Write(wreck);
+
+		writer.Write(block);
+
+		writer.Write(atk_speed);
+
+		writer.Write(cri_dmg);
+
+		writer.Write(anti_cri_dmg);
+
+		writer.Write(block_intensity);
+
+		writer.Write(atk_intensity);
+
+		writer.Write(def_intensity);
+
+		writer.Write(suck_blood);
+
+		writer.Write(anti_suck_blood);
+
+		writer.Write(knowledge);
+
+		writer.Write(fame);
+
+		writer.Write(lead);
+
+		writer.Write(reflect_dmg_per);
+
+		writer.Write(sp);
+
+		writer.Write(gift);
+
+		writer.Write(link_hero);
+
+		writer.Write(link_skill);
+
+		int length_upgrade_star_cost = upgrade_star_cost.Length;
+		writer.Write(length_upgrade_star_cost);
+		for(int i=0;i<length_upgrade_star_cost; i++)
+		{
+				writer.Write(upgrade_star_cost[i]);
 		}
 
 	}

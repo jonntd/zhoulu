@@ -52,6 +52,9 @@ public class BuffCnf : BaseCsv
 	 // 参数7
 	 public string param7;
 
+	 // 死亡是否消失
+	 public bool death_delete;
+
 	 // 作用对象
 	 public int target;
 
@@ -61,11 +64,14 @@ public class BuffCnf : BaseCsv
 	 // 叠加层数
 	 public int over_lay;
 
+	 // 结束后获得新buff
+	 public int end_buff;
+
 	public override int GetId()
 	{
 		return id;
 	}
-	public override void InitByBinary(BinaryReader reader)
+	public override void InitByReader(BinaryReader reader)
 	{
 		id = reader.ReadInt32();
 
@@ -101,11 +107,62 @@ public class BuffCnf : BaseCsv
 
 		param7 = reader.ReadString();
 
+death_delete = reader.ReadBoolean();
+
 		target = reader.ReadInt32();
 
 		state_first = reader.ReadInt32();
 
 		over_lay = reader.ReadInt32();
+
+		end_buff = reader.ReadInt32();
+
+	}
+	public override void InitByWriter(BinaryWriter writer)
+	{
+		writer.Write(id);
+
+		writer.Write(name);
+
+		writer.Write(dsec);
+
+		writer.Write(icon);
+
+		writer.Write(effect);
+
+		writer.Write(sound);
+
+		writer.Write(buff_type);
+
+		writer.Write(sub_type);
+
+		writer.Write(interval_time);
+
+		writer.Write(duration);
+
+		writer.Write(param1);
+
+		writer.Write(param2);
+
+		writer.Write(param3);
+
+		writer.Write(param4);
+
+		writer.Write(param5);
+
+		writer.Write(param6);
+
+		writer.Write(param7);
+
+		writer.Write(death_delete);
+
+		writer.Write(target);
+
+		writer.Write(state_first);
+
+		writer.Write(over_lay);
+
+		writer.Write(end_buff);
 
 	}
 }

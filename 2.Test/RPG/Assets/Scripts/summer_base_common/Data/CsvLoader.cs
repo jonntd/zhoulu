@@ -13,8 +13,7 @@ public class CsvLoader
     public const char CVS_SPLIT = '$';// '|';       // 默认分割符号
     public const string STRING_EMPTY = "";
     public const int MIN_LINE = 3;                  // 最小行数
-    public static string csv_file_root = "";
-    public static string csv_dat_root = "";
+    public static string csv_file_root = "E:\\work_three\\trunk\\three_config\\tables\\";
     #region 二进制加载
 
     public static Dictionary<int, T> LoadBinary<T>(string file_name) where T : BaseCsv, new()
@@ -33,7 +32,7 @@ public class CsvLoader
             // 2.生成结构类
             T csv = new T();
             // 3.初始化属性
-            csv.InitByBinary(br);
+            csv.InitByReader(br);
             // 4.添加到集合
             t_map.Add(csv.GetId(), csv);
         }
@@ -41,6 +40,15 @@ public class CsvLoader
         ms.Close();
         ms.Dispose();
         return t_map;
+    }
+
+    public static void WriteBinary<T>(Dictionary<int, T> data, BinaryWriter bw) where T : BaseCsv
+    {
+        bw.Write(data.Count);
+        foreach (var info in data)
+        {
+            info.Value.InitByWriter(bw);
+        }
     }
 
     #endregion
@@ -74,8 +82,10 @@ public class CsvLoader
     // 读取CSV文件
     public static List<string[]> _load_csv_file(string file_name)
     {
+        // TODO 需要去掉Cnf同时又要添加csv 这段代码的读取是有上下门的潜规则在 
         file_name = csv_file_root + file_name;
-        string[] file_data = File.ReadAllLines(file_name);
+        file_name = file_name.Replace("Cnf", string.Empty);
+        string[] file_data = File.ReadAllLines(file_name + ".csv");
         List<string[]> result = new List<string[]>(file_data.Length);
 
         if (file_data.Length <= MIN_LINE)
@@ -125,14 +135,14 @@ public class CsvLoader
             case "Boolean[]":
                 _internal_bools_set_value(value, field_info, csv);
                 break;
-            case "float":
+            case "Single":
                 _internal_float_set_value(value, field_info, csv);
                 break;
-            case "float[]":
+            case "Single[]":
                 _internal_floats_set_value(value, field_info, csv);
                 break;
             default:
-                Debug.LogError("csvloader找不到对应的类型:" + field_name);
+                Debug.LogError("csvloader找不到对应的类型:" + field_name + "数值:" + value);
                 break;
         }
     }
@@ -167,7 +177,7 @@ public class CsvLoader
     public static void _internal_string_set_value(string value, FieldInfo field_info, BaseCsv csv)
     {
         if (string.IsNullOrEmpty(value))
-            field_info.SetValue(csv, string.Empty);
+            field_info.SetValue(csv, "");
         else
             field_info.SetValue(csv, value);
     }

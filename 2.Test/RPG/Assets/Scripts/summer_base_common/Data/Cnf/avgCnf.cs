@@ -77,7 +77,7 @@ public class avgCnf : BaseCsv
 	{
 		return avg_id;
 	}
-	public override void InitByBinary(BinaryReader reader)
+	public override void InitByReader(BinaryReader reader)
 	{
 		avg_id = reader.ReadInt32();
 
@@ -180,6 +180,112 @@ public class avgCnf : BaseCsv
 		for(int i = 0; i < length_avg_stop_times; i++)
 		{
 		avg_stop_times[i] = reader.ReadInt32();
+		}
+
+	}
+	public override void InitByWriter(BinaryWriter writer)
+	{
+		writer.Write(avg_id);
+
+		writer.Write(avg_next_id);
+
+		writer.Write(avc_storyboard_mylook);
+
+		writer.Write(avg_type);
+
+		int length_avg_scene_camera = avg_scene_camera.Length;
+		writer.Write(length_avg_scene_camera);
+		for(int i=0;i<length_avg_scene_camera; i++)
+		{
+				writer.Write(avg_scene_camera[i]);
+		}
+
+		int length_avg_scene_model_id = avg_scene_model_id.Length;
+		writer.Write(length_avg_scene_model_id);
+		for(int i=0;i<length_avg_scene_model_id; i++)
+		{
+				writer.Write(avg_scene_model_id[i]);
+		}
+
+		int length_avg_scene_model_effect = avg_scene_model_effect.Length;
+		writer.Write(length_avg_scene_model_effect);
+		for(int i=0;i<length_avg_scene_model_effect; i++)
+		{
+				writer.Write(avg_scene_model_effect[i]);
+		}
+
+		int length_avg_scene_model_position_start = avg_scene_model_position_start.Length;
+		writer.Write(length_avg_scene_model_position_start);
+		for(int i=0;i<length_avg_scene_model_position_start; i++)
+		{
+				writer.Write(avg_scene_model_position_start[i]);
+		}
+
+		int length_avg_scene_model_position_end = avg_scene_model_position_end.Length;
+		writer.Write(length_avg_scene_model_position_end);
+		for(int i=0;i<length_avg_scene_model_position_end; i++)
+		{
+				writer.Write(avg_scene_model_position_end[i]);
+		}
+
+		int length_avg_scene_model_act = avg_scene_model_act.Length;
+		writer.Write(length_avg_scene_model_act);
+		for(int i=0;i<length_avg_scene_model_act; i++)
+		{
+				writer.Write(avg_scene_model_act[i]);
+		}
+
+		writer.Write(avg_scene_model_act_effect);
+
+		int length_avg_ui_bubble_prefab = avg_ui_bubble_prefab.Length;
+		writer.Write(length_avg_ui_bubble_prefab);
+		for(int i=0;i<length_avg_ui_bubble_prefab; i++)
+		{
+				writer.Write(avg_ui_bubble_prefab[i]);
+		}
+
+		int length_avg_ui_model_id = avg_ui_model_id.Length;
+		writer.Write(length_avg_ui_model_id);
+		for(int i=0;i<length_avg_ui_model_id; i++)
+		{
+				writer.Write(avg_ui_model_id[i]);
+		}
+
+		writer.Write(avg_ui_conversation);
+
+		writer.Write(avg_ui_item);
+
+		int length_avg_scene_light_positon = avg_scene_light_positon.Length;
+		writer.Write(length_avg_scene_light_positon);
+		for(int i=0;i<length_avg_scene_light_positon; i++)
+		{
+				writer.Write(avg_scene_light_positon[i]);
+		}
+
+		writer.Write(avg_scene_light_color);
+
+		writer.Write(avg_scene_id);
+
+		writer.Write(avg_bgm);
+
+		writer.Write(avg_cv);
+
+		writer.Write(avg_loading_bg);
+
+		int length_avg_words_color = avg_words_color.Length;
+		writer.Write(length_avg_words_color);
+		for(int i=0;i<length_avg_words_color; i++)
+		{
+				writer.Write(avg_words_color[i]);
+		}
+
+		writer.Write(avg_loading_outline);
+
+		int length_avg_stop_times = avg_stop_times.Length;
+		writer.Write(length_avg_stop_times);
+		for(int i=0;i<length_avg_stop_times; i++)
+		{
+				writer.Write(avg_stop_times[i]);
 		}
 
 	}

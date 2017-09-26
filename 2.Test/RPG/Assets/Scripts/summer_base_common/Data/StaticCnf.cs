@@ -57,5 +57,4 @@ public class StaticCnf
         Type type = typeof(T);
         cnf_map.Add(type, cnf);
     }
-
 }

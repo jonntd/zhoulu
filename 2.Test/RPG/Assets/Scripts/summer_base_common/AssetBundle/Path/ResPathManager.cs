@@ -16,7 +16,7 @@ public class ResPathManager
         _excute(E_GameResType.hero_icon, "icon/hero/", string.Empty/*".png"*/);
         _excute(E_GameResType.ui_prefab, "prefab/ui/", string.Empty/* ".prefab"*/);
         _excute(E_GameResType.ui_item_prefab, "item/ui/", string.Empty);
-        _excute(E_GameResType.cvs_byte, "data/", string.Empty);
+        _excute(E_GameResType.cvs_byte, "data/", string.Empty/* ".bytes"*/);
     }
 
     public static string find_path(E_GameResType res_type, string name)

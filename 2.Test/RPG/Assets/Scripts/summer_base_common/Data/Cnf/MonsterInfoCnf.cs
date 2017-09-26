@@ -49,14 +49,62 @@ public class MonsterInfoCnf : BaseCsv
 	 // 是否允许被推挤
 	 public int pushValid;
 
-	 // 基础血量
-	 public int MaxHp;
-
-	 // 基础攻击伤害
+	 // 攻击力
 	 public int damage;
+
+	 // 攻击资质
+	 public int dmg_add;
 
 	 // 防御
 	 public int defense;
+
+	 // 防御资质
+	 public int def_add;
+
+	 // 血量
+	 public int max_hp;
+
+	 // 血量资质
+	 public int hp_add;
+
+	 // 暴击率
+	 public int cri_rate;
+
+	 // 抗暴率
+	 public int anti_cri;
+
+	 // 破击率
+	 public int wreck;
+
+	 // 格挡率
+	 public int block;
+
+	 // 攻速
+	 public int atk_speed;
+
+	 // 暴伤
+	 public int cri_dmg;
+
+	 // 抗暴伤
+	 public int anti_cri_dmg;
+
+	 // 格挡免伤率
+	 public int block_intensity;
+
+	 // 伤害率
+	 public int atk_intensity;
+
+	 // 免伤率
+	 public int def_intensity;
+
+	 // 吸血率
+	 public int suck_blood;
+
+	 // 吸血抵抗率
+	 public int anti_suck_blood;
+
+	 // 反伤率
+	 public int reflect_dmg_per;
 
 	 // 警戒圈R1
 	 public int warning1;
@@ -86,7 +134,7 @@ public class MonsterInfoCnf : BaseCsv
 	{
 		return ID;
 	}
-	public override void InitByBinary(BinaryReader reader)
+	public override void InitByReader(BinaryReader reader)
 	{
 		ID = reader.ReadInt32();
 
@@ -125,11 +173,43 @@ public class MonsterInfoCnf : BaseCsv
 
 		pushValid = reader.ReadInt32();
 
-		MaxHp = reader.ReadInt32();
-
 		damage = reader.ReadInt32();
 
+		dmg_add = reader.ReadInt32();
+
 		defense = reader.ReadInt32();
+
+		def_add = reader.ReadInt32();
+
+		max_hp = reader.ReadInt32();
+
+		hp_add = reader.ReadInt32();
+
+		cri_rate = reader.ReadInt32();
+
+		anti_cri = reader.ReadInt32();
+
+		wreck = reader.ReadInt32();
+
+		block = reader.ReadInt32();
+
+		atk_speed = reader.ReadInt32();
+
+		cri_dmg = reader.ReadInt32();
+
+		anti_cri_dmg = reader.ReadInt32();
+
+		block_intensity = reader.ReadInt32();
+
+		atk_intensity = reader.ReadInt32();
+
+		def_intensity = reader.ReadInt32();
+
+		suck_blood = reader.ReadInt32();
+
+		anti_suck_blood = reader.ReadInt32();
+
+		reflect_dmg_per = reader.ReadInt32();
 
 		warning1 = reader.ReadInt32();
 
@@ -146,6 +226,100 @@ public class MonsterInfoCnf : BaseCsv
 		super_armor = reader.ReadInt32();
 
 		super_armor_recovery = reader.ReadInt32();
+
+	}
+	public override void InitByWriter(BinaryWriter writer)
+	{
+		writer.Write(ID);
+
+		writer.Write(Name);
+
+		writer.Write(OtherName);
+
+		writer.Write(IconName);
+
+		writer.Write(PrefabName);
+
+		writer.Write(scale);
+
+		writer.Write(effectScale);
+
+		writer.Write(AtkType);
+
+		writer.Write(safeRange);
+
+		writer.Write(radius);
+
+		writer.Write(deadSkill);
+
+		writer.Write(moveSpeed);
+
+		writer.Write(atk_movespeed);
+
+		writer.Write(escape_movespeed);
+
+		int length_skillidList = skillidList.Length;
+		writer.Write(length_skillidList);
+		for(int i=0;i<length_skillidList; i++)
+		{
+				writer.Write(skillidList[i]);
+		}
+
+		writer.Write(pushValid);
+
+		writer.Write(damage);
+
+		writer.Write(dmg_add);
+
+		writer.Write(defense);
+
+		writer.Write(def_add);
+
+		writer.Write(max_hp);
+
+		writer.Write(hp_add);
+
+		writer.Write(cri_rate);
+
+		writer.Write(anti_cri);
+
+		writer.Write(wreck);
+
+		writer.Write(block);
+
+		writer.Write(atk_speed);
+
+		writer.Write(cri_dmg);
+
+		writer.Write(anti_cri_dmg);
+
+		writer.Write(block_intensity);
+
+		writer.Write(atk_intensity);
+
+		writer.Write(def_intensity);
+
+		writer.Write(suck_blood);
+
+		writer.Write(anti_suck_blood);
+
+		writer.Write(reflect_dmg_per);
+
+		writer.Write(warning1);
+
+		writer.Write(warning2);
+
+		writer.Write(warning3);
+
+		writer.Write(warning4);
+
+		writer.Write(waitleaveTime);
+
+		writer.Write(enemy_type);
+
+		writer.Write(super_armor);
+
+		writer.Write(super_armor_recovery);
 
 	}
 }

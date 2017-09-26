@@ -14,13 +14,22 @@ public class SkillTypeCDListCnf : BaseCsv
 	{
 		return ID;
 	}
-	public override void InitByBinary(BinaryReader reader)
+	public override void InitByReader(BinaryReader reader)
 	{
 		ID = reader.ReadInt32();
 
 		cdLenth = reader.ReadInt32();
 
 		weight = reader.ReadInt32();
+
+	}
+	public override void InitByWriter(BinaryWriter writer)
+	{
+		writer.Write(ID);
+
+		writer.Write(cdLenth);
+
+		writer.Write(weight);
 
 	}
 }
