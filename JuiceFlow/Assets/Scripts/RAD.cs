@@ -11,6 +11,7 @@ public class RAD : MonoBehaviour
     private float deltaTime = 0.0f;
     private static string outputMessage = string.Empty;
     public Button RADbtn;
+    public int num = 10;
 
 #if UNITY_ANDROID
     string adUnitId = "ca-app-pub-4966484504552142/9836610510";
@@ -35,8 +36,9 @@ public class RAD : MonoBehaviour
     void Start()
     {
         //Button RADbtn = gameObject.GetComponent<Button>();
-        RADbtn.gameObject.SetActive(false);
-
+        if (RADbtn != null)
+            RADbtn.gameObject.SetActive(false);
+        num = 20;
         // Get singleton reward based video ad reference.
         this.rewardBasedVideo = RewardBasedVideoAd.Instance;
 
@@ -74,10 +76,11 @@ public class RAD : MonoBehaviour
 
     public void ShowRewardBasedVideo()
     {
-        if (this.rewardBasedVideo.IsLoaded())
+        if (rewardBasedVideo.IsLoaded())
         {
-            this.rewardBasedVideo.Show();
-            RADbtn.gameObject.SetActive(false);
+            rewardBasedVideo.Show();
+            if (RADbtn != null)
+                RADbtn.gameObject.SetActive(false);
         }
         else
         {
@@ -118,9 +121,10 @@ public class RAD : MonoBehaviour
     {
         string type = args.Type;
         double amount = args.Amount;
-        StatisticsManager.enter_level = StatisticsManager.enter_level - 20;
+        StatisticsManager.UseLevel();
         if (StatisticsManager.enter_level <= 0)
             StatisticsManager.enter_level = 0;
+        InitScript.Instance.AddGems(100);
         /*
         MonoBehaviour.print("HandleRewardBasedVideoRewarded event received for " + amount.ToString() + " " + type);
         */

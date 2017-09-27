@@ -10,6 +10,9 @@ namespace com.summer
         // Use this for initialization
         void Start()
         {
+            StatisticsManager.LoadEnterLevel();
+          
+
             Debug.Log("===================开启=======================");
             //StatisticsManager.AppKeyAndChannelId("59c5fe4b07fe65541e000047", "Android");
 

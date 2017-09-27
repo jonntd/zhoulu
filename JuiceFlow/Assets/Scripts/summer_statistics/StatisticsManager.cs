@@ -5,7 +5,34 @@ using UnityEngine;
 
 public class StatisticsManager
 {
-    public static int enter_level =0;
+    public static int enter_level = 19;
+
+    public static void LoadEnterLevel()
+    {
+        if (PlayerPrefs.HasKey("AdsNum"))
+            enter_level = PlayerPrefs.GetInt("AdsNum");
+        else
+        {
+            enter_level = 0;
+        }
+
+    }
+
+    public static void EnterLevel()
+    {
+        enter_level = enter_level + 1;
+        PlayerPrefs.SetInt("AdsNum", enter_level);
+        PlayerPrefs.Save();
+    }
+
+    public static void UseLevel()
+    {
+        enter_level = enter_level - 20;
+        if (enter_level == 0)
+            enter_level = 0;
+        PlayerPrefs.SetInt("AdsNum", enter_level);
+        PlayerPrefs.Save();
+    }
 
     /// <summary>
     /// 开始统计 默认发送策略为启动时发送
@@ -33,7 +60,7 @@ public class StatisticsManager
         //StatisticsMgr.des += "Lvstart"+ level;
         GA.Event("Lvstart", level);
         Debug.Log("进入关卡" + level);
-        enter_level++;
+        EnterLevel();
     }
     /// <summary>
     /// 通过关卡.
