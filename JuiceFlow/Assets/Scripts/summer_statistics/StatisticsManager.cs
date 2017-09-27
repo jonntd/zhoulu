@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class StatisticsManager
 {
+    public static int enter_level =0;
+
     /// <summary>
     /// 开始统计 默认发送策略为启动时发送
     /// </summary>
@@ -30,7 +32,8 @@ public class StatisticsManager
         GA.StartLevel(level);
         //StatisticsMgr.des += "Lvstart"+ level;
         GA.Event("Lvstart", level);
-        Debug.Log("进入关卡"+ level);
+        Debug.Log("进入关卡" + level);
+        enter_level++;
     }
     /// <summary>
     /// 通过关卡.
@@ -40,7 +43,7 @@ public class StatisticsManager
     {
         GA.FinishLevel(level);
         GA.Event("Lvpass", level);
-        Debug.Log("通过关卡"+ level);
+        Debug.Log("通过关卡" + level);
     }
     /// <summary>
     /// 未通过关卡.
@@ -50,7 +53,7 @@ public class StatisticsManager
     {
         GA.FailLevel(level);
         GA.Event("Lvfail", level);
-        Debug.Log("未通过关卡."+ level);
+        Debug.Log("未通过关卡." + level);
     }
 
     /// <summary>
