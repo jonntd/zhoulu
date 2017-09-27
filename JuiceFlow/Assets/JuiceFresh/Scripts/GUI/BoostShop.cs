@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 public enum BoostType
 {
-    ExtraMoves=1,
-    Stripes=2,
-    ExtraTime=3,
-    Bomb=4,
-    Colorful_bomb=5,
-    Shovel=6,
-    Energy=7,
+    ExtraMoves = 1,
+    Stripes = 2,
+    ExtraTime = 3,
+    Bomb = 4,
+    Colorful_bomb = 5,
+    Shovel = 6,
+    Energy = 7,
     None
 }
 
@@ -51,14 +51,15 @@ public class BoostShop : MonoBehaviour
     // Update is called once per frame
     public void SetBoost(BoostType _boostType)
     {
+        Debug.Log("_boostType:" + _boostType);
         boostType = _boostType;
         gameObject.SetActive(true);
-        icon.sprite = boostProducts[(int)_boostType].icon;
-        description.text = boostProducts[(int)_boostType].description;
+        icon.sprite = boostProducts[(int)_boostType - 1].icon;
+        description.text = boostProducts[(int)_boostType - 1].description;
         for (int i = 0; i < 3; i++)
         {
-            transform.Find("Image/BuyBoost" + (i + 1) + "/Count").GetComponent<Text>().text = "x" + boostProducts[(int)_boostType].count[i];
-            transform.Find("Image/BuyBoost" + (i + 1) + "/Price").GetComponent<Text>().text = "" + boostProducts[(int)_boostType].GemPrices[i];
+            transform.Find("Image/BuyBoost" + (i + 1) + "/Count").GetComponent<Text>().text = "x" + boostProducts[(int)_boostType-1].count[i];
+            transform.Find("Image/BuyBoost" + (i + 1) + "/Price").GetComponent<Text>().text = "" + boostProducts[(int)_boostType-1].GemPrices[i];
         }
     }
 

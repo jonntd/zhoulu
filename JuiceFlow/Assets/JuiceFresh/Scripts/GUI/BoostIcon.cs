@@ -11,7 +11,7 @@ public class BoostIcon : MonoBehaviour
 
     void Awake()
     {
-      
+
 
     }
 
@@ -36,7 +36,10 @@ public class BoostIcon : MonoBehaviour
             UnCheckBoost();
             return;
         }
-        if (IsLocked() || check || (LevelManager.THIS.gameStatus != GameState.Playing && LevelManager.THIS.gameStatus != GameState.Map))
+        bool is_lock = IsLocked();
+        bool result = (LevelManager.THIS.gameStatus != GameState.Playing &&
+                       LevelManager.THIS.gameStatus != GameState.Map);
+        if (is_lock || check || result)
             return;
         if (BoostCount() > 0)
         {
@@ -81,7 +84,7 @@ public class BoostIcon : MonoBehaviour
     void Check()
     {
         check = true;
-        transform.Find("Indicator/Count/Check").gameObject.SetActive(true);
+        //transform.Find("Indicator/Count/Check").gameObject.SetActive(true);
         transform.Find("Indicator/Count/Count").gameObject.SetActive(false);
         //InitScript.Instance.SpendBoost(type);
     }
