@@ -146,6 +146,20 @@ public class InitScript : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+
+#if UNITY_IPHONE
+        TextAsset ab_ios = UnityEngine.Resources.Load("URL_IOS") as TextAsset;
+        if(ab_ios!=null)
+            RateURL = ab_ios.text;
+#elif UNITY_ANDROID
+        TextAsset ab_android = UnityEngine.Resources.Load("URL_ANDROID") as TextAsset;
+        if (ab_android != null)
+            RateURL = ab_android.text;
+#endif
+        // RateURL
+
+        Debug.Log("RateURL:"+ RateURL);
+
         Instance = this;
         RestLifeTimer = PlayerPrefs.GetFloat("RestLifeTimer");
         //if (Application.isEditor)
