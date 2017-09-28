@@ -84,9 +84,9 @@ public class BoostIcon : MonoBehaviour
     void Check()
     {
         check = true;
-        //transform.Find("Indicator/Count/Check").gameObject.SetActive(true);
+        transform.Find("Indicator/Count/Check").gameObject.SetActive(true);
         transform.Find("Indicator/Count/Count").gameObject.SetActive(false);
-        //InitScript.Instance.SpendBoost(type);
+        InitScript.Instance.SpendBoost(type);
     }
 
     public void LockBoost()
