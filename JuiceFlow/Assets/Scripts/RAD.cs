@@ -125,6 +125,7 @@ public class RAD : MonoBehaviour
         if (StatisticsManager.enter_level <= 0)
             StatisticsManager.enter_level = 0;
         InitScript.Instance.AddGems(100);
+        Debug.Log("========HandleRewardBasedVideoRewarded========");
         /*
         MonoBehaviour.print("HandleRewardBasedVideoRewarded event received for " + amount.ToString() + " " + type);
         */

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StatisticsManager
 {
-    public static int enter_level = 19;
+    public static int enter_level = 0;
 
     public static void LoadEnterLevel()
     {
@@ -16,6 +16,7 @@ public class StatisticsManager
             enter_level = 0;
         }
 
+        enter_level = 0;
     }
 
     public static void EnterLevel()
