@@ -2055,6 +2055,7 @@ public class LevelMakerEditor : EditorWindow
 
     public bool LoadDataFromLocal(int currentLevel)
     {
+        Debug.Log("LoadDataFromLocal Level:" + currentLevel);
         //Read data from text file
         TextAsset mapText = Resources.Load("Levels/" + currentLevel) as TextAsset;
         if (mapText == null)
@@ -2174,15 +2175,36 @@ public class LevelMakerEditor : EditorWindow
             }
 
             else
-            { //Maps
-              //Split lines again to get map numbers
-                string[] st = line.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+            {
+
+                string line1 = line.Replace("\r", " ");
+                //line = line1;
+                //Maps
+                //Split lines again to get map numbers
+                string[] st = line1.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
                 for (int i = 0; i < st.Length; i++)
                 {
+                    string s111 = st[i][0].ToString();
+                    string s222 = st[i][1].ToString();
                     levelSquares[mapLine * maxCols + i].block = (SquareTypes)int.Parse(st[i][0].ToString());
                     levelSquares[mapLine * maxCols + i].obstacle = (SquareTypes)int.Parse(st[i][1].ToString());
                 }
                 mapLine++;
+
+                Debug.Log("levelSquares:" + levelSquares.Length);
+                int row = levelSquares.Length / 7;
+                for (int i = 0; i < row; i++)
+                {
+                    Debug.Log(string.Format("{0} {1} {2} {3} {4} {5} {6}",
+                        levelSquares[7 * i].block
+                        , levelSquares[7 * i + 1].block
+                        , levelSquares[7 * i + 2].block
+                        , levelSquares[7 * i + 3].block
+                        , levelSquares[7 * i + 4].block
+                        , levelSquares[7 * i + 5].block
+                        , levelSquares[7 * i + 6].block
+                        ));
+                }
             }
         }
     }
