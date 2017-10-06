@@ -111,7 +111,7 @@ public class AnimationManager : MonoBehaviour
             transform.Find("Image/Video").gameObject.SetActive(false);
 #endif
 
-            if (StatisticsManager.enter_level >= 20)
+            if (StatisticsManager.enter_level >= StatisticsManager.MAX_CONT)
                 transform.Find("Image/Video").gameObject.SetActive(true);
         }
     }
@@ -135,7 +135,7 @@ public class AnimationManager : MonoBehaviour
          else if (name == "MenuFailed")
              InitScript.Instance.currentReward = RewardedAdsType.GetGoOn;
          InitScript.Instance.ShowRewardedAds();*/
-        if (StatisticsManager.enter_level >= 20)
+        if (StatisticsManager.enter_level >= StatisticsManager.MAX_CONT)
             RAD.RADs.ShowRewardBasedVideo();
         if (name != "MenuFailed")
             CloseMenu();

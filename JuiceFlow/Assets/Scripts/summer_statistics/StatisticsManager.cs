@@ -6,6 +6,7 @@ using UnityEngine;
 public class StatisticsManager
 {
     public static int enter_level = 0;
+    public static int MAX_CONT = 5;
 
     public static void LoadEnterLevel()
     {
@@ -28,7 +29,7 @@ public class StatisticsManager
 
     public static void UseLevel()
     {
-        enter_level = enter_level - 20;
+        enter_level = enter_level - StatisticsManager.MAX_CONT;
         if (enter_level == 0)
             enter_level = 0;
         PlayerPrefs.SetInt("AdsNum", enter_level);
