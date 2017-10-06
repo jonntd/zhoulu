@@ -146,7 +146,7 @@ public class InitScript : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-
+        InitBoost();
 #if UNITY_IPHONE
         TextAsset ab_ios = UnityEngine.Resources.Load("URL_IOS") as TextAsset;
         if(ab_ios!=null)
@@ -158,7 +158,7 @@ public class InitScript : MonoBehaviour
 #endif
         // RateURL
 
-        Debug.Log("RateURL:"+ RateURL);
+        Debug.Log("RateURL:" + RateURL);
 
         Instance = this;
         RestLifeTimer = PlayerPrefs.GetFloat("RestLifeTimer");
@@ -495,6 +495,32 @@ public class InitScript : MonoBehaviour
 #endif
 
     }
+
+    public static void InitBoost()
+    {
+        bool count = PlayerPrefs.HasKey("InitBoostMashao");
+        if (!count)
+        {
+            PlayerPrefs.SetString("InitBoostMashao", "InitBoostMashao");
+            SpendBoost01(BoostType.ExtraMoves, 3);
+            SpendBoost01(BoostType.Shovel, 3);
+            SpendBoost01(BoostType.Bomb, 3);
+            SpendBoost01(BoostType.Energy, 3);
+        }
+    }
+
+    public static void SpendBoost01(BoostType boostType, int count)
+    {
+        PlayerPrefs.SetInt("" + boostType, count);
+        PlayerPrefs.Save();
+#if PLAYFAB
+        PlayFabDataManager.SetBoosterData();
+#endif
+
+    }
+
+
+
     //void ReloadBoosts()
     //{
     //    BoostExtraMoves = PlayerPrefs.GetInt("" + BoostType.ExtraMoves);
