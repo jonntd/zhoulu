@@ -3243,8 +3243,9 @@ public class LevelManager : MonoBehaviour
 
             else
             { //Maps
+                string line1 = line.Replace("\r", " ");
                 //Split lines again to get map numbers
-                string[] st = line.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                string[] st = line1.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
                 for (int i = 0; i < st.Length; i++)
                 {
                     levelSquaresFile[mapLine * maxCols + i].block = (SquareTypes)int.Parse(st[i][0].ToString());

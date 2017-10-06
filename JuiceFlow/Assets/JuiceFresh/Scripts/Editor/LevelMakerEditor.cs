@@ -2191,7 +2191,7 @@ public class LevelMakerEditor : EditorWindow
                 }
                 mapLine++;
 
-                Debug.Log("levelSquares:" + levelSquares.Length);
+              /*  Debug.Log("levelSquares:" + levelSquares.Length);
                 int row = levelSquares.Length / 7;
                 for (int i = 0; i < row; i++)
                 {
@@ -2204,7 +2204,7 @@ public class LevelMakerEditor : EditorWindow
                         , levelSquares[7 * i + 5].block
                         , levelSquares[7 * i + 6].block
                         ));
-                }
+                }*/
             }
         }
     }
