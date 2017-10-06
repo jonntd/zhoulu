@@ -1,0 +1,11 @@
+ios发布
+
+Deployment info
+deployment target
+8.0
+
+编辑地图
+单张图块 24.58
+Map bounds
+center 每张+12.29
+size Y 每张+24.58
