@@ -768,11 +768,12 @@ public class LevelManager : MonoBehaviour
                 f++;
             }
         }
-        float offset = 100;
+        float offset = 175;
         if (ForDialog)
             offset = 200;
-
-        containerRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (f - 1) * offset + ingrPrefab.transform.GetComponent<RectTransform>().rect.width / 2 * f - ingrPrefab.transform.GetComponent<RectTransform>().rect.width / 2 * (f - 2));
+        float tmp_size = (f - 1) * offset + ingrPrefab.transform.GetComponent<RectTransform>().rect.width / 2 * f -
+        ingrPrefab.transform.GetComponent<RectTransform>().rect.width / 2 * (f - 2);
+        containerRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, tmp_size + 10);
 
         int j = 0;
         //print(ingrCountTarget[0]);
@@ -807,7 +808,8 @@ public class LevelManager : MonoBehaviour
                 //if (f > 2 && (j == 0 || j == f - 1) && !ForDialog)
                 //    heightPos += 8;
 
-                ingr.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(j * offset - containerRect.rect.width / 2 + ingr.transform.GetComponent<RectTransform>().rect.width / 2, heightPos);
+                float tmp_reward__size = ingr.transform.GetComponent<RectTransform>().rect.width / 2;
+                ingr.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(j * offset - containerRect.rect.width / 2 + tmp_reward__size, heightPos);
 
                 j++;
             }
