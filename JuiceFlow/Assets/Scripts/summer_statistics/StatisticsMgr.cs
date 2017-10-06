@@ -22,10 +22,10 @@ namespace com.summer
             StatisticsManager.SetLogEnabled(false);
             //StatisticsManager.SetLogEnabled (true);	
 #elif UNITY_IPHONE
-        StatisticsManager.StartWithAppKeyAndChannelId("59c5fef14ad1567064000072", "AppStore");
-		//调试时开启日志 发布时设置为false
-		StatisticsManager.SetLogEnabled (false);
-		//GA.SetLogEnabled (true);	
+            StatisticsManager.AppKeyAndChannelId("59c5fef14ad1567064000072", "AppStore");
+		    //调试时开启日志 发布时设置为false
+		    StatisticsManager.SetLogEnabled (false);
+		    //GA.SetLogEnabled (true);	
 #endif
         }
 
