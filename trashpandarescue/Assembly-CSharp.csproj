@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{421990AF-D472-1C9E-2AE9-7024EA8F7F5F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_5_6_0;UNITY_5_6;UNITY_5;UNITY_PURCHASING;UNITY_ANALYTICS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_GENERICS;ENABLE_PVR_GI;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_RUNTIME_NAVMESH_BUILDING;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_NATIVE_ARRAY;INCLUDE_DYNAMIC_GI;INCLUDE_GI;PLATFORM_SUPPORTS_MONO;INCLUDE_PUBNUB;ENABLE_PLAYMODE_TESTS_RUNNER;ENABLE_SCRIPTING_NEW_CSHARP_COMPILER;ENABLE_VIDEO;UNITY_ANDROID;ENABLE_SUBSTANCE;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;ENABLE_VR;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_2_0_SUBSET;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_NATIVE_ARRAY_CHECKS;UNITY_TEAM_LICENSE;UNITY_PRO_LICENSE;UNITY_HAS_GOOGLEVR</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\RaccoonRescue\Pixelplacement\iTween\Sample\MoveSample.cs" />
+     <Compile Include="Assets\RaccoonRescue\Pixelplacement\iTween\Sample\RotateSample.cs" />
+     <Compile Include="Assets\RaccoonRescue\Pixelplacement\iTween\Sample\SampleInfo.cs" />
+     <Compile Include="Assets\RaccoonRescue\Pixelplacement\iTween\iTween.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\AutoDestroy.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\Ball.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\BoostVariables.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\ButtonMy.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\CharAnim.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\ColorManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\Cub.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\DrawLine.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\GameEvent.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\LinePoint.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\LockLevelRounded.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\MoveUp.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\OnDestroyEvent.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\Pot.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\RemainLine.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\RotMy.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\SmoothMove.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\SoundBase.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\Square.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\TargetIcon.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\bouncer.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\creatorBall.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Bubbles\mainscript.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Effects\BeginLeafAnimation.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Extras\AdsEvents.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Extras\DisableOnField.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Extras\UnityInAppsIntegration.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Extras\fire.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\AnimationManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Avatar\AvatarManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Avatar\FriendAvatar.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Avatar\Greetings.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Avatar\IAvatarLoader.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Avatar\PlayerAvatar.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Background.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Boost.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\CameraSize.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Counter.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\CustomOutline.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\GUIAdmin.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\LIFESAddCounter.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Lamp.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Level.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\LevelData\LevelData.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\LightContainerLamp.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\MapLevelNumber.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\AudioSettingsUI.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\BackButton.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\BoostShop.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\FBButton.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\MenuComplete.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\MenuManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\MenuPause.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\MenuPlay.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\PreTutorial.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\PreWinBanner.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\RewardedVideo.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Menu\Tutorial.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Offlineleadboard.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\ParticleSorting.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Perfect.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\PriceLocalisation.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\ProgressBarScript.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\PurchasedMenu.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\RewardIcon.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\SelectLevels.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\Slot.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\SoundParticle.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\GUI\disableOnStart.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\InitScript.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\AdsController.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\FBTest.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\FacebookManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\GameSparksIntegration.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\Gamesparks\GameSparksFriendsManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\Gamesparks\GamesparksCurrencyManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\Gamesparks\GamesparksDataManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\Gamesparks\GamesparksLogin.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\ICurrencyManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\IDataManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\IFriendsManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\ILoginManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\IManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\NetworkCurrencyManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\NetworkDataManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\NetworkFriendsManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\Network\NetworkManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Integrations\UserManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Leadboard\LeadboardManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Leadboard\LeadboardObject.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\LevelCounter.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\LevelEditorBase.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Target\CubTarget.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Target\ITargetCheck.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Target\Target.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\Target\TargetManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\UnityAdsInit.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\cub_in_bubble.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\iTweenExtension\ITweenSequencer.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\iTweenExtension\iTweenAnimation.cs" />
+     <Compile Include="Assets\RaccoonRescue\Scripts\map.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\ApiTest.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\DemoButton.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\IMapProgressManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\LevelReachedEventArgs.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\LevelsMap.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\MapCamera.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\MapLevel.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\MapLevelsHelper.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\Path.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\PathMap.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\PlayerPrefsMapProgressManager.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\SplineCurve.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\StarsType.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\TestLevelGUI.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\TranslationType.cs" />
+     <Compile Include="Assets\RaccoonRescue\SmartLevelsMap\Scripts\WaypointsMover.cs" />
+     <None Include="Assets\RaccoonRescue\Fonts\fontdinerdotcom2.fnt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\101.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\54.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\88.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\17.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\32.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\61.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\39.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\102.txt" />
+     <None Include="Assets\RaccoonRescue\Textures\effects\Materials\CFXM_MobileParticleAdd_Alpha8.shader" />
+     <None Include="Assets\RaccoonRescue\Materials\NewImageEffectShader 2.shader" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\95.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\42.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\91.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\6.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\75.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\84.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\68.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\13.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\23.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\26.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\63.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\2.txt" />
+     <None Include="Assets\RaccoonRescue\Fonts\digitals.txt" />
+     <None Include="Assets\RaccoonRescue\Materials\NewImageEffectShader.shader" />
+     <None Include="Assets\RaccoonRescue\Fonts\cooper.fnt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\15.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\41.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\67.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\89.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\11.txt" />
+     <None Include="Assets\RaccoonRescue\Textures_png\Font\helvetica.fnt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\22.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\36.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\58.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\37.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\8.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\40.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\96.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\59.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\78.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\81.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\55.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\65.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\9.txt" />
+     <None Include="Assets\RaccoonRescue\Fonts\fontdinerdotcom1.fnt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\1.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\86.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\66.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\93.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\16.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\60.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\25.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\90.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\77.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\31.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\10.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\24.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\50.txt" />
+     <None Include="Assets\RaccoonRescue\Textures_png\effects\Materials\CFXM_MobileParticleAdd_Alpha8.shader" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\46.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\35.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\18.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\51.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\80.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\76.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\56.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\45.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\83.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\97.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\74.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\79.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\43.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\57.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\5.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\105.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\100.txt" />
+     <None Include="Assets\RaccoonRescue\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\3.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\12.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\104.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\72.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\62.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\27.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\28.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\30.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\94.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\64.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\4.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\73.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\71.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\21.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\34.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\7.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\103.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\82.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\20.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\19.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\52.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\38.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\33.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\47.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\53.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\49.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\44.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\85.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\99.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\92.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\48.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\98.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\14.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\70.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\29.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\87.txt" />
+     <None Include="Assets\RaccoonRescue\Textures_png\Font\goonies.fnt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\69.txt" />
+     <None Include="Assets\RaccoonRescue\Resources\Levels\4.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.VR">
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
