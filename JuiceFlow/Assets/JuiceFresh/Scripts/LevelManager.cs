@@ -421,7 +421,8 @@ public class LevelManager : MonoBehaviour
             {
                 Time.timeScale = 1;
 
-
+                Debug.Log("222222222222222");
+                StopAllCoroutines();
                 StartCoroutine(TipsManager.THIS.CheckPossibleCombines());
             }
             else if (value == GameState.GameOver)
@@ -2574,7 +2575,12 @@ public class LevelManager : MonoBehaviour
         GameField.BroadcastMessage("BombTick");
 
         if (gameStatus == GameState.Playing)
+        {
+            Debug.Log("3333333333333");
             StartCoroutine(TipsManager.THIS.CheckPossibleCombines());
+            
+        }
+            
 
 
 
@@ -3151,6 +3157,7 @@ public class LevelManager : MonoBehaviour
                 maxCols = int.Parse(sizes[0]);
                 maxRows = int.Parse(sizes[1]);
                 squaresArray = new Square[maxCols * maxRows];
+                //Debug.Log("maxCols:"+ maxCols+ "maxRows:"+ maxRows);
                 levelSquaresFile = new SquareBlocks[maxRows * maxCols];
                 for (int i = 0; i < levelSquaresFile.Length; i++)
                 {
