@@ -43,7 +43,7 @@ public class Flower : MonoBehaviour {
         float startTime = Time.time;
         Vector3 startPos = pos1;
         float distance = Vector3.Distance(pos1, pos2);
-        float speed = 5;
+        float speed = 15;
         if (directFly)
             speed *= 10;
         float fracJourney = 0;
