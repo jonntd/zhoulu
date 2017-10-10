@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using InitScriptName;
 
 public class CharAnim : MonoBehaviour {
 	Animator anim;
@@ -19,17 +20,23 @@ public class CharAnim : MonoBehaviour {
 	}
 
 	void OnStatusChange (GameState status) {
-		if (status == GameState.WinBanner)
-			anim.SetTrigger ("Win");
+	    if (status == GameState.WinBanner)
+	    {
+            anim.SetTrigger("Win");
+            
+        }
+			
 		if (status == GameState.OutOfMoves) {
 			anim.SetBool ("Idle", false);
 			anim.SetTrigger ("Lose");
-		}
+            //StatisticsManager.FailLevel(InitScript.openLevel + "");
+        }
 		if (status == GameState.Playing) {
 			if (!anim.GetBool ("Idle")) {
 				anim.SetBool ("Idle", true);
 			}
-		}
+            
+        }
 //
 
 	}

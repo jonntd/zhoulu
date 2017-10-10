@@ -111,8 +111,12 @@ public class AnimationManager : MonoBehaviour {
 		if (transform.parent.GetComponent<MenuManager> () != null)
 			transform.parent.GetComponent<MenuManager> ().OnCloseMenuEvent ();
 		SoundBase.Instance.GetComponent<AudioSource> ().PlayOneShot (SoundBase.Instance.click);
-		if (gameObject.name == "PreFailedBanner")
-			GameEvent.Instance.GameStatus = GameState.GameOver;
+	    if (gameObject.name == "PreFailedBanner")
+	    {
+            GameEvent.Instance.GameStatus = GameState.GameOver;
+            StatisticsManager.FailLevel(InitScript.openLevel + "");
+        }
+			
 		if (gameObject.name == "MenuComplete") {
 			GoToMap ();
 		}
@@ -151,7 +155,8 @@ public class AnimationManager : MonoBehaviour {
 	}
 
 	public void LoseLifeAndGoMap () {
-		InitScript.Instance.SpendLife (1);
+        StatisticsManager.FailLevel(InitScript.openLevel + "");
+        InitScript.Instance.SpendLife (1);
 		GoToMap ();
 	}
 

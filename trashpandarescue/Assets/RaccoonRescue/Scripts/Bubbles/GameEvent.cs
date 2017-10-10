@@ -80,7 +80,7 @@ public class GameEvent : MonoBehaviour
 
 					BoostVariables.ResetBoosts();
 				}
-				print(value);
+				//print(value);
 				OnStatus(value);
 			}
 			if (value == GameState.WaitAfterClose) {

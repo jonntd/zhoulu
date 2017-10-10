@@ -110,7 +110,7 @@ namespace InitScriptName
 
 			Gems = PlayerPrefs.GetInt("Gems");
 			Lifes = PlayerPrefs.GetInt("Lifes");
-			CapOfLife = LevelEditorBase.THIS.CapOfLife;
+            CapOfLife = LevelEditorBase.THIS.CapOfLife;
 			TotalTimeForRestLifeHours = LevelEditorBase.THIS.TotalTimeForRestLifeHours;
 			TotalTimeForRestLifeMin = LevelEditorBase.THIS.TotalTimeForRestLifeMin;
 			TotalTimeForRestLifeSec = LevelEditorBase.THIS.TotalTimeForRestLifeSec;

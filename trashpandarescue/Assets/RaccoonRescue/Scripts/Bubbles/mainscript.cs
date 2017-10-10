@@ -233,8 +233,9 @@ public class mainscript : MonoBehaviour
         if (InitScript.Instance == null)
             gameObject.AddComponent<InitScript>();
 
-
+        
         currentLevel = PlayerPrefs.GetInt("OpenLevel", 1);
+        StatisticsManager.StartLevel(currentLevel+"");
         stage = 1;
         mainscript.StopControl = false;
         animTable.Clear();
