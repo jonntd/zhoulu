@@ -34,7 +34,7 @@ namespace GoogleMobileAds.Api
             this.client = (INativeExpressAdClient)method.Invoke(null, null);
             this.client.CreateNativeExpressAdView(adUnitId, adSize, position);
 
-            ConfigureNativeExpressAdEvents();
+            configureNativeExpressAdEvents();
         }
 
         // Creates a NativeExpressAd with a custom position.
@@ -48,7 +48,7 @@ namespace GoogleMobileAds.Api
             this.client = (INativeExpressAdClient)method.Invoke(null, null);
             this.client.CreateNativeExpressAdView(adUnitId, adSize, x, y);
 
-            ConfigureNativeExpressAdEvents();
+            configureNativeExpressAdEvents();
         }
 
         // These are the ad callback events that can be hooked into.
@@ -86,7 +86,7 @@ namespace GoogleMobileAds.Api
             this.client.DestroyNativeExpressAdView();
         }
 
-        private void ConfigureNativeExpressAdEvents()
+        private void configureNativeExpressAdEvents()
         {
             this.client.OnAdLoaded += (sender, args) =>
             {

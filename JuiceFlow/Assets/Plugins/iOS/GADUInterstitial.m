@@ -2,13 +2,13 @@
 
 #import "GADUInterstitial.h"
 
-#import <CoreGraphics/CoreGraphics.h>
-#import <UIKit/UIKit.h>
+@import CoreGraphics;
+@import UIKit;
 
 #import "GADUPluginUtil.h"
 #import "UnityAppController.h"
 
-@interface GADUInterstitial ()<GADInterstitialDelegate>
+@interface GADUInterstitial () <GADInterstitialDelegate>
 @end
 
 @implementation GADUInterstitial

@@ -1,8 +1,7 @@
 // Copyright 2016 Google Inc. All Rights Reserved.
 
-#import <Foundation/Foundation.h>
-
-#import <GoogleMobileAds/GoogleMobileAds.h>
+@import Foundation;
+@import GoogleMobileAds;
 
 #import "GADUTypes.h"
 
@@ -24,8 +23,7 @@
 - (instancetype)initWithNativeExpressAdClientReference:
                     (GADUTypeNativeExpressAdClientRef *)nativeExpressAdClient
                                               adUnitID:(NSString *)adUnitID
-                                                 width:(CGFloat)width
-                                                height:(CGFloat)height
+                                                adSize:(GADAdSize)size
                                       customAdPosition:(CGPoint)customAdPosition;
 
 /// A reference to the Unity native express ad client.

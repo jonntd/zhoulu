@@ -1,8 +1,7 @@
 // Copyright 2014 Google Inc. All Rights Reserved.
 
-#import <Foundation/Foundation.h>
-
-#import <GoogleMobileAds/GoogleMobileAds.h>
+@import Foundation;
+@import GoogleMobileAds;
 
 #import "GADUTypes.h"
 
@@ -10,7 +9,7 @@
 
 /// Initializes a GADURewardBasedVideoAd.
 - (instancetype)initWithRewardBasedVideoClientReference:
-    (GADUTypeRewardBasedVideoAdClientRef *)rewardBasedVideoAdClient;
+        (GADUTypeRewardBasedVideoAdClientRef *)rewardBasedVideoAdClient;
 
 /// The reward based video ad.
 @property(nonatomic, strong) GADRewardBasedVideoAd *rewardBasedVideo;
