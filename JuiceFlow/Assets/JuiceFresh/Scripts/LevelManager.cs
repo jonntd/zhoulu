@@ -1513,23 +1513,30 @@ public class LevelManager : MonoBehaviour
                         }
                         else if (LevelManager.THIS.ActivatedBoost.type == BoostType.Shovel)
                         {
-                            //SoundBase.Instance.PlaySound(SoundBase.Instance.boostBomb);
-                            LevelManager.THIS.DragBlocked = true;
-                            GameObject obj = Instantiate(Resources.Load("Prefabs/Effects/shovel"), square.transform.position, square.transform.rotation) as GameObject;
-                            obj.GetComponent<SpriteRenderer>().sortingOrder = 5;
-                            obj.GetComponent<BoostAnimation>().square = square;
-                            waitingBoost = LevelManager.THIS.ActivatedBoost;
-                            LevelManager.THIS.ActivatedBoost = null;
+                            if (square.type != SquareTypes.NONE)
+                            {
+                                //SoundBase.Instance.PlaySound(SoundBase.Instance.boostBomb);
+                                LevelManager.THIS.DragBlocked = true;
+                                GameObject obj = Instantiate(Resources.Load("Prefabs/Effects/shovel"), square.transform.position, square.transform.rotation) as GameObject;
+                                obj.GetComponent<SpriteRenderer>().sortingOrder = 5;
+                                obj.GetComponent<BoostAnimation>().square = square;
+                                waitingBoost = LevelManager.THIS.ActivatedBoost;
+                                LevelManager.THIS.ActivatedBoost = null;
+                            }
                         }
                         else if (LevelManager.THIS.ActivatedBoost.type == BoostType.Energy)
                         {
-                            SoundBase.Instance.PlaySound(SoundBase.Instance.boostBomb);
-                            LevelManager.THIS.DragBlocked = true;
-                            GameObject obj = Instantiate(Resources.Load("Prefabs/Effects/energy"), square.transform.position, square.transform.rotation) as GameObject;
-                            obj.GetComponent<SpriteRenderer>().sortingOrder = 5;
-                            obj.GetComponent<BoostAnimation>().square = square;
-                            waitingBoost = LevelManager.THIS.ActivatedBoost;
-                            LevelManager.THIS.ActivatedBoost = null;
+                            if (square.type != SquareTypes.NONE)
+                            {
+                                SoundBase.Instance.PlaySound(SoundBase.Instance.boostBomb);
+                                LevelManager.THIS.DragBlocked = true;
+                                GameObject obj = Instantiate(Resources.Load("Prefabs/Effects/energy"), square.transform.position, square.transform.rotation) as GameObject;
+                                obj.GetComponent<SpriteRenderer>().sortingOrder = 5;
+                                obj.GetComponent<BoostAnimation>().square = square;
+                                waitingBoost = LevelManager.THIS.ActivatedBoost;
+                                LevelManager.THIS.ActivatedBoost = null;
+                            }
+                           
                         }
                     }
                 }
