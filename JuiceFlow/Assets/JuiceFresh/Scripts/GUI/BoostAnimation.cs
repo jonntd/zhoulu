@@ -32,9 +32,27 @@ public class BoostAnimation : MonoBehaviour
 
                 if (_square.item != null)
                 {
-                    if (_square.item.currentType != ItemsTypes.CHOCOBOMB && _square.item.currentType != ItemsTypes.INGREDIENT && _square.CheckDamage(5))
-                        _square.item.DestroyItem(true, "destroy_package");
+                    /*if (_square.item.currentType != ItemsTypes.CHOCOBOMB && _square.item.currentType != ItemsTypes.INGREDIENT && _square.CheckDamage(5))
+                        _square.item.DestroyItem(true, "destroy_package");*/
 
+
+                    if (_square.item.currentType != ItemsTypes.CHOCOBOMB && _square.item.currentType != ItemsTypes.INGREDIENT && _square.square.CheckDamage(5))
+                    {
+                        if (_square.item.currentType == ItemsTypes.HORIZONTAL_STRIPPED)
+                        {
+                            _square.item.extraChecked = true;
+                            _square.item.DestroyVertical();
+                        }
+                        else if (_square.item.currentType == ItemsTypes.VERTICAL_STRIPPED)
+                        {
+                            _square.item.extraChecked = true;
+                            _square.item.DestroyHorizontal();
+                        }
+                        else
+                        {
+                            _square.item.DestroyItem(true, "destroy_package");
+                        }
+                    }
 
                 }
                 if (_square.IsHaveDestroybleObstacle())

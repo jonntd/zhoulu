@@ -73,6 +73,8 @@ public class Square : MonoBehaviour {
         return this.item;
     }
 
+
+
     public Square GetNeighborLeft(bool safe = false) {
         if (col == 0 && !safe)
             return null;

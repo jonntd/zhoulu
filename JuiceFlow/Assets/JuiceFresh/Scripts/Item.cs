@@ -94,7 +94,7 @@ public class Item : MonoBehaviour
     public GameObject wickBurningPrefab;
     public bool awaken;
     public GameObject appearingEffect;
-    private bool extraChecked;
+    public bool extraChecked;
     public Item item;
 
     // Use this for initialization

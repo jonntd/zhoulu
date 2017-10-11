@@ -2576,7 +2576,6 @@ public class LevelManager : MonoBehaviour
 
         if (gameStatus == GameState.Playing)
         {
-            Debug.Log("3333333333333");
             StartCoroutine(TipsManager.THIS.CheckPossibleCombines());
             
         }
