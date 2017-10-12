@@ -1335,10 +1335,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: a33cda0c5606049d4a58722bc5f63324, type: 3}
-    m_FontSize: 138
+    m_FontSize: 120
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 138
     m_Alignment: 2
     m_AlignByGeometry: 0
@@ -1346,7 +1346,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: x 400
+  m_Text: x 14956
 --- !u!114 &11403664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1499,7 +1499,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: x 150
+  m_Text: x 8248
 --- !u!114 &11407966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1673,7 +1673,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $2.99
+  m_Text: $0.99
 --- !u!114 &11418152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2073,7 +2073,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: x 25
+  m_Text: x 250
 --- !u!114 &11446020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2372,7 +2372,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $4.99
+  m_Text: $29.99
 --- !u!114 &11455618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2888,7 +2888,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: x 65
+  m_Text: x 2624
 --- !u!114 &11483280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3082,7 +3082,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $3.99
+  m_Text: $9.99
 --- !u!114 &11489556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4673,7 +4673,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -87, y: -31.75}
-  m_SizeDelta: {x: 493, y: 301}
+  m_SizeDelta: {x: 549.36, y: 301}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &22493208
 RectTransform:
@@ -4808,7 +4808,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -74, y: -23.125}
-  m_SizeDelta: {x: 439, y: 235.5}
+  m_SizeDelta: {x: 481.3, y: 235.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &100100000
 Prefab:
@@ -10209,7 +10209,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $5.99
+  m_Text: $49.99
 --- !u!114 &114169302143121032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13024,7 +13024,7 @@ MonoBehaviour:
   - Shows next ball
   - Matches with any color
   - GIves long aim line
-  prices: 060000000600000006000000
+  prices: c80000003200000096000000
   icon: {fileID: 114941924404952984}
   title: {fileID: 114422956757660174}
   description: {fileID: 114057136669113340}
@@ -15786,7 +15786,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 25
+  m_Text: 250
 --- !u!114 &114999814683448442
 MonoBehaviour:
   m_ObjectHideFlags: 1

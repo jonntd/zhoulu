@@ -453,6 +453,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
 --- !u!4 &13137778
 Transform:
   m_ObjectHideFlags: 0
@@ -2652,6 +2653,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!4 &188434181
 Transform:
   m_ObjectHideFlags: 0
@@ -3592,6 +3594,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!4 &248317887
 Transform:
   m_ObjectHideFlags: 0
@@ -8615,6 +8618,11 @@ Prefab:
       propertyPath: Loading
       value: 
       objectReference: {fileID: 517789878}
+    - target: {fileID: 224465801146047822, guid: 7b45f937fb8dc4a1eb9bd283508cdd5f,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 949.99994
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b45f937fb8dc4a1eb9bd283508cdd5f, type: 2}
   m_IsPrefabParent: 0
@@ -14717,6 +14725,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!4 &1178987589
 Transform:
   m_ObjectHideFlags: 0
@@ -19457,6 +19466,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
 --- !u!4 &1518674681
 Transform:
   m_ObjectHideFlags: 0
@@ -20998,6 +21008,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!4 &1668647186
 Transform:
   m_ObjectHideFlags: 0
@@ -23074,6 +23085,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
 --- !u!4 &1859234353
 Transform:
   m_ObjectHideFlags: 0
@@ -25621,7 +25633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca1390bc64bbdfc4a954c3dfa8d20406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 0}
 --- !u!1001 &2108272691
 Prefab:
   m_ObjectHideFlags: 0
