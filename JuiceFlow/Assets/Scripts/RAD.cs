@@ -11,7 +11,7 @@ public class RAD : MonoBehaviour
     private float deltaTime = 0.0f;
     private static string outputMessage = string.Empty;
     public Button RADbtn;
-    public int num = 10;
+    public int num = 5;
 
 #if UNITY_ANDROID
     string adUnitId = "ca-app-pub-4966484504552142/9836610510";

@@ -344,6 +344,7 @@ public class InitScript : MonoBehaviour
     }
     public void ShowAds(bool chartboost = true)
     {
+
         if (chartboost)
         {
             Debug.Log("show Chartboost Interstitial on " + LevelManager.THIS.gameStatus);
