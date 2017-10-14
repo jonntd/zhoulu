@@ -137,14 +137,14 @@ PlayerSettings:
   protectGraphicsMemory: 0
   useHDRDisplay: 0
   applicationIdentifier:
-    Android: com.candysmith.raccoonrescue
+    Android: com.codef.trashpandarescue
     Standalone: unity.CandySmith.RaccoonRescue
     Tizen: com.Company.ProductName
     iOS: com.candysmith.raccoonrescue
     tvOS: com.Company.ProductName
   buildNumber:
     iOS: 6
-  AndroidBundleVersionCode: 6
+  AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1

@@ -2662,10 +2662,10 @@ Transform:
   m_GameObject: {fileID: 188434179}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 24.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.401, y: 2.401, z: 1}
   m_Children: []
   m_Father: {fileID: 2038925098}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &193020306
 Prefab:
@@ -3603,10 +3603,10 @@ Transform:
   m_GameObject: {fileID: 248317885}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 73.76, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.401, y: 2.401, z: 1}
   m_Children: []
   m_Father: {fileID: 2038925098}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &267113735
 GameObject:
@@ -8618,11 +8618,6 @@ Prefab:
       propertyPath: Loading
       value: 
       objectReference: {fileID: 517789878}
-    - target: {fileID: 224465801146047822, guid: 7b45f937fb8dc4a1eb9bd283508cdd5f,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 949.99994
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b45f937fb8dc4a1eb9bd283508cdd5f, type: 2}
   m_IsPrefabParent: 0
@@ -14734,10 +14729,10 @@ Transform:
   m_GameObject: {fileID: 1178987587}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 49.18, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.401, y: 2.401, z: 1}
   m_Children: []
   m_Father: {fileID: 2038925098}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1179114477
 Prefab:
@@ -21017,10 +21012,10 @@ Transform:
   m_GameObject: {fileID: 1668647184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.02, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.401, y: 2.401, z: 1}
   m_Children: []
   m_Father: {fileID: 2038925098}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1674407150
 Prefab:
@@ -23039,7 +23034,7 @@ GameObject:
   - component: {fileID: 1859234353}
   - component: {fileID: 1859234352}
   m_Layer: 0
-  m_Name: map_01 (1)
+  m_Name: map_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23094,10 +23089,10 @@ Transform:
   m_GameObject: {fileID: 1859234351}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 98.34, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.401, y: 2.401, z: 1}
   m_Children: []
   m_Father: {fileID: 2038925098}
-  m_RootOrder: 7
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1860997854
 Prefab:
