@@ -14,9 +14,9 @@ public class RAD : MonoBehaviour
     public int num = 5;
 
 #if UNITY_ANDROID
-    string adUnitId = "ca-app-pub-4966484504552142/9836610510";
+    string adUnitId = "ca-app-pub-4966484504552142/4755981086";
 #elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-4966484504552142/2313343715";
+        string adUnitId = "ca-app-pub-4966484504552142/8083538929";
 #else
         string adUnitId = "unexpected_platform";
 #endif
@@ -38,7 +38,7 @@ public class RAD : MonoBehaviour
         //Button RADbtn = gameObject.GetComponent<Button>();
         if (RADbtn != null)
             RADbtn.gameObject.SetActive(false);
-        num = 20;
+        //num = 20;
         // Get singleton reward based video ad reference.
         this.rewardBasedVideo = RewardBasedVideoAd.Instance;
 
