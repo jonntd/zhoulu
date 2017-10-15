@@ -59,21 +59,13 @@ MonoBehaviour:
   - pack4
   rewardedGems: 5
   adsEvents:
-  - gameEvent: 1
-    adType: 0
-    callsTreshold: 3
-    calls: 0
-  - gameEvent: 2
-    adType: 0
-    callsTreshold: 3
-    calls: 0
   - gameEvent: 6
-    adType: 2
-    callsTreshold: 1
+    adType: 0
+    callsTreshold: 3
     calls: 0
   - gameEvent: 11
-    adType: 2
-    callsTreshold: 4
+    adType: 0
+    callsTreshold: 6
     calls: 0
   - gameEvent: 8
     adType: 0
