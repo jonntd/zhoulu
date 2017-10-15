@@ -12,7 +12,10 @@ namespace Summer
         ui_prefab,
         ui_item_prefab,
         cvs_byte,
-            
+
+        map,
+
+        max,
     }
 
     public enum E_AssetType
