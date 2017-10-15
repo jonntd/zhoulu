@@ -243,6 +243,18 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>D:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Google.IOSResolver_v1.2.52.0">
+ <HintPath>E:/zhoulu/trashpandarescue/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.52.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.JarResolver_v1.2.52.0">
+ <HintPath>E:/zhoulu/trashpandarescue/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.52.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandler">
+ <HintPath>E:/zhoulu/trashpandarescue/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandlerImpl_v1.2.52.0">
+ <HintPath>E:/zhoulu/trashpandarescue/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.52.0.dll</HintPath>
+ </Reference>
  <Reference Include="ChannelPurchase">
  <HintPath>E:/zhoulu/trashpandarescue/Assets/Plugins/UnityChannel/ChannelPurchase.dll</HintPath>
  </Reference>
@@ -272,9 +284,6 @@
  </Reference>
  <Reference Include="winrt">
  <HintPath>E:/zhoulu/trashpandarescue/Assets/Plugins/UnityPurchasing/winrt/winrt.dll</HintPath>
- </Reference>
- <Reference Include="Google.VersionHandler">
- <HintPath>E:/zhoulu/trashpandarescue/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
