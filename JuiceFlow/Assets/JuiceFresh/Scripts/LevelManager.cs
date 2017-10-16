@@ -1536,7 +1536,7 @@ public class LevelManager : MonoBehaviour
                                 waitingBoost = LevelManager.THIS.ActivatedBoost;
                                 LevelManager.THIS.ActivatedBoost = null;
                             }
-                           
+
                         }
                     }
                 }
@@ -2584,9 +2584,9 @@ public class LevelManager : MonoBehaviour
         if (gameStatus == GameState.Playing)
         {
             StartCoroutine(TipsManager.THIS.CheckPossibleCombines());
-            
+
         }
-            
+
 
 
 
@@ -2690,7 +2690,7 @@ public class LevelManager : MonoBehaviour
     {
         if (!safe)
         {
-            if (row >= maxRows || col >= maxCols)
+            if (row >= maxRows || col >= maxCols || row < 0 || col < 0)
                 return null;
             return squaresArray[row * maxCols + col];
         }

@@ -107,6 +107,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             // StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
+                            Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -124,11 +125,32 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             // StartCoroutine(showTip(nextMoveItems[0], Vector3.down));
+                            Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
                         else
                             nextMoveItems.Clear();
+
+                        //o o 
+                        //o
+                        if (col < maxCol - 1 && row < maxRow - 1)
+                        {
+                            CheckSquare(GetSquare(row + 1, col), COLOR, true);
+                            CheckSquare(GetSquare(row, col), COLOR);
+                            CheckSquare(GetSquare(row, col + 1), COLOR);
+                        }
+                        if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
+                        {
+                            // StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
+                            Debug.Log("row" + row + "col:" + col);
+                            showTip(nextMoveItems);
+                            yield break;
+                        }
+                        else
+                        {
+                            nextMoveItems.Clear();
+                        }
 
                         //x o o
                         //o
@@ -140,6 +162,7 @@ public class TipsManager : MonoBehaviour
                         }
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
+                            Debug.Log("row" + row + "col:" + col);
                             // StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
                             showTip(nextMoveItems);
                             yield break;
@@ -158,6 +181,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.down));
+                            Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -176,23 +200,25 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             // StartCoroutine(showTip(nextMoveItems[0], Vector3.left));
+                            Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
                         else
                             nextMoveItems.Clear();
 
-                        //x o
+                        //  o
                         //o
                         //o
-                        if (col < maxCol - 1 && row < maxRow - 2)
+                        if (col >= 1 && row < maxRow - 2)
                         {
-                            CheckSquare(GetSquare(row, col + 1), COLOR, true);
-                            CheckSquare(GetSquare(row + 1, col), COLOR);
-                            CheckSquare(GetSquare(row + 2, col), COLOR);
+                            CheckSquare(GetSquare(row, col), COLOR, true);
+                            CheckSquare(GetSquare(row + 1, col - 1), COLOR);
+                            CheckSquare(GetSquare(row + 2, col - 1), COLOR);
                         }
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
+                            Debug.Log("row" + row + "col:" + col);
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.left));
                             showTip(nextMoveItems);
                             yield break;
@@ -200,6 +226,46 @@ public class TipsManager : MonoBehaviour
                         else
                             nextMoveItems.Clear();
 
+                        ///////////////////////////////////////////////
+                        //  o
+                        //o
+                        //  o
+                        if (col >= 1 && row < maxRow - 2)
+                        {
+                            CheckSquare(GetSquare(row, col), COLOR, true);
+                            CheckSquare(GetSquare(row + 1, col - 1), COLOR);
+                            CheckSquare(GetSquare(row + 2, col), COLOR);
+                        }
+                        if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
+                        {
+                            //  StartCoroutine(showTip(nextMoveItems[0], Vector3.left));
+                            Debug.Log("row" + row + "col:" + col);
+                            showTip(nextMoveItems);
+                            yield break;
+                        }
+                        else
+                            nextMoveItems.Clear();
+
+
+                        ///////////////////////////////////////////////
+                        //o 
+                        //  o
+                        //o  
+                        if (col < maxCol - 1 && row < maxRow - 2)
+                        {
+                            CheckSquare(GetSquare(row, col), COLOR, true);
+                            CheckSquare(GetSquare(row + 1, col + 1), COLOR);
+                            CheckSquare(GetSquare(row + 2, col), COLOR);
+                        }
+                        if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
+                        {
+                            //  StartCoroutine(showTip(nextMoveItems[0], Vector3.left));
+                            Debug.Log("row" + row + "col:" + col);
+                            showTip(nextMoveItems);
+                            yield break;
+                        }
+                        else
+                            nextMoveItems.Clear();
                         //	o
                         //  o
                         //o x
@@ -212,6 +278,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.right));
+                            Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -230,6 +297,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.right));
+                            Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -246,11 +314,13 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //   StartCoroutine(showTip(nextMoveItems[0], Vector3.right));
+                            Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
                         else
                             nextMoveItems.Clear();
+
                         //o-o-o
                         if (col < maxCol - 1 && col > 1)
                         {
@@ -261,6 +331,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //   StartCoroutine(showTip(nextMoveItems[0], Vector3.left));
+                            Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -278,6 +349,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.down));
+                            Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -296,6 +368,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //   StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
+                            Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -314,6 +387,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //   StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
+                            Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -323,7 +397,7 @@ public class TipsManager : MonoBehaviour
                         //       o
                         //      o
                         //     o
-                        if (row > 2 && col < maxCol - 2)
+                        if (row >= 2 && col < maxCol - 2)
                         {
                             CheckSquare(GetSquare(row, col), COLOR, true);
                             CheckSquare(GetSquare(row - 1, col - 1), COLOR);
@@ -332,6 +406,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //   StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
+                            Debug.Log("row:" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -406,12 +481,14 @@ public class TipsManager : MonoBehaviour
                         {
                             if (v > h && nextMoveItems[2].square.type != SquareTypes.WIREBLOCK)
                             { //StartCoroutine(showTip(nextMoveItems[2], new Vector3(Random.Range(-1f, 1f), 0, 0)));
+                                Debug.Log("row" + row + "col:" + col);
                                 showTip(nextMoveItems);
                                 yield break;
 
                             }
                             else if (v < h && nextMoveItems[0].square.type != SquareTypes.WIREBLOCK)
                             { // StartCoroutine(showTip(nextMoveItems[0], new Vector3(0, Random.Range(-1f, 1f), 0)));
+                                Debug.Log("row" + row + "col:" + col);
                                 showTip(nextMoveItems);
                                 yield break;
 
@@ -445,11 +522,14 @@ public class TipsManager : MonoBehaviour
         // }
     }
 
+    public IEnumerator _ies;
+
     void showTip(List<Item> nextMoveItems)
     {
         //print("show tip");
-        StopCoroutine(showTipCor(nextMoveItems));
-        StartCoroutine(showTipCor(nextMoveItems));
+        _ies = showTipCor(nextMoveItems);
+        StopCoroutine(_ies);
+        StartCoroutine(_ies);
     }
 
     IEnumerator showTipCor(List<Item> nextMoveItems)
