@@ -281,6 +281,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 120619779}
+  - component: {fileID: 120619780}
   m_Layer: 0
   m_Name: Play
   m_TagString: Untagged
@@ -303,6 +304,20 @@ Transform:
   m_Father: {fileID: 1183550063}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &120619780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 120619778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a95b85b7af944349a6a8b49d5fa2416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pfb_grid: {fileID: 114006737966485262, guid: 14195620090178046a65c617df128000, type: 2}
+  parent_grid: {fileID: 383435924}
+  grids: []
 --- !u!1 &181379561
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +696,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1183550063}
-  - component: {fileID: 1183550064}
   - component: {fileID: 1183550065}
   m_Layer: 0
   m_Name: Screen
@@ -704,17 +718,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1183550064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1183550062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecf0ef7dd48d99c4eb24ccf7ba4cb04a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1183550065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1390,7 +1393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1892413847
 Transform:
   m_ObjectHideFlags: 0

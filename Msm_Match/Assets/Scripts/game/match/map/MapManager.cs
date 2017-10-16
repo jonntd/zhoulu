@@ -4,17 +4,11 @@ using UnityEngine;
 
 namespace Summer.Game
 {
-    public class MapManager : MonoBehaviour
+    public class MapManager 
     {
-        public static MapManager Instance;
+        public static MapManager Instance=new MapManager();
 
         public Dictionary<int, MapCnf> _maps = new Dictionary<int, MapCnf>();
-        void Awake()
-        {
-            Instance = this;
-            FindMap(1);
-        }
-
 
         public MapCnf FindMap(int id)
         {
