@@ -12,11 +12,11 @@ namespace Summer.Game
         void Awake()
         {
             Instance = this;
-            find_map(1);
+            FindMap(1);
         }
 
 
-        public MapCnf find_map(int id)
+        public MapCnf FindMap(int id)
         {
             if (!_maps.ContainsKey(id))
             {

@@ -1,13 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Summer.Game
 {
     public class CellItem : MonoBehaviour
     {
-        public CellCnf cnf;
+        protected CellCnf cnf;
         public SpriteRenderer sprite_renderer;
+
+        protected virtual void Awake()
+        {
+
+        }
+
         public void ResetSprite()
         {
 
