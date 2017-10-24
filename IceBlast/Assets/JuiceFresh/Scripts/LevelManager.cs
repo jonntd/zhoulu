@@ -790,7 +790,7 @@ public class LevelManager : MonoBehaviour
                     ingr.transform.Find("Image").GetComponent<Image>().sprite = spr[j];
                 ingr.transform.Find("CountIngr").GetComponent<Counter_>().ingrTrackNumber = i;
                 ingr.transform.Find("CountIngr").GetComponent<Counter_>().totalCount = ingrTarget[i].count;
-                ingr.transform.Find("CountIngrForMenu").GetComponent<Counter_>().totalCount = ingrTarget[i].count;
+                ingr.transform.Find("CountIngrForMenu").GetComponent<Counter_>().totalCount = ingrTarget[i].count;    
                 if (tar == Target.SCORE)
                     ingr.transform.Find("CountIngrForMenu").GetComponent<Counter_>().totalCount = (int)LevelManager.THIS.starsTargetCount;
                 else if (tar == Target.BLOCKS)
