@@ -31,6 +31,7 @@ public class Counter_ : MonoBehaviour
 
     }
 
+    public float add_time;
     // Update is called once per frame
     void Update()
     {
@@ -80,6 +81,13 @@ public class Counter_ : MonoBehaviour
             }
             else
             {
+                add_time += Time.deltaTime;
+                if (add_time > 1)
+                {
+                    /*LevelManager.THIS.Limit = LevelManager.THIS.Limit - 1;
+                    add_time = add_time - 1f;*/
+                }
+
                 int minutes = Mathf.FloorToInt(LevelManager.THIS.Limit / 60F);
                 int seconds = Mathf.FloorToInt(LevelManager.THIS.Limit - minutes * 60);
                 txt.text = "" + string.Format("{0:00}:{1:00}", minutes, seconds);

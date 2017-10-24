@@ -400,7 +400,7 @@ public class LevelManager : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS || UNITY_WINRT
                 if (passLevelCounter > 0 && InitScript.Instance.ShowRateEvery > 0)
                 {
-                    if (passLevelCounter % InitScript.Instance.ShowRateEvery == 0 && InitScript.Instance.ShowRateEvery > 0 && PlayerPrefs.GetInt("Rated", 0) == 0)
+                    if (passLevelCounter % InitScript.Instance.ShowRateEvery > 0 && PlayerPrefs.GetInt("Rated", 0) == 0)
                         InitScript.Instance.ShowRate();
                 }
 #endif
@@ -422,7 +422,9 @@ public class LevelManager : MonoBehaviour
                 Time.timeScale = 1;
 
                 Debug.Log("222222222222222");
-                StopAllCoroutines();
+                //StopAllCoroutines();
+                IEnumerator or = TipsManager.THIS.CheckPossibleCombines();
+                StopCoroutine(or);
                 StartCoroutine(TipsManager.THIS.CheckPossibleCombines());
             }
             else if (value == GameState.GameOver)
@@ -618,8 +620,11 @@ public class LevelManager : MonoBehaviour
     {
         if (limitType == LIMIT.TIME)
         {
-            StopCoroutine(TimeTick());
-            StartCoroutine(TimeTick());
+            Debug.Log("RestartTimer");
+            IEnumerator or = TimeTick();
+            //StopCoroutine(or);
+            StartCoroutine(or);
+            //StopAllCoroutines();
         }
     }
 
@@ -790,7 +795,7 @@ public class LevelManager : MonoBehaviour
                     ingr.transform.Find("Image").GetComponent<Image>().sprite = spr[j];
                 ingr.transform.Find("CountIngr").GetComponent<Counter_>().ingrTrackNumber = i;
                 ingr.transform.Find("CountIngr").GetComponent<Counter_>().totalCount = ingrTarget[i].count;
-                ingr.transform.Find("CountIngrForMenu").GetComponent<Counter_>().totalCount = ingrTarget[i].count;    
+                ingr.transform.Find("CountIngrForMenu").GetComponent<Counter_>().totalCount = ingrTarget[i].count;
                 if (tar == Target.SCORE)
                     ingr.transform.Find("CountIngrForMenu").GetComponent<Counter_>().totalCount = (int)LevelManager.THIS.starsTargetCount;
                 else if (tar == Target.BLOCKS)
@@ -1587,10 +1592,16 @@ public class LevelManager : MonoBehaviour
                 {
                     LevelManager.THIS.Limit--;
                     CheckWinLose();
+                    //Debug.Log("=============stoop=================");
                 }
             }
             if (gameStatus == GameState.Map || LevelManager.THIS.Limit <= 0 || gameStatus == GameState.GameOver)
+            {
+                //Debug.Log("=============Break=================");
                 yield break;
+
+            }
+            //Debug.Log("=============left_time================="+ LevelManager.THIS.Limit);
 
             yield return new WaitForSeconds(1);
         }
