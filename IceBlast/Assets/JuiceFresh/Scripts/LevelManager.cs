@@ -1592,16 +1592,16 @@ public class LevelManager : MonoBehaviour
                 {
                     LevelManager.THIS.Limit--;
                     CheckWinLose();
-                    Debug.Log("=============stoop=================");
+                    //Debug.Log("=============stoop=================");
                 }
             }
             if (gameStatus == GameState.Map || LevelManager.THIS.Limit <= 0 || gameStatus == GameState.GameOver)
             {
-                Debug.Log("=============Break=================");
+                //Debug.Log("=============Break=================");
                 yield break;
 
             }
-            Debug.Log("=============left_time================="+ LevelManager.THIS.Limit);
+            //Debug.Log("=============left_time================="+ LevelManager.THIS.Limit);
 
             yield return new WaitForSeconds(1);
         }
