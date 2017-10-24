@@ -526,6 +526,7 @@ public class TipsManager : MonoBehaviour
 
     void showTip(List<Item> nextMoveItems)
     {
+        Debug.Log("time:"+Time.realtimeSinceStartup);
         //print("show tip");
         _ies = showTipCor(nextMoveItems);
         StopCoroutine(_ies);
@@ -534,7 +535,7 @@ public class TipsManager : MonoBehaviour
 
     IEnumerator showTipCor(List<Item> nextMoveItems)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2f);
 
         gotTip = true;
         corCount++;
@@ -551,7 +552,7 @@ public class TipsManager : MonoBehaviour
         tipID = LevelManager.THIS.moveID;
         //while (!LevelManager.THIS.DragBlocked && allowShowTip)
         //{
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2f);
         if (LevelManager.THIS.DragBlocked && !allowShowTip && tipID != LevelManager.THIS.moveID)
         {
             corCount--;
