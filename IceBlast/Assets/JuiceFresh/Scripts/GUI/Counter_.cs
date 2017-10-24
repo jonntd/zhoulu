@@ -114,13 +114,13 @@ public class Counter_ : MonoBehaviour
         }
         if (name == "TargetBlocks")
         {
-            txt.text = ""  + (totalCount - LevelManager.THIS.targetBlocks);
+            txt.text = ""  + (LevelManager.THIS.targetBlocks);
             if (LevelManager.THIS.targetBlocks == 0)
                 parentGUI.Done();
         }
         if (name == "TargetCages")
         {
-            txt.text = ""+ (totalCount - LevelManager.THIS.TargetCages);
+            txt.text = ""+ (LevelManager.THIS.TargetCages);
             if (LevelManager.THIS.TargetCages == 0)
                 parentGUI.Done();
         }
@@ -132,7 +132,7 @@ public class Counter_ : MonoBehaviour
         }
         if (name == "CountIngr")
         {
-            txt.text = "" + (totalCount - LevelManager.THIS.ingrTarget[ingrTrackNumber].count);
+            txt.text = "" + (LevelManager.THIS.ingrTarget[ingrTrackNumber].count);
             if (LevelManager.THIS.ingrTarget[ingrTrackNumber].count == 0)
                 parentGUI.Done();
         }
