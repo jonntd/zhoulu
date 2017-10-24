@@ -422,7 +422,9 @@ public class LevelManager : MonoBehaviour
                 Time.timeScale = 1;
 
                 Debug.Log("222222222222222");
-                StopAllCoroutines();
+                //StopAllCoroutines();
+                IEnumerator or = TipsManager.THIS.CheckPossibleCombines();
+                StopCoroutine(or);
                 StartCoroutine(TipsManager.THIS.CheckPossibleCombines());
             }
             else if (value == GameState.GameOver)
@@ -618,8 +620,11 @@ public class LevelManager : MonoBehaviour
     {
         if (limitType == LIMIT.TIME)
         {
-            StopCoroutine(TimeTick());
-            StartCoroutine(TimeTick());
+            Debug.Log("RestartTimer");
+            IEnumerator or = TimeTick();
+            //StopCoroutine(or);
+            StartCoroutine(or);
+            //StopAllCoroutines();
         }
     }
 
@@ -1587,10 +1592,16 @@ public class LevelManager : MonoBehaviour
                 {
                     LevelManager.THIS.Limit--;
                     CheckWinLose();
+                    Debug.Log("=============stoop=================");
                 }
             }
             if (gameStatus == GameState.Map || LevelManager.THIS.Limit <= 0 || gameStatus == GameState.GameOver)
+            {
+                Debug.Log("=============Break=================");
                 yield break;
+
+            }
+            Debug.Log("=============left_time================="+ LevelManager.THIS.Limit);
 
             yield return new WaitForSeconds(1);
         }
