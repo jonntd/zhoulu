@@ -400,7 +400,7 @@ public class LevelManager : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS || UNITY_WINRT
                 if (passLevelCounter > 0 && InitScript.Instance.ShowRateEvery > 0)
                 {
-                    if (passLevelCounter % InitScript.Instance.ShowRateEvery == 0 && InitScript.Instance.ShowRateEvery > 0 && PlayerPrefs.GetInt("Rated", 0) == 0)
+                    if (passLevelCounter % InitScript.Instance.ShowRateEvery > 0 && PlayerPrefs.GetInt("Rated", 0) == 0)
                         InitScript.Instance.ShowRate();
                 }
 #endif
@@ -790,7 +790,7 @@ public class LevelManager : MonoBehaviour
                     ingr.transform.Find("Image").GetComponent<Image>().sprite = spr[j];
                 ingr.transform.Find("CountIngr").GetComponent<Counter_>().ingrTrackNumber = i;
                 ingr.transform.Find("CountIngr").GetComponent<Counter_>().totalCount = ingrTarget[i].count;
-                ingr.transform.Find("CountIngrForMenu").GetComponent<Counter_>().totalCount = ingrTarget[i].count;    
+                ingr.transform.Find("CountIngrForMenu").GetComponent<Counter_>().totalCount = ingrTarget[i].count;
                 if (tar == Target.SCORE)
                     ingr.transform.Find("CountIngrForMenu").GetComponent<Counter_>().totalCount = (int)LevelManager.THIS.starsTargetCount;
                 else if (tar == Target.BLOCKS)

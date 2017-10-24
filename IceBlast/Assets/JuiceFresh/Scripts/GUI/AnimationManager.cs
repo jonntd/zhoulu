@@ -148,6 +148,30 @@ public class AnimationManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void GoRateOk()
+    {
+        InitScript.Instance.HideRate();
+        Application.OpenURL(InitScript.Instance.RateURL);
+        PlayerPrefs.SetInt("Rated", 1);
+        PlayerPrefs.Save();
+    }
+
+    public void GoRateNever()
+    {
+        InitScript.Instance.HideRate();
+        PlayerPrefs.SetInt("Rated_never", 1);
+        PlayerPrefs.Save();
+        /*Application.OpenURL(InitScript.Instance.RateURL);
+        PlayerPrefs.SetInt("Rated", 1);
+        PlayerPrefs.Save();*/
+    }
+
+    public void GoRateIgnore()
+    {
+        InitScript.Instance.HideRate();
+    }
+
+
     void OnDisable()
     {
         if (transform.Find("Image/Video") != null)
