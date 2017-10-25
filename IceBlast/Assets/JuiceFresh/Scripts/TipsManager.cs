@@ -526,7 +526,7 @@ public class TipsManager : MonoBehaviour
 
     void showTip(List<Item> nextMoveItems)
     {
-        Debug.Log("time:"+Time.realtimeSinceStartup);
+        //Debug.Log("time:"+Time.realtimeSinceStartup);
         //print("show tip");
         _ies = showTipCor(nextMoveItems);
         StopCoroutine(_ies);

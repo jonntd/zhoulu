@@ -59,12 +59,14 @@ public class EventsListener : MonoBehaviour
     }
     void OnWin()
     {
+        Line.instance.Finish();
         AnalyticsEvent("OnWin", LevelManager.THIS.currentLevel);
         StatisticsManager.FinishLevel(LevelManager.THIS.currentLevel.ToString());
         Debug.Log(string.Format("关卡[{0}]通关", LevelManager.THIS.currentLevel.ToString()));
     }
     void OnLose()
     {
+        Line.instance.Finish();
         AnalyticsEvent("OnLose", LevelManager.THIS.currentLevel);
         StatisticsManager.FailLevel(LevelManager.THIS.currentLevel.ToString());
         Debug.Log(string.Format("关卡[{0}]失败", LevelManager.THIS.currentLevel.ToString()));

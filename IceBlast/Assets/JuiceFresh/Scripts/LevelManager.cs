@@ -1141,6 +1141,7 @@ public class LevelManager : MonoBehaviour
     {
         if (Limit <= 0)
         {
+            destroyAnyway.Clear();
             bool lose = false;
             Limit = 0;
 
@@ -1590,6 +1591,7 @@ public class LevelManager : MonoBehaviour
             {
                 if (LevelManager.Instance.limitType == LIMIT.TIME)
                 {
+                   
                     LevelManager.THIS.Limit--;
                     CheckWinLose();
                     //Debug.Log("=============stoop=================");
