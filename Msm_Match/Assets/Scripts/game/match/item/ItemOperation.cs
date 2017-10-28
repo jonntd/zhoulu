@@ -5,45 +5,70 @@ using DG.Tweening;
 
 namespace Summer.Game
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ItemOperation : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
 
         private Item item;
-        private Vector3 down_pos;            //按下的鼠标坐标
-        private Vector3 up_pos;              //抬起的鼠标坐标
+        private Vector3 downPos;            //按下的鼠标坐标
+        private Vector3 upPos;              //抬起的鼠标坐标 
+
+        public IEnumerator enumerator;
         void Awake()
         {
             item = GetComponent<Item>();
         }
 
+
+
+
+        #region 点击事件
+
         public void OnPointerDown(PointerEventData eventData)
         {
-            down_pos = Input.mousePosition;
+            downPos = Input.mousePosition;
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            //如果其他人正在操作
+            // 1.如果其他人正在操作 返回
             if (GameController.instance.isOperation)
-                return;//返回
-                       //正在操作
+                return;
+            // 2.正在操作
             GameController.instance.isOperation = true;
-            up_pos = Input.mousePosition;
-            //获取方向
-            Vector2 dir = GetDirection();
+            upPos = Input.mousePosition;
+            // 3.获取方向
+            Vector2 dir = Util.GetDirection(upPos, downPos);
+
+            // 这里其实是有异常的，比如点下，抬起的距离太近
+            // 太近或者太远
             //点击异常处理
-            if (dir.magnitude != 1)
+            if (!MathHelper.IsEqualFloat(dir.magnitude, 1f))
             {
                 GameController.instance.isOperation = false;
                 return;
             }
+
+            enumerator = ItemExchange(dir);
+            StopCoroutine(enumerator);
             //开启协程
-            StartCoroutine(ItemExchange(dir));
+            StartCoroutine(enumerator);
         }
 
-        //Item交换
+        #endregion
+
+        /// <summary>
+        /// Item交换
+        /// </summary>
+        /// <returns>The exchange.</returns>
+        /// <param name="dir">Dir.</param>
         IEnumerator ItemExchange(Vector2 dir)
         {
+
+
+
             //获取目标行列
             int targetRow = item.itemRow + System.Convert.ToInt32(dir.y);
             int targetColumn = item.itemColumn + System.Convert.ToInt32(dir.x);
@@ -57,6 +82,8 @@ namespace Summer.Game
             }
             //获取目标
             Item target = GameController.instance.allItems[targetRow, targetColumn];
+
+
             //从全局列表中获取当前item，查看是否已经被消除，被消除后不能再交换
             Item myItem = GameController.instance.allItems[item.itemRow, item.itemColumn];
             if (!target || !myItem)
@@ -81,6 +108,7 @@ namespace Summer.Game
             {
                 reduction = false;
             }
+
             //还原
             if (reduction)
             {
@@ -102,7 +130,6 @@ namespace Summer.Game
             }
         }
 
-        //Item的移动
         public void ItemMove(int targetRow, int targetColumn, Vector3 pos)
         {
             //改行列
@@ -114,25 +141,6 @@ namespace Summer.Game
             transform.DOMove(pos, 0.2f);
         }
 
-        //获取鼠标滑动方向
-        public Vector2 GetDirection()
-        {
-            //方向向量
-            Vector3 dir = up_pos - down_pos;
-            //如果是横向滑动
-            if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
-            {
-                //返回横向坐标
-                return new Vector2(dir.x / Mathf.Abs(dir.x), 0);
-            }
-            else
-            {
-                //返回纵向坐标
-                return new Vector2(0, dir.y / Mathf.Abs(dir.y));
-            }
-        }
-
-        //下落
         public void CurrentItemDrop(Vector3 pos)
         {
             //下落

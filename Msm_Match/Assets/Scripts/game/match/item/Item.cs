@@ -1,29 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+namespace Summer.Game
 {
 
-    public int itemRow;
-    public int itemColumn;
-    public bool hasCheck;
-    //当前图案
-    public Sprite currentSpr;
-    // Use this for initialization
-    void Start()
+    public class Item : MonoBehaviour
     {
 
-    }
+        public int itemRow;                 //行
+        public int itemColumn;              //列
 
-    // Update is called once per frame
-    void Update()
-    {
+        public Sprite currentSpr;           //当前图案
+        public Image currentImg;            //图案
+        private GameController controller;
 
-    }
+        public bool hasCheck = false;        //被检测
 
-    public void CheckAroundBoom()
-    {
-        
+        void Awake()
+        {
+            currentImg = transform.GetChild(0).GetComponent<Image>();
+        }
+
+        void OnEnable()
+        {
+            controller = GameController.instance;
+        }
+
+        /// <summary>
+        /// 点击事件
+        /// </summary>
+        public void CheckAroundBoom()
+        {
+            controller.sameItemsList.Clear();
+            controller.boomList.Clear();
+            controller.randomColor = Color.white;
+            controller.FillSameItemsList(this);
+            controller.FillBoomList(this);
+        }
     }
 }
+

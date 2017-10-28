@@ -3,59 +3,119 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 namespace Summer.Game
 {
     public class GameController : MonoBehaviour
     {
 
-        public static GameController instance;              //单例
-        public int tableRow, tableColumn;
-        public Item[,] allItems; //所有的Item
+        //单例
+        public static GameController instance;
+        //随机图案
+        public Sprite[] randomSprites;
+        //行列
+        public int tableRow = 5;
+        public int tableColumn = 5;
+        //偏移量
+        public Vector2 offset = new Vector2(0, 0);
+        //所有的Item
+        public Item[,] allItems;
+        //所有Item的坐标
+        public Vector3[,] allPos;
+        //相同Item列表
+        public List<Item> sameItemsList;
+        //要消除的Item列表
+        public List<Item> boomList;
+        //随机颜色
+        public Color randomColor;
+        //正在操作
+        public bool isOperation = false;
+        //是否正在执行AllBoom
+        public bool allBoom = false;
 
-        public Vector3[,] allPos;                           //所有Item的坐标
+        //ITEM的边长
+        private float itemSize = 0;
 
-        public List<Item> sameItemsList;                 //相同Item列表
-
-        public List<Item> boomList;             //要消除的Item列表
-
-        public Color randomColor;               //随机颜色
-
-        public bool isOperation = false;         //正在操作
-
-        public bool allBoom = false;                //是否正在执行AllBoom
-
-        #region Override MonoBehaviour
-
-        private void Awake()
+        void Awake()
         {
             instance = this;
+            allItems = new Item[tableRow, tableColumn];
+            allPos = new Vector3[tableRow, tableColumn];
+            sameItemsList = new List<Item>();
+            boomList = new List<Item>();
         }
 
-        // Use this for initialization
+        /// <summary>
+        /// 获取Item边长
+        /// </summary>
+        /// <returns>The item size.</returns>
+        private float GetItemSize()
+        {
+            /* return Resources.Load<GameObject>(Util.ResourcesPrefab + Util.Item).
+                 GetComponent<RectTransform>().rect.height;*/
+            return 98;
+        }
+
+        /// <summary>
+        /// 初始化游戏
+        /// </summary>
+        private void InitGame()
+        {
+            //获取Item边长
+            itemSize = GetItemSize();
+            //生成ITEM
+            for (int i = 0; i < tableRow; i++)
+            {
+                for (int j = 0; j < tableColumn; j++)
+                {
+                    //生成
+                    GameObject currentItem =
+                        ObjectPool.instance.GetGameObject(Util.Item, transform);
+                    //设置坐标
+                    currentItem.transform.localPosition =
+                        new Vector3(j * itemSize, i * itemSize, 0) + new Vector3(offset.x, offset.y, 0);
+
+                    currentItem.transform.localScale = Vector3.one;
+                    currentItem.name = string.Format("Item_{0}_{1}", j, i);
+
+                    //随机图案编号
+                    int random = Random.Range(0, randomSprites.Length);
+                    //获取Item组件
+                    Item current = currentItem.GetComponent<Item>();
+                    //设置行列
+                    current.itemRow = i;
+                    current.itemColumn = j;
+                    //设置图案
+                    current.currentSpr = randomSprites[random];
+                    //设置图片
+                    current.currentImg.sprite = randomSprites[random];
+                    //保存到数组
+                    allItems[i, j] = current;
+                    //记录世界坐标
+                    allPos[i, j] = currentItem.transform.position;
+                }
+            }
+        }
+
         void Start()
         {
-
+            //初始化游戏
+            InitGame();
+            AllBoom();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        #endregion
 
         void AllBoom()
         {
-            // 1.有消除
+            //有消除
+            int check_count = 0;
             bool hasBoom = false;
             foreach (var item in allItems)
             {
-                // 2.指定位置的Item存在，且没有被检测过
+                //指定位置的Item存在，且没有被检测过
                 if (item && !item.hasCheck)
                 {
-                    // 3.检测周围的消除
+                    check_count++;
+                    //检测周围的消除
                     item.CheckAroundBoom();
                     if (boomList.Count > 0)
                     {
@@ -64,31 +124,33 @@ namespace Summer.Game
                     }
                 }
             }
+            Debug.Log("check_count:" + check_count);
             if (!hasBoom)
             {
-                // 操作结束
+                //操作结束
                 isOperation = false;
             }
         }
 
-        //填充相同Item列表
+        /// <summary>
+        /// 填充相同Item列表
+        /// </summary>
         public void FillSameItemsList(Item current)
         {
-            // 1.如果已存在，跳过
+            //如果已存在，跳过
             if (sameItemsList.Contains(current))
                 return;
-            // 2.添加到列表
+            //添加到列表
             sameItemsList.Add(current);
-            // 3.上下左右的Item
+            //上下左右的Item
             Item[] tempItemList = new Item[]{
             GetUpItem(current),GetDownItem(current),
             GetLeftItem(current),GetRightItem(current)};
             for (int i = 0; i < tempItemList.Length; i++)
             {
-                // 4.如果Item不合法，跳过
-                if (tempItemList[i] == null) continue;
-
-                // 5.同一类型
+                //如果Item不合法，跳过
+                if (tempItemList[i] == null)
+                    continue;
                 if (current.currentSpr == tempItemList[i].currentSpr)
                 {
                     FillSameItemsList(tempItemList[i]);
@@ -96,7 +158,10 @@ namespace Summer.Game
             }
         }
 
-        // 填充待消除列表
+        /// <summary>
+        /// 填充待消除列表
+        /// </summary>
+        /// <param name="current">Current.</param>
         public void FillBoomList(Item current)
         {
             //计数器
@@ -164,18 +229,16 @@ namespace Summer.Game
             List<Item> tempBoomList = new List<Item>();
             //转移到临时列表
             tempBoomList.AddRange(boomList);
-            IEnumerator manipulate_cor = ManipulateBoomList(tempBoomList);
-
             //开启处理BoomList的协程
-            StartCoroutine(manipulate_cor);
+            StartCoroutine(ManipulateBoomList(tempBoomList));
         }
-
         /// <summary>
         /// 处理BoomList
         /// </summary>
         /// <returns>The boom list.</returns>
         IEnumerator ManipulateBoomList(List<Item> tempBoomList)
         {
+            Debug.Log("ManipulateBoomList:");
             foreach (var item in tempBoomList)
             {
                 item.hasCheck = true;
@@ -184,6 +247,10 @@ namespace Summer.Game
                 item.GetComponent<AnimatedButton>().Exit();
                 //Boom声音
                 //AudioManager.instance.PlayMagicalAudio();
+                if (allItems[item.itemRow, item.itemColumn] == null)
+                {
+                    Debug.Log("已经为空了");
+                }
                 //将被消除的Item在全局列表中移除
                 allItems[item.itemRow, item.itemColumn] = null;
             }
@@ -203,7 +270,7 @@ namespace Summer.Game
             foreach (var item in tempBoomList)
             {
                 //回收Item
-                //ObjectPool.instance.SetGameObject(item.gameObject);
+                ObjectPool.instance.SetGameObject(item.gameObject);
             }
         }
 
@@ -235,7 +302,7 @@ namespace Summer.Game
                 //下落
                 for (int k = 0; k < count; k++)
                 {
-                   /* //获取要下落的Item
+                    //获取要下落的Item
                     Item current = dropQueue.Dequeue();
                     //修改全局数组(原位置情况)
                     allItems[current.itemRow, current.itemColumn] = null;
@@ -245,7 +312,7 @@ namespace Summer.Game
                     allItems[current.itemRow, current.itemColumn] = current;
                     //下落
                     current.GetComponent<ItemOperation>().
-                        CurrentItemDrop(allPos[current.itemRow, current.itemColumn]);*/
+                        CurrentItemDrop(allPos[current.itemRow, current.itemColumn]);
                 }
             }
 
@@ -273,16 +340,19 @@ namespace Summer.Game
                         //生成一个Item
                         GameObject current = (GameObject)Instantiate(Resources.
                             Load<GameObject>(Util.ResourcesPrefab + Util.Item));
+                        
                         //						ObjectPool.instance.GetGameObject (Util.Item, transform);
                         current.transform.parent = transform;
                         current.transform.position = allPos[tableRow - 1, i];
+                        current.transform.localScale = Vector3.one;
+                        current.name = string.Format("Item_{0}_{1}", j, i);
                         newItemQueue.Enqueue(current);
                         count++;
                     }
                 }
                 for (int k = 0; k < count; k++)
                 {
-                   /* //获取Item组件
+                    //获取Item组件
                     Item currentItem = newItemQueue.Dequeue().GetComponent<Item>();
                     //随机数
                     int random = Random.Range(0, randomSprites.Length);
@@ -293,62 +363,10 @@ namespace Summer.Game
                     //获取要移动的行数
                     int r = tableRow - count + k;
                     //移动
-                    currentItem.GetComponent<ItemOperation>().ItemMove(r, i, allPos[r, i]);*/
+                    currentItem.GetComponent<ItemOperation>().ItemMove(r, i, allPos[r, i]);
                 }
             }
             yield break;
-        }
-
-
-        #region 取得周围的item
-
-        //获取上方Item
-        private Item GetUpItem(Item current)
-        {
-            int row = current.itemRow + 1;
-            int column = current.itemColumn;
-            if (!CheckRCLegal(row, column))
-                return null;
-            return allItems[row, column];
-        }
-
-        //获取下方Item
-        private Item GetDownItem(Item current)
-        {
-            int row = current.itemRow - 1;
-            int column = current.itemColumn;
-            if (!CheckRCLegal(row, column))
-                return null;
-            return allItems[row, column];
-        }
-
-        //获取左方Item
-        private Item GetLeftItem(Item current)
-        {
-            int row = current.itemRow;
-            int column = current.itemColumn - 1;
-            if (!CheckRCLegal(row, column))
-                return null;
-            return allItems[row, column];
-        }
-
-        //获取右方Item
-        private Item GetRightItem(Item current)
-        {
-            int row = current.itemRow;
-            int column = current.itemColumn + 1;
-            if (!CheckRCLegal(row, column))
-                return null;
-            return allItems[row, column];
-        }
-        #endregion
-
-        //检测行列是否合法
-        public bool CheckRCLegal(int itemRow, int itemColumn)
-        {
-            if (itemRow >= 0 && itemRow < tableRow && itemColumn >= 0 && itemColumn < tableColumn)
-                return true;
-            return false;
         }
 
         /// <summary>
@@ -410,6 +428,78 @@ namespace Summer.Game
                 return true;
             }
         }
+
+        /// <summary>
+        /// 获取上方Item
+        /// </summary>
+        /// <returns>The up item.</returns>
+        /// <param name="current">Current.</param>
+        private Item GetUpItem(Item current)
+        {
+            int row = current.itemRow + 1;
+            int column = current.itemColumn;
+            if (!CheckRCLegal(row, column))
+                return null;
+            return allItems[row, column];
+        }
+        /// <summary>
+        /// 获取下方Item
+        /// </summary>
+        /// <returns>The down item.</returns>
+        /// <param name="current">Current.</param>
+        private Item GetDownItem(Item current)
+        {
+            int row = current.itemRow - 1;
+            int column = current.itemColumn;
+            if (!CheckRCLegal(row, column))
+                return null;
+            return allItems[row, column];
+        }
+        /// <summary>
+        /// 获取左方Item
+        /// </summary>
+        /// <returns>The left item.</returns>
+        /// <param name="current">Current.</param>
+        private Item GetLeftItem(Item current)
+        {
+            int row = current.itemRow;
+            int column = current.itemColumn - 1;
+            if (!CheckRCLegal(row, column))
+                return null;
+            return allItems[row, column];
+        }
+        /// <summary>
+        /// 获取右方Item
+        /// </summary>
+        /// <returns>The right item.</returns>
+        /// <param name="current">Current.</param>
+        private Item GetRightItem(Item current)
+        {
+            int row = current.itemRow;
+            int column = current.itemColumn + 1;
+            if (!CheckRCLegal(row, column))
+                return null;
+            return allItems[row, column];
+        }
+        /// <summary>
+        /// 检测行列是否合法
+        /// </summary>
+        /// <returns><c>true</c>, if RC legal was checked, <c>false</c> otherwise.</returns>
+        /// <param name="itemRow">Item row.</param>
+        /// <param name="itemColumn">Item column.</param>
+        public bool CheckRCLegal(int itemRow, int itemColumn)
+        {
+            if (itemRow >= 0 && itemRow < tableRow && itemColumn >= 0 && itemColumn < tableColumn)
+                return true;
+            return false;
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            }
+        }
     }
 }
-
