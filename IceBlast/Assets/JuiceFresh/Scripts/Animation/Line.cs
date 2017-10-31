@@ -14,6 +14,11 @@ public class Line : MonoBehaviour
     public List<LineRenderer> lines = new List<LineRenderer>();
     public Vector3[] points = new Vector3[200];
 
+    public static Line instance;
+    void Awake()
+    {
+        instance = this;
+    }
     // Use this for initialization
     void Start()
     {
@@ -31,6 +36,10 @@ public class Line : MonoBehaviour
 
     }
 
+    public void Finish()
+    {
+        //SetVertexCount(0);
+    }
     public void SetVertexCount(int count)
     {
         int i = 0;

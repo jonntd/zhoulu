@@ -53,7 +53,8 @@ namespace Summer.Game
             if (!IsActive())
                 return;
 
-            m_animator.SetTrigger(Util.Pressed);
+            if (m_animator != null)
+                m_animator.SetTrigger(Util.Pressed);
             Invoke("InvokeOnClickAction", 0.1f);
         }
 
@@ -61,17 +62,21 @@ namespace Summer.Game
         {
             if (!IsActive())
                 return;
-            m_animator.SetTrigger(Util.Exit);
+            if (m_animator != null)
+                m_animator.SetTrigger(Util.Exit);
         }
 
         public bool CheckPlayExit()
         {
-            return m_animator.GetCurrentAnimatorStateInfo(0).IsName(Util.Exit);
+            if(m_animator!=null)
+                return m_animator.GetCurrentAnimatorStateInfo(0).IsName(Util.Exit);
+            return true;
         }
 
         private void InvokeOnClickAction()
         {
-            m_OnClick.Invoke();
+            if (m_OnClick != null)
+                m_OnClick.Invoke();
         }
     }
 }

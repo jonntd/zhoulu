@@ -148,6 +148,30 @@ public class AnimationManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void GoRateOk()
+    {
+        InitScript.Instance.HideRate();
+        Application.OpenURL(InitScript.Instance.RateURL);
+        PlayerPrefs.SetInt("Rated", 1);
+        PlayerPrefs.Save();
+    }
+
+    public void GoRateNever()
+    {
+        InitScript.Instance.HideRate();
+        PlayerPrefs.SetInt("Rated_never", 1);
+        PlayerPrefs.Save();
+        /*Application.OpenURL(InitScript.Instance.RateURL);
+        PlayerPrefs.SetInt("Rated", 1);
+        PlayerPrefs.Save();*/
+    }
+
+    public void GoRateIgnore()
+    {
+        InitScript.Instance.HideRate();
+    }
+
+
     void OnDisable()
     {
         if (transform.Find("Image/Video") != null)
@@ -556,9 +580,10 @@ public class AnimationManager : MonoBehaviour
     public void BuyLife(GameObject button)
     {
         SoundBase.Instance.PlaySound(SoundBase.Instance.click);
-        if (InitScript.Gems >= int.Parse(button.transform.Find("Price").GetComponent<Text>().text))
+        int tmp = int.Parse(button.transform.Find("Price").GetComponent<Text>().text);
+        if (InitScript.Gems >= tmp)
         {
-            InitScript.Instance.SpendGems(int.Parse(button.transform.Find("Price").GetComponent<Text>().text));
+            InitScript.Instance.SpendGems(tmp);
             InitScript.Instance.RestoreLifes();
             StatisticsManager.BuyLive();
             CloseMenu();
