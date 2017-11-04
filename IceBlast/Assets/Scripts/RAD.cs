@@ -14,11 +14,11 @@ public class RAD : MonoBehaviour
     public int num = 5;
 
 #if UNITY_ANDROID
-    string adUnitId = "ca-app-pub-4966484504552142/4755981086";
+    string adUnitId = "ca-app-pub-4966484504552142/8366559622";
 #elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-4966484504552142/8083538929";
+    string adUnitId = "ca-app-pub-4966484504552142/1409257271";
 #else
-        string adUnitId = "unexpected_platform";
+    string adUnitId = "unexpected_platform";
 #endif
 
     void Awake()
