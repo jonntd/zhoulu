@@ -125,6 +125,10 @@ public class DialyReweardProxy
 
     public void _init_dialy_reward()
     {
+        if (IsNextDay())
+        {
+            return;
+        }
         if (_last_month == _curr_month)
         {
             if (_last_day + 1 == _curr_day)
