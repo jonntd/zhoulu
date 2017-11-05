@@ -9,7 +9,7 @@ public class ConfigInfo : MonoBehaviour
     public static ConfigInfo Instance;
     private void Awake()
     {
-        Instance = this;
+        /*Instance = this;
         dic.Clear();
         TextAsset ta = Resources.Load("config") as TextAsset;
         string content = ta.text;
@@ -19,7 +19,7 @@ public class ConfigInfo : MonoBehaviour
         {
             string[] info = infos[i].Split('=');
             dic.Add(info[0], info[1]);
-        }
+        }*/
     }
 
     public string GetValue(string key)
