@@ -400,7 +400,12 @@ public class LevelManager : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS || UNITY_WINRT
                 if (passLevelCounter > 0 && InitScript.Instance.ShowRateEvery > 0)
                 {
-                    if (passLevelCounter % InitScript.Instance.ShowRateEvery > 0 && PlayerPrefs.GetInt("Rated", 0) == 0)
+                    bool result = false;
+                    if (passLevelCounter > 0 && (passLevelCounter % InitScript.Instance.ShowRateEvery) == 0)
+                    {
+                        result = true;
+                    }
+                    if (result && PlayerPrefs.GetInt("Rated", 0) == 0)
                         InitScript.Instance.ShowRate();
                 }
 #endif
@@ -1591,7 +1596,7 @@ public class LevelManager : MonoBehaviour
             {
                 if (LevelManager.Instance.limitType == LIMIT.TIME)
                 {
-                   
+
                     LevelManager.THIS.Limit--;
                     CheckWinLose();
                     //Debug.Log("=============stoop=================");

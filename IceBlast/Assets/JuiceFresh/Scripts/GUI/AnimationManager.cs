@@ -161,6 +161,7 @@ public class AnimationManager : MonoBehaviour
     {
         InitScript.Instance.HideRate();
         PlayerPrefs.SetInt("Rated_never", 1);
+        PlayerPrefs.SetInt("Rated", 1);
         PlayerPrefs.Save();
         /*Application.OpenURL(InitScript.Instance.RateURL);
         PlayerPrefs.SetInt("Rated", 1);
