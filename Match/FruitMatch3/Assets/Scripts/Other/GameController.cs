@@ -94,6 +94,7 @@ public class GameController : MonoBehaviour
                 Selected = JewelTouchChecker(Input.mousePosition);
                 if (Selected != null && Pointer != Selected && Selected.name.Contains("Jewel"))
                 {
+                    Debug.Log("Pointer:" + Pointer.name + "Selected:" + Selected.name);
                     if (DistanceChecker(Pointer, Selected))
                     {
                         RuleChecker(Pointer, Selected);
@@ -132,10 +133,16 @@ public class GameController : MonoBehaviour
     {
         JewelObj Jewel1 = obj1.GetComponent<JewelObj>();
         JewelObj Jewel2 = obj2.GetComponent<JewelObj>();
-        List<JewelObj> NeiObj1 = Ulti.ListPlus(Jewel1.GetCollumn(Jewel2.jewel.JewelPosition, Jewel1.jewel.JewelType, null),
-                                         Jewel1.GetRow(Jewel2.jewel.JewelPosition, Jewel1.jewel.JewelType, null), Jewel1);
-        List<JewelObj> NeiObj2 = Ulti.ListPlus(Jewel2.GetCollumn(Jewel1.jewel.JewelPosition, Jewel2.jewel.JewelType, null),
-                                         Jewel2.GetRow(Jewel1.jewel.JewelPosition, Jewel2.jewel.JewelType, null), Jewel2);
+        List<JewelObj> NeiObj1 =
+            Ulti.ListPlus(
+                Jewel1.GetCollumn(Jewel2.jewel.JewelPosition, Jewel1.jewel.JewelType, null),
+                Jewel1.GetRow(Jewel2.jewel.JewelPosition, Jewel1.jewel.JewelType, null),
+                Jewel1);
+        List<JewelObj> NeiObj2 =
+            Ulti.ListPlus(
+                Jewel2.GetCollumn(Jewel1.jewel.JewelPosition, Jewel2.jewel.JewelType, null),
+                Jewel2.GetRow(Jewel1.jewel.JewelPosition, Jewel2.jewel.JewelType, null),
+                Jewel2);
 
 
 
@@ -174,6 +181,7 @@ public class GameController : MonoBehaviour
     }
     void JewelProcess(List<JewelObj> list1, List<JewelObj> list2, GameObject obj1, GameObject obj2)
     {
+        Debug.Log("===================");
         int c1 = list1.Count;
         int c2 = list2.Count;
         if (c1 > 2)
@@ -204,6 +212,7 @@ public class GameController : MonoBehaviour
         int c1 = list1.Count;
         if (c1 > 2)
         {
+            Debug.Log("JewelProcess");
             ListProcess(list1, obj1, null, obj1.GetComponent<JewelObj>().jewel.JewelType);
         }
 
@@ -212,7 +221,7 @@ public class GameController : MonoBehaviour
     bool ListProcess(List<JewelObj> list, GameObject obj, GameObject obj1, int type)
     {
         Vector3 v;
-
+        Debug.Log("=========================ListProcess=============================");
         if (obj1 != null)
         {
             JewelScript = obj1.GetComponent<JewelObj>();
