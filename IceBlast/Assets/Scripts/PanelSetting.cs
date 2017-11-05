@@ -11,8 +11,8 @@ public class PanelSetting : MonoBehaviour
 
     // Use this for initialization
     void Start () {
-        follow.onClick.AddListener(on_follow);
-        more.onClick.AddListener(on_more);
+        //follow.onClick.AddListener(on_follow);
+        //more.onClick.AddListener(on_more);
     }
 
 
