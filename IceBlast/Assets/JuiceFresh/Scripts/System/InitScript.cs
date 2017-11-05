@@ -349,12 +349,23 @@ public class InitScript : MonoBehaviour
 
     void ShowAdByType(AdType adType)
     {
+
         if (adType == AdType.AdmobInterstitial)
+        {
+            int result = PlayerPrefs.GetInt("AdmobInterstitial");
+            if (result > 0) return;
             ShowAds(false);
+        }
+
         else if (adType == AdType.UnityAdsVideo)
             ShowVideo();
         else if (adType == AdType.ChartboostInterstitial)
+        {
+            int result = PlayerPrefs.GetInt("AdmobInterstitial");
+            if (result > 0) return;
             ShowAds(true);
+        }
+
 
     }
 
@@ -498,6 +509,7 @@ public class InitScript : MonoBehaviour
     {
         AddGems(waitedPurchaseGems);
         waitedPurchaseGems = 0;
+        PlayerPrefs.SetInt("AdmobInterstitial", 1);
     }
 
     public void SpendLife(int count)
