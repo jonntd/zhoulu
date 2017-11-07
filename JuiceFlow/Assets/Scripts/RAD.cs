@@ -36,7 +36,7 @@ public class RAD : MonoBehaviour
     void Start()
     {
         //Button RADbtn = gameObject.GetComponent<Button>();
-        if (RADbtn != null)
+        //if (RADbtn != null)
             RADbtn.gameObject.SetActive(false);
         //num = 20;
         // Get singleton reward based video ad reference.
