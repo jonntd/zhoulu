@@ -1,5 +1,0 @@
-SKU	Product ID	Reference Name	Type	Cleared For Sale	Wholesale Price Tier	Displayed Name en_US	Description en_US	Screenshot Path	Effective Date	End Date	Review Notes	Hosted Content Path
-IceBlastSKU	iceblastpurchase01	iceblastpurchase01	Consumable	yes	1	250 coins 	Get 250 coins 					
-IceBlastSKU	iceblastpurchase02	iceblastpurchase02	Consumable	yes	10	2624 coins 	Get 2624 coins 					
-IceBlastSKU	iceblastpurchase03	iceblastpurchase03	Consumable	yes	30	8248 coins 	Get 8248 coins 					
-IceBlastSKU	iceblastpurchase04	iceblastpurchase04	Consumable	yes	50	14956 coins 	Get 14956 coins 					

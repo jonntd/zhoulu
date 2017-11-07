@@ -4,9 +4,9 @@
 namespace UnityEngine.Purchasing.Security {
     public class UnityChannelTangle
     {
-        private static byte[] data = System.Convert.FromBase64String("w8CnbakC9WEl/YPq/bCC69FA8/jjYXjk");
+        private static byte[] data = System.Convert.FromBase64String("ubrdF9N4jxtfh/mQh8r4kas6iYKZGwKe");
         private static int[] order = new int[] { 0,1 };
-        private static int key = 30;
+        private static int key = 100;
 
         public static readonly bool IsPopulated = true;
 

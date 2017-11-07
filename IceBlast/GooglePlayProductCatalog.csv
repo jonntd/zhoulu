@@ -1,5 +1,0 @@
-Product ID,Published State,Purchase Type,Auto Translate,Locale; Title; Description,Auto Fill Prices,Price,Pricing Template ID
-iceblastpurchase01,published,managed_by_android,false,en_US;250 coins ;Get 250 coins ,true,990000,
-iceblastpurchase02,published,managed_by_android,false,en_US;2624 coins ;Get 2624 coins ,true,9990000,
-iceblastpurchase03,published,managed_by_android,false,en_US;8248 coins ;Get 8248 coins ,true,29990000,
-iceblastpurchase04,published,managed_by_android,false,en_US;14956 coins ;Get 14956 coins ,true,49990000,
