@@ -42,12 +42,12 @@ namespace Summer.Game
                 {
                     GridItem tmp_grid = Instantiate<GridItem>(pfb_grid);
 
-                    tmp_grid.gameObject.transform.parent = parent_grid;
+                   /* tmp_grid.gameObject.transform.parent = parent_grid;
                     tmp_grid.gameObject.transform.localPosition = Vector3.zero;
                     tmp_grid.gameObject.transform.localScale = Vector3.one;
                     tmp_grid.SetRowCol(r, c);
 
-                    grids.Add(tmp_grid);
+                    grids.Add(tmp_grid);*/
                 }
 
                 //ItemFactory.Instance.CreateGrid()
