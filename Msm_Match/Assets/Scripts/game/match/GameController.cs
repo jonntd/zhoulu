@@ -7,7 +7,6 @@ namespace Summer.Game
 {
     public class GameController : MonoBehaviour
     {
-
         //单例
         public static GameController instance;
         //随机图案
@@ -340,7 +339,7 @@ namespace Summer.Game
                         //生成一个Item
                         GameObject current = (GameObject)Instantiate(Resources.
                             Load<GameObject>(Util.ResourcesPrefab + Util.Item));
-                        
+
                         //						ObjectPool.instance.GetGameObject (Util.Item, transform);
                         current.transform.parent = transform;
                         current.transform.position = allPos[tableRow - 1, i];

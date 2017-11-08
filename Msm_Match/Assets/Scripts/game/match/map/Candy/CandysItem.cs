@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace Summer.Game
 {
-    public class GridItem : MonoBehaviour
+
+    public class CandysItem : MonoBehaviour
     {
-        public CellItem _cell_item;
-        public int row;
-        public int col;
+        public Dictionary<int, GridItem> _grid_map = new Dictionary<int, GridItem>();
 
         private Transform trans;
+
+        #region Mono
         void Awake()
         {
             trans = GetComponent<Transform>();
         }
-
         // Use this for initialization
         void Start()
         {
@@ -27,13 +27,7 @@ namespace Summer.Game
         {
 
         }
-
-        public void SetRowCol(int r, int c)
-        {
-            row = r;
-            col = c;
-            trans.localPosition = new Vector3(c, r, 0);
-        }
+        #endregion
     }
 }
 
