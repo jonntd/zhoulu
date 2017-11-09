@@ -14,9 +14,9 @@ public class RAD : MonoBehaviour
     public int num = 5;
 
 #if UNITY_ANDROID
-    string adUnitId = "ca-app-pub-4966484504552142/8366559622";
+    string adUnitId = "ca-app-pub-4966484504552142/6794528438";
 #elif UNITY_IPHONE
-    string adUnitId = "ca-app-pub-4966484504552142/1409257271";
+    string adUnitId = "ca-app-pub-4966484504552142/2820813777";
 #else
     string adUnitId = "unexpected_platform";
 #endif
@@ -124,7 +124,7 @@ public class RAD : MonoBehaviour
         StatisticsManager.UseLevel();
         if (StatisticsManager.enter_level <= 0)
             StatisticsManager.enter_level = 0;
-        InitScript.Instance.AddGems(100);
+        InitScript.Instance.AddGems(50);
         Debug.Log("========HandleRewardBasedVideoRewarded========");
         /*
         MonoBehaviour.print("HandleRewardBasedVideoRewarded event received for " + amount.ToString() + " " + type);
