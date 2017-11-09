@@ -17,12 +17,12 @@ namespace com.summer
             //StatisticsManager.AppKeyAndChannelId("59c5fe4b07fe65541e000047", "Android");
 
 #if UNITY_ANDROID
-            StatisticsManager.AppKeyAndChannelId("59da31f9734be42d1500000f", "Googleplay");
+            StatisticsManager.AppKeyAndChannelId("59fddeabf43e4844330000e9", "Googleplay");
             //调试时开启日志 发布时设置为false
             StatisticsManager.SetLogEnabled(false);
             //StatisticsManager.SetLogEnabled (true);	
 #elif UNITY_IPHONE
-            StatisticsManager.AppKeyAndChannelId("59da3251c62dca29c1000339", "AppStore");
+            StatisticsManager.AppKeyAndChannelId("59fddeecb27b0a26dd00024c", "AppStore");
 		    //调试时开启日志 发布时设置为false
 		    StatisticsManager.SetLogEnabled (false);
 		    //GA.SetLogEnabled (true);	
