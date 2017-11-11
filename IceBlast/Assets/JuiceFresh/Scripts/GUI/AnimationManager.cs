@@ -23,7 +23,8 @@ public class AnimationManager : MonoBehaviour
     {
         if (PlayOnEnable)
         {
-            SoundBase.Instance.PlaySound(SoundBase.Instance.swish[0]);
+            //主动屏蔽声音
+            //SoundBase.Instance.PlaySound(SoundBase.Instance.swish[0]);
 
             //if( !GetComponent<SequencePlayer>().sequenceArray[0].isPlaying )
             //    GetComponent<SequencePlayer>().Play();
