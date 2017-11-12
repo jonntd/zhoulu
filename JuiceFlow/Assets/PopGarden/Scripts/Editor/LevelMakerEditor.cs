@@ -296,7 +296,7 @@ public class LevelMakerEditor : EditorWindow
     {
         GUILayout.Space(100);
         GUILayout.Label("CAUTION!", EditorStyles.boldLabel, new GUILayoutOption[] { GUILayout.Width(600) });
-        GUILayout.Label("Please open scene - game ( Assets/JuiceFresh/Scenes/game.unity )", EditorStyles.boldLabel, new GUILayoutOption[] { GUILayout.Width(600) });
+        GUILayout.Label("Please open scene - game ( Assets/PopGarden/Scenes/game.unity )", EditorStyles.boldLabel, new GUILayoutOption[] { GUILayout.Width(600) });
 
     }
     void SetScriptingDefineSymbols()
@@ -1251,7 +1251,7 @@ public class LevelMakerEditor : EditorWindow
         GUILayout.BeginHorizontal();
         GUILayout.Space(60);
 
-        GUILayout.Label("Assets/JuiceFresh/Resouces/Levels/", EditorStyles.label, new GUILayoutOption[] { GUILayout.Width(200) });
+        GUILayout.Label("Assets/PopGarden/Resouces/Levels/", EditorStyles.label, new GUILayoutOption[] { GUILayout.Width(200) });
         GUILayout.EndHorizontal();
         GUILayout.EndVertical();
 
@@ -2044,7 +2044,7 @@ public class LevelMakerEditor : EditorWindow
         if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor)
         {
             //Write to file
-            string activeDir = Application.dataPath + @"/JuiceFresh/Resources/Levels/";
+            string activeDir = Application.dataPath + @"/PopGarden/Resources/Levels/";
             string newPath = System.IO.Path.Combine(activeDir, levelNumber + ".txt");
             StreamWriter sw = new StreamWriter(newPath);
             sw.Write(saveString);
