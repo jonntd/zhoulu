@@ -13,8 +13,8 @@ public class Autorun {
     static void InitProject() {
         EditorApplication.update -= InitProject;
         if (EditorApplication.timeSinceStartup < 10 || !EditorPrefs.GetBool("AlreadyOpened")) {
-            if (EditorSceneManager.GetActiveScene().name != "game" && Directory.Exists("Assets/JuiceFresh/Scenes")) {
-                EditorSceneManager.OpenScene("Assets/JuiceFresh/Scenes/game.unity");
+            if (EditorSceneManager.GetActiveScene().name != "game" && Directory.Exists("Assets/CandySmash/Scenes")) {
+                EditorSceneManager.OpenScene("Assets/CandySmash/Scenes/game.unity");
 
             }
             LevelMakerEditor.Init();
