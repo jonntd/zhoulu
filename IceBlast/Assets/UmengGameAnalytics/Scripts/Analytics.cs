@@ -75,7 +75,7 @@ namespace Umeng
         public static void SetLogEnabled(bool value)
         {
 #if UNITY_EDITOR
-        Debug.Log("SetLogEnabled");  
+        Debug.Log("");  
 #elif UNITY_IPHONE
         _SetLogEnabled(value);
 #elif UNITY_ANDROID

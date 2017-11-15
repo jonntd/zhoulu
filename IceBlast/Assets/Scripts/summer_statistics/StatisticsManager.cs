@@ -44,7 +44,7 @@ public class StatisticsManager
     public static void AppKeyAndChannelId(string appKey, string channelId)
     {
         GA.StartWithAppKeyAndChannelId(appKey, channelId);
-        Debug.Log("=================开始统计 默认发送策略为启动时发送=========================");
+        //Debug.Log("=================开始统计 默认发送策略为启动时发送=========================");
     }
 
     public static void SetLogEnabled(bool opne)

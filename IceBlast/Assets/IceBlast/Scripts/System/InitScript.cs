@@ -158,7 +158,7 @@ public class InitScript : MonoBehaviour
 #endif
         // RateURL
 
-        Debug.Log("RateURL:" + RateURL);
+        //Debug.Log("RateURL:" + RateURL);
 
         Instance = this;
         RestLifeTimer = PlayerPrefs.GetFloat("RestLifeTimer");
