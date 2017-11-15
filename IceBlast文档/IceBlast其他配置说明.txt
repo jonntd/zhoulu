@@ -1,8 +1,21 @@
+文件夹改名
+Scripts-DataManager 2处
+Scripts-Editor-Autorun 2处
+Scripts-Editor-LevelMakerEditor 3处
+
+
 ios发布
 
 Deployment info
 deployment target
 8.0
+
+多语言显示
+New-file-strings InfoPlist.strings
+项目主体添加多语言
+本地化
+
+
 
 编辑地图
 单张图块 24.58
