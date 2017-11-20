@@ -352,7 +352,7 @@ public class ExcelLevel
         if (Application.platform == RuntimePlatform.OSXEditor || Application.platform == RuntimePlatform.WindowsEditor)
         {
             //Write to file
-            string activeDir = Application.dataPath + @"/JuiceFresh/Resources/Levels/";
+            string activeDir = Application.dataPath + @"/PopGarden/Resources/Levels/";
             string newPath = System.IO.Path.Combine(activeDir, levelNumber + ".txt");
             StreamWriter sw = new StreamWriter(newPath, false);
             sw.Write(saveString);

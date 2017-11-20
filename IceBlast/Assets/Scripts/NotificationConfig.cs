@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class NotificationConfig
 {
+	//标题
+	public static string NoticeTitle = "Pon!Pon!Pon!!!";
 
-    public static int next_day_time = 60 * 60 * 24;
-    public static string next_day_text = "次日推送-退出游戏24小时后发送消息";
+    //满生命后发送 4500
+    public static int life_full_time = 4500;
+    public static string lift_full = "You got 5 lives now!Came back!Ice blast super fun!";
 
-    public static int day3_time = 5;//60 * 60 * 24 * 3;
-    public static string day3_text = "3日推送-...";
+    //次日发送 86400
+    public static int next_day_time = 86400;
+    public static string next_day_text = "Come back to Ice Blast and enjoy the fun time!";
 
-    public static int day7_time = 60 * 60 * 24 * 7;
-    public static string day7_text = "7日推送-...";
+    //3日后发送 259200
+    public static int day3_time = 259200;
+    public static string day3_text = "Come back to Ice Blast and enjoy the fun time!";
 
-    public static int life_full_time = 15 * 60 * 5;
-    public static string lift_full = "生命恢复推送-生命恢复满以后发送消息";
+    //7日后发送 604800
+    public static int day7_time = 604800;
+    public static string day7_text = "Come back to Ice Blast and enjoy the fun time!";
+
 }
 
