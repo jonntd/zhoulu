@@ -14,9 +14,9 @@ public class RAD : MonoBehaviour
     public int num = 5;
 
 #if UNITY_ANDROID
-    string adUnitId = "ca-app-pub-4966484504552142/6794528438";
+    string adUnitId = "ca-app-pub-4966484504552142/9519232849";
 #elif UNITY_IPHONE
-    string adUnitId = "ca-app-pub-4966484504552142/2820813777";
+    string adUnitId = "ca-app-pub-4966484504552142/1642287414";
 #else
     string adUnitId = "unexpected_platform";
 #endif
