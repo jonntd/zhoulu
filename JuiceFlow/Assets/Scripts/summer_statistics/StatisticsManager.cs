@@ -44,7 +44,7 @@ public class StatisticsManager
     public static void AppKeyAndChannelId(string appKey, string channelId)
     {
         GA.StartWithAppKeyAndChannelId(appKey, channelId);
-        Debug.Log("=================开始统计 默认发送策略为启动时发送=========================");
+        //Debug.Log("=================开始统计 默认发送策略为启动时发送=========================");
     }
 
     public static void SetLogEnabled(bool opne)
@@ -94,7 +94,7 @@ public class StatisticsManager
     public static void Use(string item, int amount, double price)
     {
         GA.Use(item, amount, price);
-        GA.Event("Item" + item, item);
+        GA.Event("Item" + item, LevelManager.THIS.currentLevel.ToString());
         Debug.Log(string.Format("道具名称：{0}  道具数量：{1}  道具单价：{2}", item, amount, price));
     }
 
