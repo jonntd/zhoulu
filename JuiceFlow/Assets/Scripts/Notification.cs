@@ -10,22 +10,22 @@ public class Notification : MonoBehaviour
         //第一次进入游戏的时候清空，有可能用户自己把游戏冲后台杀死，这里强制清空
         CleanNotification();
     }
-	
-/*
-    void OnEnable()
-    {
-        Debug.Log("OnEnable");
-        CleanNotification();
-    }
 
-    void OnGUI()
-    {
-        if (GUILayout.Button("5 SECONDS", GUILayout.Height(Screen.height * 0.2f)))
+    /*
+        void OnEnable()
         {
-            NotificationManager.Send(TimeSpan.FromSeconds(NotificationConfig.day3_time), "title", NotificationConfig.day3_text, new Color(1, 0.3f, 0.15f));
+            Debug.Log("OnEnable");
+            CleanNotification();
         }
-    }
-*/
+
+        void OnGUI()
+        {
+            if (GUILayout.Button("5 SECONDS", GUILayout.Height(Screen.height * 0.2f)))
+            {
+                NotificationManager.Send(TimeSpan.FromSeconds(NotificationConfig.day3_time), "title", NotificationConfig.day3_text, new Color(1, 0.3f, 0.15f));
+            }
+        }
+    */
     void OnApplicationPause(bool paused)
     {
         Debug.Log("OnApplicationPause" + paused);
