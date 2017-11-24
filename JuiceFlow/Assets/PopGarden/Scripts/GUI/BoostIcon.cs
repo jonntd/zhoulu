@@ -43,7 +43,7 @@ public class BoostIcon : MonoBehaviour
             return;
         if (BoostCount() > 0)
         {
-            StatisticsManager.Use(type.ToString(), 1, 0);
+            StatisticsManager.Use(((int)type).ToString(), 1, 0);
             if (type != BoostType.Colorful_bomb && type != BoostType.Stripes && !LevelManager.THIS.DragBlocked)
                 LevelManager.THIS.ActivatedBoost = this;
             if (type == BoostType.Colorful_bomb)

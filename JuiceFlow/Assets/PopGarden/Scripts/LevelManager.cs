@@ -400,7 +400,12 @@ public class LevelManager : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS || UNITY_WINRT
                 if (passLevelCounter > 0 && InitScript.Instance.ShowRateEvery > 0)
                 {
-                    if (passLevelCounter % InitScript.Instance.ShowRateEvery == 0 && InitScript.Instance.ShowRateEvery > 0 && PlayerPrefs.GetInt("Rated", 0) == 0)
+                    bool result = false;
+                    if (passLevelCounter > 0 && (passLevelCounter % InitScript.Instance.ShowRateEvery) == 0)
+                    {
+                        result = true;
+                    }
+                    if (result && PlayerPrefs.GetInt("Rated", 0) == 0)
                         InitScript.Instance.ShowRate();
                 }
 #endif
@@ -422,7 +427,9 @@ public class LevelManager : MonoBehaviour
                 Time.timeScale = 1;
 
                 Debug.Log("222222222222222");
-                StopAllCoroutines();
+                //StopAllCoroutines();
+                IEnumerator or = TipsManager.THIS.CheckPossibleCombines();
+                StopCoroutine(or);
                 StartCoroutine(TipsManager.THIS.CheckPossibleCombines());
             }
             else if (value == GameState.GameOver)
@@ -618,8 +625,11 @@ public class LevelManager : MonoBehaviour
     {
         if (limitType == LIMIT.TIME)
         {
-            StopCoroutine(TimeTick());
-            StartCoroutine(TimeTick());
+            Debug.Log("RestartTimer");
+            IEnumerator or = TimeTick();
+            //StopCoroutine(or);
+            StartCoroutine(or);
+            //StopAllCoroutines();
         }
     }
 
@@ -1136,6 +1146,7 @@ public class LevelManager : MonoBehaviour
     {
         if (Limit <= 0)
         {
+            destroyAnyway.Clear();
             bool lose = false;
             Limit = 0;
 
@@ -1585,12 +1596,19 @@ public class LevelManager : MonoBehaviour
             {
                 if (LevelManager.Instance.limitType == LIMIT.TIME)
                 {
+
                     LevelManager.THIS.Limit--;
                     CheckWinLose();
+                    //Debug.Log("=============stoop=================");
                 }
             }
             if (gameStatus == GameState.Map || LevelManager.THIS.Limit <= 0 || gameStatus == GameState.GameOver)
+            {
+                //Debug.Log("=============Break=================");
                 yield break;
+
+            }
+            //Debug.Log("=============left_time================="+ LevelManager.THIS.Limit);
 
             yield return new WaitForSeconds(1);
         }

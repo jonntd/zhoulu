@@ -31,6 +31,7 @@ public class Counter_ : MonoBehaviour
 
     }
 
+    public float add_time;
     // Update is called once per frame
     void Update()
     {
@@ -57,7 +58,7 @@ public class Counter_ : MonoBehaviour
             if (LevelManager.Instance.limitType == LIMIT.MOVES)
             {
                 txt.text = "" + LevelManager.THIS.Limit;
-                txt.transform.GetComponent<RectTransform>().anchoredPosition = new Vector3(-460, -42, 0);
+                txt.transform.GetComponent<RectTransform>().anchoredPosition = new Vector3(-460, -12, 0);
                 //txt.transform.localScale = Vector3.one;
                 if (LevelManager.THIS.Limit <= 5)
                 {
@@ -80,6 +81,13 @@ public class Counter_ : MonoBehaviour
             }
             else
             {
+                add_time += Time.deltaTime;
+                if (add_time > 1)
+                {
+                    /*LevelManager.THIS.Limit = LevelManager.THIS.Limit - 1;
+                    add_time = add_time - 1f;*/
+                }
+
                 int minutes = Mathf.FloorToInt(LevelManager.THIS.Limit / 60F);
                 int seconds = Mathf.FloorToInt(LevelManager.THIS.Limit - minutes * 60);
                 txt.text = "" + string.Format("{0:00}:{1:00}", minutes, seconds);
@@ -106,25 +114,25 @@ public class Counter_ : MonoBehaviour
         }
         if (name == "TargetBlocks")
         {
-            txt.text = "" + (totalCount - LevelManager.THIS.targetBlocks) + "/" + totalCount;
+            txt.text = ""  + (LevelManager.THIS.targetBlocks);
             if (LevelManager.THIS.targetBlocks == 0)
                 parentGUI.Done();
         }
         if (name == "TargetCages")
         {
-            txt.text = "" + (totalCount - LevelManager.THIS.TargetCages) + "/" + totalCount;
+            txt.text = ""+ (LevelManager.THIS.TargetCages);
             if (LevelManager.THIS.TargetCages == 0)
                 parentGUI.Done();
         }
         if (name == "TargetBombs")
         {
-            txt.text = "" + (LevelManager.THIS.TargetBombs) + "/" + totalCount;
+            txt.text = "" + (LevelManager.THIS.TargetBombs);
             if (LevelManager.THIS.TargetBombs >= totalCount)
                 parentGUI.Done();
         }
         if (name == "CountIngr")
         {
-            txt.text = "" + (totalCount - LevelManager.THIS.ingrTarget[ingrTrackNumber].count) + "/" + totalCount;
+            txt.text = "" + (LevelManager.THIS.ingrTarget[ingrTrackNumber].count);
             if (LevelManager.THIS.ingrTarget[ingrTrackNumber].count == 0)
                 parentGUI.Done();
         }

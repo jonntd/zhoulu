@@ -215,15 +215,46 @@ public class InitScript : MonoBehaviour
         foreach (Transform item in canvas)
         {
             item.gameObject.SetActive(false);
+            /*if (item.gameObject.name == "DailyReward")
+            {
+                bool result = DialyReweardProxy.Instance.HasRewardDay();
+                item.gameObject.gameObject.SetActive(result);
+            }*/
         }
     }
+
+    void Start()
+    {
+        StartCoroutine(need_dialy_reward());
+
+
+    }
+
+    public IEnumerator need_dialy_reward()
+    {
+        yield return null;
+        yield return null;
+        Transform canvas = GameObject.Find("CanvasGlobal").transform;
+        foreach (Transform item in canvas)
+        {
+            //item.gameObject.SetActive(false);
+            if (item.gameObject.name == "DailyReward")
+            {
+                E_Reward result = DialyReweardProxy.Instance.HasRewardDay();
+                item.gameObject.gameObject.SetActive(result == E_Reward.has_reward);
+            }
+        }
+    }
+
 #if GOOGLE_MOBILE_ADS
 
-    public void HandleInterstitialLoaded(object sender, EventArgs args) {
+    public void HandleInterstitialLoaded(object sender, EventArgs args)
+    {
         print("HandleInterstitialLoaded event received.");
     }
 
-    public void HandleInterstitialFailedToLoad(object sender, AdFailedToLoadEventArgs args) {
+    public void HandleInterstitialFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    {
         print("HandleInterstitialFailedToLoad event received with message: " + args.Message);
     }
 #endif
@@ -318,12 +349,23 @@ public class InitScript : MonoBehaviour
 
     void ShowAdByType(AdType adType)
     {
+
         if (adType == AdType.AdmobInterstitial)
+        {
+            int result = PlayerPrefs.GetInt("AdmobInterstitial");
+            if (result > 0) return;
             ShowAds(false);
+        }
+
         else if (adType == AdType.UnityAdsVideo)
             ShowVideo();
         else if (adType == AdType.ChartboostInterstitial)
+        {
+            int result = PlayerPrefs.GetInt("AdmobInterstitial");
+            if (result > 0) return;
             ShowAds(true);
+        }
+
 
     }
 
@@ -357,7 +399,8 @@ public class InitScript : MonoBehaviour
         {
             Debug.Log("show Google mobile ads Interstitial on " + LevelManager.THIS.gameStatus);
 #if GOOGLE_MOBILE_ADS
-            if (interstitial.IsLoaded()) {
+            if (interstitial.IsLoaded())
+            {
                 interstitial.Show();
 #if UNITY_ANDROID
                 interstitial = new InterstitialAd(admobUIDAndroid);
@@ -378,9 +421,15 @@ public class InitScript : MonoBehaviour
 
     public void ShowRate()
     {
+        int result = PlayerPrefs.GetInt("Rated");
+        if (result > 0) return;
         rate.SetActive(true);
     }
 
+    public void HideRate()
+    {
+        rate.SetActive(false);
+    }
 
     public void CheckRewardedAds()
     {
@@ -460,6 +509,7 @@ public class InitScript : MonoBehaviour
     {
         AddGems(waitedPurchaseGems);
         waitedPurchaseGems = 0;
+        PlayerPrefs.SetInt("AdmobInterstitial", 1);
     }
 
     public void SpendLife(int count)

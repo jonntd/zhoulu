@@ -22,10 +22,10 @@ public class GUIEvents : MonoBehaviour {
 
     public void Settings(GameObject settings) {
         SoundBase.Instance.PlaySound(SoundBase.Instance.click);
-        if (!settings.activeSelf)
+        /*if (!settings.activeSelf)
             settings.SetActive(true);
         else
-            settings.SetActive(false);
+            settings.SetActive(false);*/
         // GameObject.Find("CanvasGlobal").transform.Find("Settings").gameObject.SetActive(true);
 
     }
