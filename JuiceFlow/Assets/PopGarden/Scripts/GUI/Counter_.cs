@@ -58,7 +58,7 @@ public class Counter_ : MonoBehaviour
             if (LevelManager.Instance.limitType == LIMIT.MOVES)
             {
                 txt.text = "" + LevelManager.THIS.Limit;
-                txt.transform.GetComponent<RectTransform>().anchoredPosition = new Vector3(-460, -12, 0);
+                txt.transform.GetComponent<RectTransform>().anchoredPosition = new Vector3(-440, -12, 0);
                 //txt.transform.localScale = Vector3.one;
                 if (LevelManager.THIS.Limit <= 5)
                 {
