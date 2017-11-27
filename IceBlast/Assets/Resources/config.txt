@@ -1,2 +1,0 @@
-Follow=www.baidu.com
-More=www.youku.com
