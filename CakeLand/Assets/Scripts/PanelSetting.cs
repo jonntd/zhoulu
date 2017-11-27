@@ -32,9 +32,9 @@ public class PanelSetting : MonoBehaviour
     public void on_rate()
     {
 #if UNITY_ANDROID
-        Application.OpenURL("https://play.google.com/store/apps/details?id=com.codef.iceblast");
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.codef.cakeland");
 #elif UNITY_IPHONE
-                Application.OpenURL("https://itunes.apple.com/app/ice-blast-jewel-scatter/id1296636369");
+        Application.OpenURL("https://itunes.apple.com/app/cakeland/id1315948846");
 #endif
     }
 
