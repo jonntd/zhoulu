@@ -215,8 +215,37 @@ public class InitScript : MonoBehaviour
         foreach (Transform item in canvas)
         {
             item.gameObject.SetActive(false);
+            /*if (item.gameObject.name == "DailyReward")
+            {
+                bool result = DialyReweardProxy.Instance.HasRewardDay();
+                item.gameObject.gameObject.SetActive(result);
+            }*/
         }
     }
+
+    void Start()
+    {
+        StartCoroutine(need_dialy_reward());
+
+
+    }
+
+    public IEnumerator need_dialy_reward()
+    {
+        yield return null;
+        yield return null;
+        Transform canvas = GameObject.Find("CanvasGlobal").transform;
+        foreach (Transform item in canvas)
+        {
+            //item.gameObject.SetActive(false);
+            if (item.gameObject.name == "DailyReward")
+            {
+                E_Reward result = DialyReweardProxy.Instance.HasRewardDay();
+                item.gameObject.gameObject.SetActive(result == E_Reward.has_reward);
+            }
+        }
+    }
+
 #if GOOGLE_MOBILE_ADS
 
     public void HandleInterstitialLoaded(object sender, EventArgs args)
