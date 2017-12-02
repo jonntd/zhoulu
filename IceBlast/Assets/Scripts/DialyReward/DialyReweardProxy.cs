@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DialyReweardProxy
 {
-
+    public int[] months = new int[] { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
     public static DialyReweardProxy Instance = new DialyReweardProxy();
     public int _last_day;               // 上一次登录的月
     public int _last_month;             // 上一个登录的日
@@ -31,6 +31,7 @@ public class DialyReweardProxy
         if (_last_reward_day == 0) return E_Reward.has_reward;
         if (_last_month == _curr_month && _curr_day == _last_day) return E_Reward.no_reward;
         if (_last_month == _curr_month && (_curr_day == _last_day + 1)) return E_Reward.has_reward;
+        if (IsNextDay()) return E_Reward.has_reward;
         return E_Reward.no_reward;
         /*for (int i = 1; i < 8; i++)
         {
@@ -67,10 +68,18 @@ public class DialyReweardProxy
             {
                 return E_Reward.has_reward;
             }
+            else if (IsNextDay())
+            {
+                return E_Reward.has_reward;
+            }
         }
         else if (day > 7 && _last_reward_day == 7)
         {
             if ((_last_day + 1) == _curr_day && _last_month == _curr_month)
+            {
+                return E_Reward.has_reward;
+            }
+            else if (IsNextDay())
             {
                 return E_Reward.has_reward;
             }
@@ -144,6 +153,24 @@ public class DialyReweardProxy
             _last_month = 0;
         }
     }
+
+
+    public bool IsNextDay()
+    {
+
+        if (_last_month + 1 == _curr_month)
+        {
+            if (months[_last_month] == _last_day && _curr_day == 1)
+                return true;
+        }
+        else if (_last_month == 12 && _curr_month == 1)
+        {
+            if (months[_last_month] == _last_day && _curr_day == 1)
+                return true;
+        }
+        return false;
+    }
+
 }
 
 public enum E_Reward

@@ -12,6 +12,8 @@ public class DailyRewardItem : MonoBehaviour, IPointerClickHandler
     public bool _result;
     public int day;
 
+    public GameObject obj;
+
     public void SetInfo(int reward)
     {
         reward_num = reward;
@@ -20,6 +22,7 @@ public class DailyRewardItem : MonoBehaviour, IPointerClickHandler
         int get_ward_day = DialyReweardProxy.Instance.AlreadyGetWard();
         E_Reward state = DialyReweardProxy.Instance.RewardState(day);
         SetGetRweward(state);
+        obj.SetActive(state == E_Reward.has_reward);
         if (day == 7 && state == E_Reward.already_reward)
             gameObject.SetActive(false);
         if (day == 8)
@@ -65,6 +68,7 @@ public class DailyRewardItem : MonoBehaviour, IPointerClickHandler
             SetGetRweward(E_Reward.already_reward);
             DialyReweardProxy.Instance.GetReward();
             InitScript.Instance.AddGems(reward_num);
+            obj.SetActive(false);
         }
 
     }
