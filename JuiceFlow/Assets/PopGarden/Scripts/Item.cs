@@ -141,8 +141,8 @@ public class Item : MonoBehaviour
         List<int> remainColors = new List<int>();
         for (int i = 0; i < LevelManager.Instance.colorLimit; i++)
         {
-            bool res=RandomManager.instance.IsValid(i);
-            if(!res)continue;
+            bool res = RandomManager.instance.IsValid(i);
+            if (!res) continue;
             bool canGen = true;
             if (col > 1)
             {
@@ -862,11 +862,13 @@ public class Item : MonoBehaviour
 
     public void DestroyHorizontal(bool boost = false)
     {
+        Debug.Log("DestroyHorizontal:" + gameObject.name);
         StartCoroutine(DestroyStrippedCor(boost, true));
     }
 
     public void DestroyVertical(bool boost = false)
     {
+        Debug.Log("DestroyVertical:" + gameObject.name);
         StartCoroutine(DestroyStrippedCor(boost, false));
     }
 
@@ -898,7 +900,7 @@ public class Item : MonoBehaviour
                             _square.item.extraChecked = true;
                             _square.item.DestroyHorizontal();
                         }
-                        else
+                        else if (_square.item.currentType == ItemsTypes.PACKAGE)
                         {
                             _square.item.DestroyItem(true, "", false, true);
                         }

@@ -426,7 +426,7 @@ public class LevelManager : MonoBehaviour
             {
                 Time.timeScale = 1;
 
-                Debug.Log("222222222222222");
+                //Debug.Log("222222222222222");
                 //StopAllCoroutines();
                 IEnumerator or = TipsManager.THIS.CheckPossibleCombines();
                 StopCoroutine(or);
@@ -1331,6 +1331,7 @@ public class LevelManager : MonoBehaviour
         }
         foreach (ItemsTypes itemType in gatheredTypes)
         {
+            //Debug.Log("item:" + itemType);
             if (itemType == ItemsTypes.HORIZONTAL_STRIPPED)
                 item.DestroyHorizontal();
             else
@@ -1370,7 +1371,7 @@ public class LevelManager : MonoBehaviour
 
         int i = 0;
         //line.SetVertexCount(destroyAnyway.Count*2);
-       
+
         int length = destroyAnyway.Count;
         int tmp = length;
         for (int id = 0; id < length; id++)
@@ -1397,7 +1398,7 @@ public class LevelManager : MonoBehaviour
                 //i++;
             }
         }
-        
+
 
         if (LevelManager.THIS.gameStatus == GameState.Playing)
         {

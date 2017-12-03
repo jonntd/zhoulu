@@ -61,7 +61,7 @@ public class StatisticsManager
         GA.StartLevel(level);
         //StatisticsMgr.des += "Lvstart"+ level;
         GA.Event("Lvstart", level);
-        Debug.Log("进入关卡" + level);
+        //Debug.Log("进入关卡" + level);
         //随机推荐
         RandomAppsManager.Instance.RandomShowCtrl();
         EnterLevel();
@@ -75,7 +75,7 @@ public class StatisticsManager
     {
         GA.FinishLevel(level);
         GA.Event("Lvpass", level);
-        Debug.Log("通过关卡" + level);
+        //Debug.Log("通过关卡" + level);
 
     }
     /// <summary>
@@ -86,7 +86,7 @@ public class StatisticsManager
     {
         GA.FailLevel(level);
         GA.Event("Lvfail", level);
-        Debug.Log("未通过关卡." + level);
+        //Debug.Log("未通过关卡." + level);
 
     }
 

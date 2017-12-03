@@ -49,7 +49,7 @@ public class RandomAppsManager : MonoBehaviour
     {
 
         int num = (int)Random.Range(0, 3);
-        Debug.Log("num:" + num);
+        //Debug.Log("num:" + num);
         if (num == 0)
             RandomAppsShow();
         else
@@ -66,7 +66,7 @@ public class RandomAppsManager : MonoBehaviour
         holder.gameObject.SetActive(true);
         int num = (int)Random.Range(0, uiList.Count);
         _showIcon(num);
-        Debug.Log("xianshi");
+        //Debug.Log("xianshi");
     }
 
     private void _showIcon(int index)
