@@ -1370,19 +1370,34 @@ public class LevelManager : MonoBehaviour
 
         int i = 0;
         //line.SetVertexCount(destroyAnyway.Count*2);
-        line.SetVertexCount(destroyAnyway.Count);       //draw line effect for selected items
-        foreach (Item item in destroyAnyway)
+       
+        int length = destroyAnyway.Count;
+        int tmp = length;
+        for (int id = 0; id < length; id++)
         {
-            if (item != null)
+            if (destroyAnyway[i].CurrentType == ItemsTypes.INGREDIENT)
             {
-                line.AddPoint(item.transform.position, i);
-                i++;
+                tmp = 0;
+                break;
             }
-            //Drawing.DrawLine(destroyAnyway[i-1].transform.position, item.transform.position );
-            //line.SetPosition(i, item.transform.position);
-            //line.SetPosition(i, item.transform.position+Vector3.one*0.01f);
-            //i++;
         }
+        line.SetVertexCount(tmp);       //draw line effect for selected items
+        if (tmp != 0)
+        {
+            foreach (Item item in destroyAnyway)
+            {
+                if (item != null)
+                {
+                    line.AddPoint(item.transform.position, i);
+                    i++;
+                }
+                //Drawing.DrawLine(destroyAnyway[i-1].transform.position, item.transform.position );
+                //line.SetPosition(i, item.transform.position);
+                //line.SetPosition(i, item.transform.position+Vector3.one*0.01f);
+                //i++;
+            }
+        }
+        
 
         if (LevelManager.THIS.gameStatus == GameState.Playing)
         {

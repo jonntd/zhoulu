@@ -100,7 +100,7 @@ public class StatisticsManager
     {
         GA.Use(item, amount, price);
         GA.Event("Item" + item, LevelManager.THIS.currentLevel.ToString());
-        Debug.Log(string.Format("道具名称：{0}  道具数量：{1}  道具单价：{2}", item, amount, price));
+        //Debug.Log(string.Format("道具名称：{0}  道具数量：{1}  道具单价：{2}", item, amount, price));
     }
 
 

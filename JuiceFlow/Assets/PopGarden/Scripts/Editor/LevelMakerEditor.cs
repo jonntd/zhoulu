@@ -65,6 +65,15 @@ public class LevelMakerEditor : EditorWindow
     public static void AddLife()
     {
         PlayerPrefs.SetInt("Lifes", 5);
+        PlayerPrefs.Save();
+    }
+
+    [MenuItem("Window/Juice Fresh editor/重置金币为100000")]
+    public static void AddGems()
+    {
+        PlayerPrefs.SetInt("Gems", 100000);
+        PlayerPrefs.Save();
+
     }
 
     [MenuItem("Window/Juice Fresh editor/清除Dialy Reward")]
