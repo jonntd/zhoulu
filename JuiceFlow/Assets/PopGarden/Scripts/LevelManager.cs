@@ -1373,17 +1373,15 @@ public class LevelManager : MonoBehaviour
         //line.SetVertexCount(destroyAnyway.Count*2);
 
         int length = destroyAnyway.Count;
-        int tmp = length;
-        for (int id = 0; id < length; id++)
+        for (int id = length - 1; id >= 0; id--)
         {
             if (destroyAnyway[i].CurrentType == ItemsTypes.INGREDIENT)
             {
-                tmp = 0;
-                break;
+                destroyAnyway.RemoveAt(i);
             }
         }
-        line.SetVertexCount(tmp);       //draw line effect for selected items
-        if (tmp != 0)
+        line.SetVertexCount(destroyAnyway.Count);       //draw line effect for selected items
+        if (destroyAnyway.Count != 0)
         {
             foreach (Item item in destroyAnyway)
             {

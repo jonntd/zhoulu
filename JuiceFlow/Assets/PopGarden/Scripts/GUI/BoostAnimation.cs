@@ -48,7 +48,7 @@ public class BoostAnimation : MonoBehaviour
                             _square.item.extraChecked = true;
                             _square.item.DestroyHorizontal();
                         }
-                        else if (_square.item.currentType == ItemsTypes.PACKAGE)
+                        else
                         {
                             _square.item.DestroyItem(true, "destroy_package");
                         }
