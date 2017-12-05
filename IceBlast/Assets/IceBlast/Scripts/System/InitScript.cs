@@ -158,7 +158,7 @@ public class InitScript : MonoBehaviour
 #endif
         // RateURL
 
-        //Debug.Log("RateURL:" + RateURL);
+        Debug.Log("RateURL:" + RateURL);
 
         Instance = this;
         RestLifeTimer = PlayerPrefs.GetFloat("RestLifeTimer");
@@ -539,7 +539,8 @@ public class InitScript : MonoBehaviour
 
     public void SpendBoost(BoostType boostType)
     {
-        PlayerPrefs.SetInt("" + boostType, PlayerPrefs.GetInt("" + boostType) - 1);
+        int old = PlayerPrefs.GetInt("" + boostType);
+        PlayerPrefs.SetInt("" + boostType, old - 1);
         PlayerPrefs.Save();
 #if PLAYFAB
         PlayFabDataManager.SetBoosterData();
