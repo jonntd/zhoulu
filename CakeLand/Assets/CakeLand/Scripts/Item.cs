@@ -256,7 +256,7 @@ public class Item : MonoBehaviour
     public void AwakeItem()
     {
         awaken = true;
-        //anim.SetTrigger("Idle");
+        anim.SetTrigger("Idle");
 
         if (currentType != ItemsTypes.BOMB)
             sprRenderer.sprite = itemsAnimation[color];

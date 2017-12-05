@@ -96,13 +96,14 @@ public class AppInfo
     /// <returns></returns>
     public bool IsValid()
     {
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         if (string.IsNullOrEmpty(aaddres)) return false;
         return true;
-        #elif UNITY_IPHONE
+#elif UNITY_IPHONE
         if (string.IsNullOrEmpty(iaddres)) return false;
         return true;
-        #endif
+#endif
+        return false;
     }
 }
 
