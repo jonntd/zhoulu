@@ -1,12 +1,12 @@
 ﻿
-using UnityEngine;
 namespace Summer.Game
 {
     public class GameManager
     {
-        public static GameManager Instance = new GameManager();
-        public int _col;                         //列
-        public int _row;                         //行
+        public static GameManager Instance
+            = new GameManager();
+        public int _col_num;                                        //列
+        public int _row_num;                                        //行
 
         /// <summary>
         /// 根据糖果类型对匹配列表进行分组
@@ -67,5 +67,7 @@ namespace Summer.Game
 
         }
 
+        #region  三消核心检测算法
+        #endregion
     }
 }
