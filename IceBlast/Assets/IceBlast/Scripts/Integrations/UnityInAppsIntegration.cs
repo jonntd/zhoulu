@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using Summer;
 #if UNITY_INAPPS
 
 using UnityEngine.Purchasing;
@@ -99,7 +100,7 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
 
     public void BuyProductID(string productId)
     {
-        Debug.Log("购买的ID:"+ productId);
+        LogManager.Log("购买的ID:"+ productId);
         // If the stores throw an unexpected exception, use try..catch to protect my logic here.
         try
         {
@@ -112,28 +113,28 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
                 // If the look up found a product for this device's store and that product is ready to be sold ... 
                 if (product != null && product.availableToPurchase)
                 {
-                    Debug.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));// ... buy the product. Expect a response either through ProcessPurchase or OnPurchaseFailed asynchronously.
+                    LogManager.Log(string.Format("Purchasing product asychronously: '{0}'", product.definition.id));// ... buy the product. Expect a response either through ProcessPurchase or OnPurchaseFailed asynchronously.
                     m_StoreController.InitiatePurchase(product);
                 }
                 // Otherwise ...
                 else
                 {
                     // ... report the product look-up failure situation  
-                    Debug.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
+                    LogManager.Log("BuyProductID: FAIL. Not purchasing product, either is not found or is not available for purchase");
                 }
             }
             // Otherwise ...
             else
             {
                 // ... report the fact Purchasing has not succeeded initializing yet. Consider waiting longer or retrying initiailization.
-                Debug.Log("BuyProductID FAIL. Not initialized.");
+                LogManager.Log("BuyProductID FAIL. Not initialized.");
             }
         }
         // Complete the unexpected exception handling ...
         catch (Exception e)
         {
             // ... by reporting any unexpected exception for later diagnosis.
-            Debug.Log("BuyProductID: FAIL. Exception during purchase. " + e);
+            LogManager.Log("BuyProductID: FAIL. Exception during purchase. " + e);
         }
     }
 
@@ -145,7 +146,7 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
         if (!IsInitialized())
         {
             // ... report the situation and stop restoring. Consider either waiting longer, or retrying initialization.
-            Debug.Log("RestorePurchases FAIL. Not initialized.");
+            LogManager.Log("RestorePurchases FAIL. Not initialized.");
             return;
         }
 
@@ -154,7 +155,7 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
             Application.platform == RuntimePlatform.OSXPlayer)
         {
             // ... begin restoring purchases
-            Debug.Log("RestorePurchases started ...");
+            LogManager.Log("RestorePurchases started ...");
 
             // Fetch the Apple store-specific subsystem.
             var apple = m_StoreExtensionProvider.GetExtension<IAppleExtensions>();
@@ -162,14 +163,14 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
             apple.RestoreTransactions((result) =>
             {
                 // The first phase of restoration. If no more responses are received on ProcessPurchase then no purchases are available to be restored.
-                Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
+                LogManager.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
             });
         }
         // Otherwise ...
         else
         {
             // We are not running on an Apple device. No work is necessary to restore purchases.
-            Debug.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
+            LogManager.Log("RestorePurchases FAIL. Not supported on this platform. Current = " + Application.platform);
         }
     }
 
@@ -181,7 +182,7 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
     public void OnInitialized(IStoreController controller, IExtensionProvider extensions)
     {
         // Purchasing has succeeded initializing. Collect our Purchasing references.
-        Debug.Log("OnInitialized: PASS");
+        LogManager.Log("OnInitialized: PASS");
 
         // Overall Purchasing system, configured with products for this application.
         m_StoreController = controller;
@@ -193,7 +194,7 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
     public void OnInitializeFailed(InitializationFailureReason error)
     {
         // Purchasing set-up has not succeeded. Check error for reason. Consider sharing this reason with the user.
-        Debug.Log("OnInitializeFailed InitializationFailureReason:" + error);
+        LogManager.Log("OnInitializeFailed InitializationFailureReason:" + error);
     }
 
 
@@ -202,7 +203,7 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
         // A consumable product has been purchased by this user.
         if (Array.IndexOf(LevelManager.THIS.InAppIDs, args.purchasedProduct.definition.id) > -1)
         {
-            Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));//If the consumable item has been successfully purchased, add 100 coins to the player's in-game score.
+            LogManager.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));//If the consumable item has been successfully purchased, add 100 coins to the player's in-game score.
             InitScript.Instance.PurchaseSucceded();
 
         }
@@ -214,7 +215,7 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
     public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
     {
         // A product purchase attempt did not succeed. Check failureReason for more detail. Consider sharing this reason with the user.
-        Debug.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureReason));
+        LogManager.Log(string.Format("OnPurchaseFailed: FAIL. Product: '{0}', PurchaseFailureReason: {1}", product.definition.storeSpecificId, failureReason));
     }
 }
 #endif
