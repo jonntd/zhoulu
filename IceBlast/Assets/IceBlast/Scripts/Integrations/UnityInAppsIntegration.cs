@@ -52,7 +52,11 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
         for (int i = 0; i < LevelManager.THIS.InAppIDs.Length; i++)
         {
             kProductIDConsumableArray[i] = LevelManager.THIS.InAppIDs[i];
-            builder.AddProduct(kProductIDConsumableArray[i], ProductType.Consumable, new IDs() { { kProductIDConsumableArray[i], AppleAppStore.Name }, { kProductIDConsumableArray[i], GooglePlay.Name }, });
+            builder.AddProduct(kProductIDConsumableArray[i], ProductType.Consumable, new IDs()
+            {
+                { kProductIDConsumableArray[i], AppleAppStore.Name },
+                { kProductIDConsumableArray[i], GooglePlay.Name },
+            });
         }
 
         // Create a builder, first passing in a suite of Unity provided stores.
@@ -95,6 +99,7 @@ public class UnityInAppsIntegration : MonoBehaviour, IStoreListener
 
     public void BuyProductID(string productId)
     {
+        Debug.Log("购买的ID:"+ productId);
         // If the stores throw an unexpected exception, use try..catch to protect my logic here.
         try
         {
