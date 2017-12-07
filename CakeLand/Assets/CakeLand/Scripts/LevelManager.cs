@@ -426,7 +426,7 @@ public class LevelManager : MonoBehaviour
             {
                 Time.timeScale = 1;
 
-                Debug.Log("222222222222222");
+                //Debug.Log("222222222222222");
                 //StopAllCoroutines();
                 IEnumerator or = TipsManager.THIS.CheckPossibleCombines();
                 StopCoroutine(or);
@@ -1331,6 +1331,7 @@ public class LevelManager : MonoBehaviour
         }
         foreach (ItemsTypes itemType in gatheredTypes)
         {
+            //Debug.Log("item:" + itemType);
             if (itemType == ItemsTypes.HORIZONTAL_STRIPPED)
                 item.DestroyHorizontal();
             else
@@ -1370,19 +1371,35 @@ public class LevelManager : MonoBehaviour
 
         int i = 0;
         //line.SetVertexCount(destroyAnyway.Count*2);
-        line.SetVertexCount(destroyAnyway.Count);       //draw line effect for selected items
-        foreach (Item item in destroyAnyway)
+
+        int tmo = destroyAnyway.Count;
+        int length = destroyAnyway.Count;
+        for (int id = length - 1; id >= 0; id--)
         {
-            if (item != null)
+            if (destroyAnyway[i].CurrentType == ItemsTypes.INGREDIENT)
             {
-                line.AddPoint(item.transform.position, i);
-                i++;
+                //destroyAnyway.RemoveAt(i);
+                tmo = 0;
+                break;;
             }
-            //Drawing.DrawLine(destroyAnyway[i-1].transform.position, item.transform.position );
-            //line.SetPosition(i, item.transform.position);
-            //line.SetPosition(i, item.transform.position+Vector3.one*0.01f);
-            //i++;
         }
+        line.SetVertexCount(destroyAnyway.Count);       //draw line effect for selected items
+        if (tmo != 0)
+        {
+            foreach (Item item in destroyAnyway)
+            {
+                if (item != null)
+                {
+                    line.AddPoint(item.transform.position, i);
+                    i++;
+                }
+                //Drawing.DrawLine(destroyAnyway[i-1].transform.position, item.transform.position );
+                //line.SetPosition(i, item.transform.position);
+                //line.SetPosition(i, item.transform.position+Vector3.one*0.01f);
+                //i++;
+            }
+        }
+
 
         if (LevelManager.THIS.gameStatus == GameState.Playing)
         {

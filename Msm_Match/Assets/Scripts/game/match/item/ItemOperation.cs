@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using DG.Tweening;
+//using DG.Tweening;
 
 namespace Summer.Game
 {
     /// <summary>
     /// 
     /// </summary>
-    public class ItemOperation : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class ItemOperation : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
     {
 
         private Item item;
@@ -34,10 +34,10 @@ namespace Summer.Game
         public void OnPointerUp(PointerEventData eventData)
         {
             // 1.如果其他人正在操作 返回
-            if (GameController.instance.isOperation)
+            if (GameController.instance.is_operation)
                 return;
             // 2.正在操作
-            GameController.instance.isOperation = true;
+            GameController.instance.is_operation = true;
             upPos = Input.mousePosition;
             // 3.获取方向
             Vector2 dir = Util.GetDirection(upPos, downPos);
@@ -47,7 +47,7 @@ namespace Summer.Game
             //点击异常处理
             if (!MathHelper.IsEqualFloat(dir.magnitude, 1f))
             {
-                GameController.instance.isOperation = false;
+                GameController.instance.is_operation = false;
                 return;
             }
 
@@ -76,7 +76,7 @@ namespace Summer.Game
             bool isLagal = GameController.instance.CheckRCLegal(targetRow, targetColumn);
             if (!isLagal)
             {
-                GameController.instance.isOperation = false;
+                GameController.instance.is_operation = false;
                 //不合法跳出
                 yield break;
             }
@@ -88,7 +88,7 @@ namespace Summer.Game
             Item myItem = GameController.instance.allItems[item.itemRow, item.itemColumn];
             if (!target || !myItem)
             {
-                GameController.instance.isOperation = false;
+                GameController.instance.is_operation = false;
                 //Item已经被消除
                 yield break;
             }
@@ -126,25 +126,35 @@ namespace Summer.Game
                 //延迟
                 yield return new WaitForSeconds(0.2f);
                 //操作完毕
-                GameController.instance.isOperation = false;
+                GameController.instance.is_operation = false;
             }
         }
 
-        public void ItemMove(int targetRow, int targetColumn, Vector3 pos)
+        public void ItemMove(int target_row, int target_column, Vector3 pos)
         {
             //改行列
-            item.itemRow = targetRow;
-            item.itemColumn = targetColumn;
+            item.itemRow = target_row;
+            item.itemColumn = target_column;
             //改全局列表
-            GameController.instance.allItems[targetRow, targetColumn] = item;
+            GameController.instance.allItems[target_row, target_column] = item;
             //移动
-            transform.DOMove(pos, 0.2f);
+            //transform.DOMove(pos, 0.2f);
         }
 
         public void CurrentItemDrop(Vector3 pos)
         {
             //下落
-            transform.DOMove(pos, 0.2f);
+            //transform.DOMove(pos, 0.2f);
+        }
+
+        public void OnPointerEnter(PointerEventData event_data)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void OnPointerExit(PointerEventData event_data)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
