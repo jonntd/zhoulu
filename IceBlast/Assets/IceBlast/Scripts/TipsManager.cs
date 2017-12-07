@@ -107,7 +107,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             // StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
-                            Debug.Log("row" + row + "col:" + col);
+                            // Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -125,7 +125,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             // StartCoroutine(showTip(nextMoveItems[0], Vector3.down));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -143,7 +143,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             // StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -162,7 +162,7 @@ public class TipsManager : MonoBehaviour
                         }
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             // StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
                             showTip(nextMoveItems);
                             yield break;
@@ -181,7 +181,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.down));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -200,7 +200,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             // StartCoroutine(showTip(nextMoveItems[0], Vector3.left));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -218,7 +218,7 @@ public class TipsManager : MonoBehaviour
                         }
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.left));
                             showTip(nextMoveItems);
                             yield break;
@@ -239,7 +239,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.left));
-                            Debug.Log("row" + row + "col:" + col);
+                            // Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -260,7 +260,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.left));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -278,7 +278,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.right));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -297,7 +297,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.right));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -314,7 +314,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //   StartCoroutine(showTip(nextMoveItems[0], Vector3.right));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -331,7 +331,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //   StartCoroutine(showTip(nextMoveItems[0], Vector3.left));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -349,7 +349,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //  StartCoroutine(showTip(nextMoveItems[0], Vector3.down));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -368,7 +368,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //   StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -387,7 +387,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //   StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
-                            Debug.Log("row" + row + "col:" + col);
+                            //Debug.Log("row" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -406,7 +406,7 @@ public class TipsManager : MonoBehaviour
                         if (nextMoveItems.Count == 3 && GetSquare(row, col).CanGoInto())
                         {
                             //   StartCoroutine(showTip(nextMoveItems[0], Vector3.up));
-                            Debug.Log("row:" + row + "col:" + col);
+                            //Debug.Log("row:" + row + "col:" + col);
                             showTip(nextMoveItems);
                             yield break;
                         }
@@ -426,7 +426,7 @@ public class TipsManager : MonoBehaviour
                             square = GetSquare(row + 1, col);
                             if (square == null)
                             {
-                                Debug.Log(maxRow + "_" + maxCol + "/" + row + "_ " + col);
+                                Debug.LogError(maxRow + "_" + maxCol + "/" + row + "_ " + col);
                             }
                             if (square.item != null)
                             {
@@ -481,14 +481,14 @@ public class TipsManager : MonoBehaviour
                         {
                             if (v > h && nextMoveItems[2].square.type != SquareTypes.WIREBLOCK)
                             { //StartCoroutine(showTip(nextMoveItems[2], new Vector3(Random.Range(-1f, 1f), 0, 0)));
-                                Debug.Log("row" + row + "col:" + col);
+                                //Debug.Log("row" + row + "col:" + col);
                                 showTip(nextMoveItems);
                                 yield break;
 
                             }
                             else if (v < h && nextMoveItems[0].square.type != SquareTypes.WIREBLOCK)
                             { // StartCoroutine(showTip(nextMoveItems[0], new Vector3(0, Random.Range(-1f, 1f), 0)));
-                                Debug.Log("row" + row + "col:" + col);
+                                //Debug.Log("row" + row + "col:" + col);
                                 showTip(nextMoveItems);
                                 yield break;
 
