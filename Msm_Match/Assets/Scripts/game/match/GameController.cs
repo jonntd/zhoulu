@@ -27,7 +27,7 @@ namespace Summer.Game
         //随机颜色
         public Color randomColor;
         //正在操作
-        public bool isOperation = false;
+        public bool is_operation = false;
         //是否正在执行AllBoom
         public bool allBoom = false;
 
@@ -119,7 +119,7 @@ namespace Summer.Game
                     if (boomList.Count > 0)
                     {
                         hasBoom = true;
-                        isOperation = true;
+                        is_operation = true;
                     }
                 }
             }
@@ -127,7 +127,7 @@ namespace Summer.Game
             if (!hasBoom)
             {
                 //操作结束
-                isOperation = false;
+                is_operation = false;
             }
         }
 
@@ -279,7 +279,7 @@ namespace Summer.Game
         /// <returns>The drop.</returns>
         IEnumerator ItemsDrop()
         {
-            isOperation = true;
+            is_operation = true;
             //逐列检测
             for (int i = 0; i < tableColumn; i++)
             {
@@ -327,7 +327,7 @@ namespace Summer.Game
         /// <returns>The new item.</returns>
         public IEnumerator CreateNewItem()
         {
-            isOperation = true;
+            is_operation = true;
             for (int i = 0; i < tableColumn; i++)
             {
                 int count = 0;
