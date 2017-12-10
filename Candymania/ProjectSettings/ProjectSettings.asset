@@ -518,9 +518,9 @@ PlayerSettings:
   webGLUseWasm: 0
   webGLCompressionFormat: 1
   scriptingDefineSymbols:
-    4: UNITY_INAPPS
-    7: UNITY_INAPPS
-    14: UNITY_INAPPS
+    4: GOOGLE_MOBILE_ADS;UNITY_INAPPS
+    7: GOOGLE_MOBILE_ADS;UNITY_INAPPS
+    14: GOOGLE_MOBILE_ADS;UNITY_INAPPS
     15: FACEBOOK;GAMESPARKS;UNITY_INAPPS
   platformArchitecture:
     iOS: 2
@@ -622,7 +622,7 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: pluginIncompatible
   apiCompatibilityLevel: 2
-  cloudProjectId: 9401876e-4745-4b7e-afd6-fb195c0bd094
+  cloudProjectId: 32411b68-7724-41b7-b787-e6b13226f16e
   projectName: Candy Mania
   organizationId: 52
   cloudEnabled: 0
