@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CandyInfo : MonoBehaviour {
+public class CandyCnf : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

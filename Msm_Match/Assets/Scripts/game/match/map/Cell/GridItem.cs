@@ -38,7 +38,7 @@ namespace Summer.Game
         public void _init()
         {
             // 初始化位置
-            rect_trans.localPosition = new Vector3(_info.itemX, _info.itemY, 0);
+            rect_trans.localPosition = new Vector3(_info.ItemPosX, _info.ItemPosY, 0);
             // 初始化图片
         }
     }

@@ -9,6 +9,8 @@ namespace Summer.Game
     {
         public static ItemFactory Instance;
 
+
+        public CandyItem candy_prf;
         public GridItem grid_pfb;
 
         private void Awake()
@@ -22,6 +24,16 @@ namespace Summer.Game
         }
 
         public void PushGridItem(GridItem item)
+        {
+
+        }
+
+        public CandyItem PopCandyItem()
+        {
+            return Instantiate(candy_prf);
+        }
+
+        public void PushCandyItem(GridItem item)
         {
 
         }

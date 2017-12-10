@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Summer.Game
 {
     public class CandyItem : MonoBehaviour
     {
-        public CandyInfo _info;
-
-        private RectTransform rect_trans;
+        public CandyInfo info;
+        public Image icon;
+        public RectTransform rect_trans;
 
         #region
         void Awake()
         {
-            rect_trans = GetComponent<RectTransform>();
+
         }
         // Use this for initialization
         void Start()
@@ -29,16 +31,31 @@ namespace Summer.Game
 
         #endregion
 
-        public void SetInfo(CandyInfo info)
+        public void SetInfo(CandyInfo data)
         {
-            _info = info;
+            info = data;
             _init();
         }
 
         public void _init()
         {
-            rect_trans.localPosition = new Vector3(_info.itemX, _info.itemY, 0);
+            rect_trans.localPosition = new Vector3(info.ItemPosX, info.ItemPosY, 0);
         }
+
+        #region Des
+
+        public string des;
+
+        public string ToDes()
+        {
+            if (string.IsNullOrEmpty(des))
+            {
+                des = "Rol:" + info.itemRow + "   Col:" + info.itemCol;
+            }
+            return des;
+        }
+
+        #endregion
     }
 
 
