@@ -9,7 +9,7 @@ namespace Summer.Game
     /// <summary>
     /// 移动功能
     /// </summary>
-    public class MoveEffect : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+    public class MoveEffect : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
     {
         public static int move_effect_index = 0;
         private CandyItem item;
@@ -26,7 +26,13 @@ namespace Summer.Game
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            downPos = Input.mousePosition;
+            GameController.instance.SetOperation(true);
+            GameController.instance.AddCandy(item);
+            if (GameController.instance.CanMove())
+            {
+                GameController.instance.Move();
+            }
+            //downPos = Input.mousePosition;
         }
 
         public void OnPointerUp(PointerEventData eventData)
@@ -58,6 +64,15 @@ namespace Summer.Game
             Vector2 dir = Util.GetDirection(upPos, downPos);
             enumerator = ItemExchange(dir);
             StartCoroutine(enumerator);
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            GameController.instance.AddCandy(item);
+            if (GameController.instance.CanMove())
+            {
+                GameController.instance.Move();
+            }
         }
 
         #endregion

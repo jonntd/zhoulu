@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Summer.Game
@@ -499,6 +500,59 @@ namespace Summer.Game
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
+        }
+
+        public void SetOperation(bool value)
+        {
+            is_operation = value;
+        }
+
+        public CandyItem first;
+        public CandyItem second;
+        public void AddCandy(CandyItem item)
+        {
+            if (first == null)
+            {
+                first = item;
+            }
+            else
+            {
+                if (first == item) return;
+            }
+
+            if (second == null)
+            {
+                second = item;
+            }
+            else
+            {
+                if (first == item) return;
+            }
+            LogManager.Error("--------------AddCandy Erro------------");
+        }
+
+        public bool CanMove()
+        {
+            if (first == null || second == null)
+                return false;
+            return true;
+        }
+
+        public void Move()
+        {
+
+        }
+
+        public void ClearSelect()
+        {
+            first = null;
+            second = null;
+        }
+
+        public IEnumerator IenMove()
+        {
+            yield break;
+
         }
     }
 }

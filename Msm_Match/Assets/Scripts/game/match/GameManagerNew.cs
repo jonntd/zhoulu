@@ -62,6 +62,10 @@ namespace Summer.Game
             }
         }
 
+        public bool CheckMatches() { return false; }
+        public void RemoveMatches() { }
+
+
         #endregion
 
         #region -Exchange交换两个糖果的位置
@@ -70,24 +74,24 @@ namespace Summer.Game
             // 1.糖果的交换的音乐
 
             //重新设置糖果集合里的数据
-           /* SetCandy(candy2.rIndex, candy2.cIndex, candy1);
-            SetCandy(candy1.rIndex, candy1.cIndex, candy2);
+            /* SetCandy(candy2.rIndex, candy2.cIndex, candy1);
+             SetCandy(candy1.rIndex, candy1.cIndex, candy2);
 
-            //记录candy1也就是第一个点击时记录下来的糖果的行列索引
-            rIndex = candy1.rIndex;
-            cIndex = candy1.cIndex;
+             //记录candy1也就是第一个点击时记录下来的糖果的行列索引
+             rIndex = candy1.rIndex;
+             cIndex = candy1.cIndex;
 
-            //交换candy1的行列索引
-            candy1.rIndex = candy2.rIndex;
-            candy1.cIndex = candy2.cIndex;
+             //交换candy1的行列索引
+             candy1.rIndex = candy2.rIndex;
+             candy1.cIndex = candy2.cIndex;
 
-            //交换candy2的行列索引
-            candy2.rIndex = rIndex;
-            candy2.cIndex = cIndex;
+             //交换candy2的行列索引
+             candy2.rIndex = rIndex;
+             candy2.cIndex = cIndex;
 
-            //同时执行candy1和candy2的位置更新方法
-            candy1.TweenToPosition();
-            candy2.TweenToPosition();*/
+             //同时执行candy1和candy2的位置更新方法
+             candy1.TweenToPosition();
+             candy2.TweenToPosition();*/
         }
         #endregion
 
