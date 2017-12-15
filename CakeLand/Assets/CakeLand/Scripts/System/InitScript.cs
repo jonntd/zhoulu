@@ -510,6 +510,7 @@ public class InitScript : MonoBehaviour
         AddGems(waitedPurchaseGems);
         waitedPurchaseGems = 0;
         PlayerPrefs.SetInt("AdmobInterstitial", 1);
+		PlayerPrefs.Save();
     }
 
     public void SpendLife(int count)
