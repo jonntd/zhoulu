@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class PanelSetting : MonoBehaviour
 {
 
-    public Button follow;
-    public Button more;
+    //public Button follow;
+    //public Button more;
 
     // Use this for initialization
     void Start () {
