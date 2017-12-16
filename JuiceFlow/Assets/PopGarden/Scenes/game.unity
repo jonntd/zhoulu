@@ -5637,8 +5637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060ebe47810350a4795c33d3df387c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  follow: {fileID: 0}
-  more: {fileID: 0}
 --- !u!1001 &520779868
 Prefab:
   m_ObjectHideFlags: 0
@@ -17369,12 +17367,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 223331127815477294, guid: 242b0e5afd0254f4699b9bccf6a902e4,
+    - target: {fileID: 223762338561451304, guid: 242b0e5afd0254f4699b9bccf6a902e4,
         type: 2}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 511786107}
-    - target: {fileID: 223762338561451304, guid: 242b0e5afd0254f4699b9bccf6a902e4,
+    - target: {fileID: 223331127815477294, guid: 242b0e5afd0254f4699b9bccf6a902e4,
         type: 2}
       propertyPath: m_Camera
       value: 
