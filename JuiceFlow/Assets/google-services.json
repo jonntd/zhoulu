@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "650089119186",
+    "firebase_url": "https://pop-garden.firebaseio.com",
+    "project_id": "pop-garden",
+    "storage_bucket": "pop-garden.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650089119186:android:a1ca83be653dc9bc",
+        "android_client_info": {
+          "package_name": "com.codef.popgarden"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650089119186-5p7gqt18rr0u32g22ncon54ek16qk3p7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQZWB_ohY4G8h02YtYdvFMgrXdb3LqunY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

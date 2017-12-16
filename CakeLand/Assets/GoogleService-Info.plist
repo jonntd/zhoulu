@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>465121778216-p07ja0ne46tqu9srlekg9nkbcm7nmh63.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.465121778216-p07ja0ne46tqu9srlekg9nkbcm7nmh63</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAoUam07LPu5qgsgT_uCHKVu3CBDBYECJk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>465121778216</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.codef.cakeland</string>
+	<key>PROJECT_ID</key>
+	<string>cake-land</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cake-land.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:465121778216:ios:cf6c06cace01c530</string>
+	<key>DATABASE_URL</key>
+	<string>https://cake-land.firebaseio.com</string>
+</dict>
+</plist>

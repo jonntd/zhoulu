@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>650089119186-g3moeo4oitl1rakn9bm0296h41m0p25i.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.650089119186-g3moeo4oitl1rakn9bm0296h41m0p25i</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCz3t8oYB0ATMIQgKe3_FWBLxMeCl1NxGc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>650089119186</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.codef.popgarden</string>
+	<key>PROJECT_ID</key>
+	<string>pop-garden</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pop-garden.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:650089119186:ios:a1ca83be653dc9bc</string>
+	<key>DATABASE_URL</key>
+	<string>https://pop-garden.firebaseio.com</string>
+</dict>
+</plist>

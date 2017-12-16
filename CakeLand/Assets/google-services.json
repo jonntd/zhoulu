@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "465121778216",
+    "firebase_url": "https://cake-land.firebaseio.com",
+    "project_id": "cake-land",
+    "storage_bucket": "cake-land.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:465121778216:android:cf6c06cace01c530",
+        "android_client_info": {
+          "package_name": "com.codef.cakeland"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "465121778216-n5e12vb1ll8o8om5gipqpcjt5203v45q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1ONFfCGga4osPwjFdf1AA0A7hjpz6xgE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
