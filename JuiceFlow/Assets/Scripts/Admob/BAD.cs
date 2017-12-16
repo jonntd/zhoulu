@@ -15,14 +15,12 @@ public class BAD : MonoBehaviour
     public GameObject BUI;
     private BannerView bannerView;
 
-    // Use this for initialization
     void Start()
     {
         float num = (float)Screen.height / Screen.width;
 
         int num2 = PlayerPrefs.GetInt("AdmobInterstitial",0);
-        //if (result > 0) return;
-        //Debug.Log("size=" + num);
+
         if (num > 1.70f && num2 == 0)
         {
             UIChange();
@@ -32,7 +30,6 @@ public class BAD : MonoBehaviour
 
     private void Showbanner()
     {
-        //Debug.Log("showbanner");
         bannerView = new BannerView(adUnitId, AdSize.Banner, AdPosition.Bottom);
         AdRequest request = new AdRequest.Builder().Build();
         bannerView.LoadAd(request);
@@ -40,7 +37,6 @@ public class BAD : MonoBehaviour
 
     private void UIChange()
     {
-        //BUI.transform.position = new Vector3(0,28.6f,0);
-        BUI.transform.Translate(new Vector3(0, 1.15f, 0));
+        BUI.transform.Translate(new Vector3(0, 1.1125f, 0));
     }
 }
