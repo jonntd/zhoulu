@@ -27,11 +27,13 @@ public class PrePlay : MonoBehaviour
         scoreTargetObject.SetActive(false);
         GameObject ingr1 = ingrObject.transform.Find("Ingr1").gameObject;
         GameObject ingr2 = ingrObject.transform.Find("Ingr2").gameObject;
-
         ingr1.SetActive(true);
         ingr2.SetActive(true);
-        ingr1.GetComponent<RectTransform>().localPosition = new Vector3(-74.37f, ingr1.GetComponent<RectTransform>().localPosition.y, ingr1.GetComponent<RectTransform>().localPosition.z);
-        ingr2.GetComponent<RectTransform>().localPosition = new Vector3(50.1f, ingr2.GetComponent<RectTransform>().localPosition.y, ingr2.GetComponent<RectTransform>().localPosition.z);
+        ingr1.GetComponent<RectTransform>().localPosition = new Vector3(-300f, ingr1.GetComponent<RectTransform>().localPosition.y, ingr1.GetComponent<RectTransform>().localPosition.z);
+        ingr2.GetComponent<RectTransform>().localPosition = new Vector3(300f, ingr2.GetComponent<RectTransform>().localPosition.y, ingr2.GetComponent<RectTransform>().localPosition.z);
+
+        //ingr1.GetComponent<RectTransform>().localPosition = new Vector3(-74.37f, ingr1.GetComponent<RectTransform>().localPosition.y, ingr1.GetComponent<RectTransform>().localPosition.z);
+        //ingr2.GetComponent<RectTransform>().localPosition = new Vector3(50.1f, ingr2.GetComponent<RectTransform>().localPosition.y, ingr2.GetComponent<RectTransform>().localPosition.z);
 
         // if (LevelManager.THIS.ingrCountTarget[0] == 0 && LevelManager.THIS.ingrCountTarget[1] == 0) ingrObject.SetActive(false);
         // else if (LevelManager.THIS.ingrCountTarget[0] > 0 || LevelManager.THIS.ingrCountTarget[1] > 0)
