@@ -384,6 +384,17 @@ public class AnimationManager : MonoBehaviour
         if (gameObject.name == "MenuComplete")
         {
             LevelManager.THIS.gameStatus = GameState.Map;
+            //判断是否最高关卡
+            int num1 = PlayerPrefs.GetInt("lastUnlockedNumber", 1);
+            int num2 = LevelManager.THIS.currentLevel+1;
+            Debug.Log(num1.ToString());
+            Debug.Log(num2.ToString());
+            if (num1 == num2)
+            {
+                //打开下一关
+                PlayerPrefs.SetInt("OpenLevel", LevelManager.THIS.currentLevel + 1);
+                GameObject.Find("CanvasGlobal").transform.Find("MenuPlay").gameObject.SetActive(true);
+            }
         }
         if (gameObject.name == "MenuFailed")
         {

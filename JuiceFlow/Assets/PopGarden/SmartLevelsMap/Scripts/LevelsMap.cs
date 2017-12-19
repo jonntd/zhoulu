@@ -72,6 +72,10 @@ public class LevelsMap : MonoBehaviour
     {
         int lastUnlockedNumber = GetMapLevels().Where(l => !l.IsLocked).Select(l => l.Number).Max();
         TeleportToLevelInternal(lastUnlockedNumber, true);
+        //debug储存最高关卡
+        Debug.Log(lastUnlockedNumber.ToString());
+        PlayerPrefs.SetInt("lastUnlockedNumber", lastUnlockedNumber);
+        PlayerPrefs.Save();
     }
 
     private void SetCameraToCharacter()
