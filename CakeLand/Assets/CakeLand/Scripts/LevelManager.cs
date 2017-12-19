@@ -821,7 +821,9 @@ public class LevelManager : MonoBehaviour
 
                 float tmp_reward__size = ingr.transform.GetComponent<RectTransform>().rect.width / 2;
                 ingr.transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(j * offset - containerRect.rect.width / 2 + tmp_reward__size, heightPos);
-
+                Vector3 oldV3 = ingr.transform.GetComponent<RectTransform>().localPosition;
+                ingr.transform.GetComponent<RectTransform>().localPosition = new Vector3(oldV3.x, oldV3.y, 0);
+				
                 j++;
             }
         }
