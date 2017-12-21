@@ -122,7 +122,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.1.1
+  bundleVersion: 1.2.2
   preloadedAssets: []
   metroInputSource: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -146,8 +146,8 @@ PlayerSettings:
     iOS: com.codef.popgarden
     tvOS: com.codef.popgarden
   buildNumber:
-    iOS: 0
-  AndroidBundleVersionCode: 13
+    iOS: 14
+  AndroidBundleVersionCode: 16
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -221,7 +221,7 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: E:/CODEF/PopGarden/user.keystore
+  AndroidKeystoreName: /Users/wangxiaojie/Documents/[CODEF]/PopGarden/user.keystore
   AndroidKeyaliasName: popgarden
   AndroidTVCompatibility: 1
   AndroidIsGame: 1

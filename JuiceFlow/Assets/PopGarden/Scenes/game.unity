@@ -20678,12 +20678,7 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114563268388819368, guid: c082a9257826dca4bb5abc003144911d,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 511786116}
-    - target: {fileID: 114091390662138754, guid: c082a9257826dca4bb5abc003144911d,
+    - target: {fileID: 114130856798255036, guid: c082a9257826dca4bb5abc003144911d,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -20693,7 +20688,12 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 511786107}
-    - target: {fileID: 114130856798255036, guid: c082a9257826dca4bb5abc003144911d,
+    - target: {fileID: 114091390662138754, guid: c082a9257826dca4bb5abc003144911d,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 511786116}
+    - target: {fileID: 114563268388819368, guid: c082a9257826dca4bb5abc003144911d,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
