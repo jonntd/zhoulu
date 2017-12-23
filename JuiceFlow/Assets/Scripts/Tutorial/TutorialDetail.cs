@@ -14,7 +14,7 @@ public class TutorialDetail : MonoBehaviour//, IPointerClickHandler
 {
     #region ===字段===
     #endregion
-    public RawImage img;
+        public RawImage img;
         public Text text;
         private TDInfo _info;
         #region ===属性===

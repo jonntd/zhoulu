@@ -17,7 +17,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField]
     private Transform holder;                       //所有的Tutorial都会放在这下面
     [SerializeField]
-    private List<TutorialDetail> uiList;                 //Tutorial的GameObject的集合
+    private List<TutorialDetail> uiList;            //Tutorial的GameObject的集合
     [SerializeField]
     private TextAsset TutorialConfig;               //配置文件
     private TDManager TDInfo;                       //解析完配置文件信息
@@ -40,12 +40,14 @@ public class Tutorial : MonoBehaviour
     }
 
     /// <summary>
-    /// 根据当前获取到的关卡ID显示对应教程
+    /// 根据当前获取到的关卡ID显示对应教程,当前关卡没有教程则不显示
     /// </summary>
-    public void GetTDNum(int num)
+    public void GetTDNum(int lvnum)
     {
-        TutorialShowCtrl(num);
+        int num = lvnum;
+        TutorialShowCtrl(num - 1);
         Btns.gameObject.SetActive(false);
+    
     }
     /// <summary>
     /// 直接打开帮助文件界面时,可以切换教程内容
