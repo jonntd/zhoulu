@@ -404,6 +404,7 @@ public class AnimationManager : MonoBehaviour
         }
         if (gameObject.name == "Tutorial")
         {
+            //新手引导的关闭设置部分
             //LevelManager.Instance.gameStatus = GameState.WaitForPopup;
         }
 

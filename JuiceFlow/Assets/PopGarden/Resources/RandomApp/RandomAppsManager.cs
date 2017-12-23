@@ -128,6 +128,7 @@ public class AppParseManager
 
         for (int i = 1; i < info.Length; i++)
         {
+            Debug.Log(info.Length.ToString());
             AppInfo app = ParseContent((info[i]));
             if (app == null || !app.IsValid()) continue;
             appList.Add(app);
