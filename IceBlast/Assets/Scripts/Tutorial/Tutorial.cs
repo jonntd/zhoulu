@@ -69,11 +69,11 @@ public class Tutorial : MonoBehaviour
     {
         if (TDNum ==0)
         {
-            TDNum--;
+            TDNum = uiList.Count - 1; 
         }
         else
         {
-            TDNum = uiList.Count-1;
+            TDNum--;
         }
         TutorialShowCtrl(TDNum);
     }
