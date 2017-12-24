@@ -35,6 +35,7 @@ public class Tutorial : MonoBehaviour
         {
             CreateTDUI((TDList[i]));
         }
+
         TDNum = 0;
         TutorialShowCtrl(TDNum);
     }
@@ -44,7 +45,11 @@ public class Tutorial : MonoBehaviour
     /// </summary>
     public void GetTDNum(int level)
     {
-        uiList[0].gameObject.SetActive(false);
+		for (int i = 0; i < uiList.Count; i++)
+        {
+            uiList[i].gameObject.SetActive(false);
+        }
+		
         if (GameObject.Find("TutorialDetail").transform.Find(level.ToString()) != null)
         {
             GameObject.Find("TutorialDetail").transform.Find(level.ToString()).gameObject.SetActive(true);
@@ -109,6 +114,7 @@ public class Tutorial : MonoBehaviour
         {
             uiList[i].gameObject.SetActive(i == index);
         }
+        Btns.gameObject.SetActive(true);
     }
 }
 
