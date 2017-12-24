@@ -40,15 +40,22 @@ public class Tutorial : MonoBehaviour
     }
 
     /// <summary>
-    /// 根据当前获取到的关卡ID显示对应教程,当前关卡没有教程则不显示
+    /// 根据当前获取到的关卡ID显示对应教程(已根据关卡名命名list中的prefab),当前关卡没有教程则不显示
     /// </summary>
-    public void GetTDNum(int lvnum)
+    public void GetTDNum(int level)
     {
-        int num = lvnum;
-        TutorialShowCtrl(num - 1);
+        uiList[0].gameObject.SetActive(false);
+        if (GameObject.Find("TutorialDetail").transform.Find(level.ToString()) != null)
+        {
+            GameObject.Find("TutorialDetail").transform.Find(level.ToString()).gameObject.SetActive(true);
+        }
+        else
+        {
+            GameObject.Find("CanvasGlobal").transform.Find("Tutorial").gameObject.SetActive(false);
+        }
         Btns.gameObject.SetActive(false);
-    
     }
+
     /// <summary>
     /// 直接打开帮助文件界面时,可以切换教程内容
     /// </summary>
@@ -86,6 +93,8 @@ public class Tutorial : MonoBehaviour
         GameObject TDUI = GameObject.Instantiate(prefab);
         TutorialDetail button = TDUI.GetComponent<TutorialDetail>();
         button.SetInfo(info);
+        //用关卡ID作为控件名称
+        button.name = info.level;
         TDUI.transform.SetParent(holder, false);
         TDUI.SetActive(false);
         uiList.Add(button);
