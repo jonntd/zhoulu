@@ -21,7 +21,7 @@ public class BAD : MonoBehaviour
 
         int num2 = PlayerPrefs.GetInt("AdmobInterstitial",0);
 
-        if (num > 1.70f && num2 == 0)
+        if (num > 1.73f && num2 == 0)
         {
             UIChange();
             Showbanner();
