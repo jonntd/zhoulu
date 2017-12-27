@@ -37,6 +37,10 @@ public class Tutorial : MonoBehaviour
         }
 
         TDNum = 0;
+    }
+
+    void OnEnable()
+    {
         TutorialShowCtrl(TDNum);
     }
 
