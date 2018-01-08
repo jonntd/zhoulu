@@ -50,7 +50,7 @@ namespace Summer.Game
         {
             if (string.IsNullOrEmpty(des))
             {
-                des = "Rol:" + info.itemRow + "   Col:" + info.itemCol;
+                des = "Rol:" + info.ItemRow + "   Col:" + info.ItemCol;
             }
             return des;
         }

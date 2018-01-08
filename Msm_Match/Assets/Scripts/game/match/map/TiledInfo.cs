@@ -10,8 +10,8 @@ namespace Summer.Game
         public const int OFFSET_X = -WITDH * 4 + WITDH / 2;
         public const int OFFSET_Y = 300;
 
-        public int itemRow { get { return _item_row; } }
-        public int itemCol { get { return _item_col; } }
+        public int ItemRow { get { return _item_row; } }
+        public int ItemCol { get { return _item_col; } }
         public int ItemPosX { get { return _item_pos_x; } }
         public int ItemPosY { get { return _item_pos_y; } }
         public int Index { get { return _index; } }

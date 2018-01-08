@@ -18,17 +18,17 @@ namespace Summer
 
         public void RegisterHandler()
         {
-            GameEventSystem.Instance.RegisterHandler(E_GLOBAL_EVT.camera_effect_motion_blur, _play_motion_blur);
-            GameEventSystem.Instance.RegisterHandler(E_GLOBAL_EVT.camera_effect_radial_blur, _play_radial_blur);
+            //GameEventSystem.Instance.RegisterHandler(E_GLOBAL_EVT.camera_effect_motion_blur, _play_motion_blur);
+            //GameEventSystem.Instance.RegisterHandler(E_GLOBAL_EVT.camera_effect_radial_blur, _play_radial_blur);
             //TODO 镜头的抖动应该不在这个范围之内，后期剥离
-            GameEventSystem.Instance.RegisterHandler(E_GLOBAL_EVT.camera_shake, _play_shake);
+            //GameEventSystem.Instance.RegisterHandler(E_GLOBAL_EVT.camera_shake, _play_shake);
         }
 
         public void UnRegisterHandler()
         {
-            GameEventSystem.Instance.UnRegisterHandler(E_GLOBAL_EVT.camera_effect_motion_blur, _play_motion_blur);
-            GameEventSystem.Instance.UnRegisterHandler(E_GLOBAL_EVT.camera_effect_radial_blur, _play_radial_blur);
-            GameEventSystem.Instance.UnRegisterHandler(E_GLOBAL_EVT.camera_shake, _play_shake);
+            //GameEventSystem.Instance.UnRegisterHandler(E_GLOBAL_EVT.camera_effect_motion_blur, _play_motion_blur);
+            //GameEventSystem.Instance.UnRegisterHandler(E_GLOBAL_EVT.camera_effect_radial_blur, _play_radial_blur);
+            //GameEventSystem.Instance.UnRegisterHandler(E_GLOBAL_EVT.camera_shake, _play_shake);
         }
 
         public void _play_motion_blur(System.Object obj)

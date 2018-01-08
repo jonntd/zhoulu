@@ -24,6 +24,8 @@ namespace Summer.Game
 
         #region 点击事件
 
+        public static bool move_donw = false;
+
         public void OnPointerDown(PointerEventData eventData)
         {
             GameController.instance.SetOperation(true);
@@ -32,11 +34,18 @@ namespace Summer.Game
             {
                 GameController.instance.Move();
             }
-            //downPos = Input.mousePosition;
+            LogManager.Log("OnPointerDown " + this);
+            move_donw = true;
+            MoveManager.instance.AddItem(this);
+            if (MoveManager.instance.CanExchange())
+            {
+                MoveManager.instance.ExcuteExchange();
+            }
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
+            move_donw = false;
             /*// 1.如果其他人正在操作 返回
             if (GameController.instance.isOperation)
                 return;
@@ -73,6 +82,14 @@ namespace Summer.Game
             {
                 GameController.instance.Move();
             }
+
+            LogManager.Log("OnPointerEnter " + this + "move_donw:" + move_donw);
+            if (!move_donw) return;
+            MoveManager.instance.AddItem(this);
+            if (MoveManager.instance.CanExchange())
+            {
+                MoveManager.instance.ExcuteExchange();
+            }
         }
 
         #endregion
@@ -87,12 +104,12 @@ namespace Summer.Game
             LogManager.Assert(move_effect_index == 0, "移动操作不合法[{0}]", move_effect_index);
 
             move_effect_index++;
-            int targetRow = item.info.itemRow - System.Convert.ToInt32(dir.y);
-            int targetColumn = item.info.itemCol - System.Convert.ToInt32(dir.x);
+            int targetRow = item.info.ItemRow - System.Convert.ToInt32(dir.y);
+            int targetColumn = item.info.ItemCol - System.Convert.ToInt32(dir.x);
             BattleController.Instance.candy_map.Move(item, targetRow, targetColumn);
             yield return new WaitForSeconds(CandysItem.move_time);//;
             /*  //获取目标行列
-              int targetRow = item.itemRow + System.Convert.ToInt32(dir.y);
+              int targetRow = item.ItemRow + System.Convert.ToInt32(dir.y);
               int targetColumn = item.itemColumn + System.Convert.ToInt32(dir.x);
               //检测合法
               bool isLagal = GameController.instance.CheckRCLegal(targetRow, targetColumn);
@@ -107,7 +124,7 @@ namespace Summer.Game
 
 
               //从全局列表中获取当前item，查看是否已经被消除，被消除后不能再交换
-              Item myItem = GameController.instance.allItems[item.itemRow, item.itemColumn];
+              Item myItem = GameController.instance.allItems[item.ItemRow, item.itemColumn];
               if (!target || !myItem)
               {
                   GameController.instance.isOperation = false;
@@ -115,7 +132,7 @@ namespace Summer.Game
                   yield break;
               }
               //相互移动
-              target.GetComponent<ItemOperation>().ItemMove(item.itemRow, item.itemColumn, transform.position);
+              target.GetComponent<ItemOperation>().ItemMove(item.ItemRow, item.itemColumn, transform.position);
               ItemMove(targetRow, targetColumn, target.transform.position);
               //还原标志位
               bool reduction = false;
@@ -138,10 +155,10 @@ namespace Summer.Game
                   yield return new WaitForSeconds(0.2f);
                   //临时行列
                   int tempRow, tempColumn;
-                  tempRow = myItem.itemRow;
+                  tempRow = myItem.ItemRow;
                   tempColumn = myItem.itemColumn;
                   //移动
-                  myItem.GetComponent<ItemOperation>().ItemMove(target.itemRow,
+                  myItem.GetComponent<ItemOperation>().ItemMove(target.ItemRow,
                       target.itemColumn, target.transform.position);
                   target.GetComponent<ItemOperation>().ItemMove(tempRow,
                       tempColumn, myItem.transform.position);

@@ -21,7 +21,7 @@ namespace Summer
         {
             if (_data == null)
                 _data = EventSkillDataFactory.Push<PlayCameraShakeEventSkill>();
-            GameEventSystem.Instance.RaiseEvent(E_GLOBAL_EVT.camera_shake, _data);
+            //GameEventSystem.Instance.RaiseEvent(E_GLOBAL_EVT.camera_shake, _data);
             Finish();
         }
 

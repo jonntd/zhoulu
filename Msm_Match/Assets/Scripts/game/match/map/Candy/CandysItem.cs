@@ -85,13 +85,13 @@ namespace Summer.Game
         {
             LogManager.Log("Source:[{0}], Target:[{1}]", source.ToDes(), target.ToDes());
             // 原始的row col 以及坐标
-            int source_row = source.info.itemRow;
-            int source_col = source.info.itemCol;
+            int source_row = source.info.ItemRow;
+            int source_col = source.info.ItemCol;
             Vector3 source_pos = source.transform.position;
 
             // 目标的row col 以及坐标
-            int target_row = target.info.itemRow;
-            int target_col = target.info.itemCol;
+            int target_row = target.info.ItemRow;
+            int target_col = target.info.ItemCol;
             Vector3 target_pos = target.transform.position;
 
             // 清空集合中的位置

@@ -34,7 +34,7 @@ namespace Summer
             _data.fade_out = fade_out;
             _data.strength = strength;
 
-            GameEventSystem.Instance.RaiseEvent(E_GLOBAL_EVT.camera_effect_radial_blur, _data);
+            //GameEventSystem.Instance.RaiseEvent(E_GLOBAL_EVT.camera_effect_radial_blur, _data);
             Finish();
         }
 
@@ -70,7 +70,7 @@ namespace Summer
         {
             if (_data == null)
                 _data = EventSkillDataFactory.Push<PlayCameraMotionBlurEffectEventSkill>();
-            GameEventSystem.Instance.RaiseEvent(E_GLOBAL_EVT.camera_effect_motion_blur, _data);
+            //GameEventSystem.Instance.RaiseEvent(E_GLOBAL_EVT.camera_effect_motion_blur, _data);
             Finish();
         }
 
