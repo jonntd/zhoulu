@@ -33,8 +33,10 @@ namespace Summer.Game
         /// </summary>
         public void CheckAroundBoom()
         {
-            controller.sameItemsList.Clear();
-            controller.boomList.Clear();
+            // 清除相同Item列表
+            controller.same_items_list.Clear();
+            // 待消除的Item列表
+            controller.boom_list.Clear();
             controller.randomColor = Color.white;
             controller.FillSameItemsList(this);
             controller.FillBoomList(this);

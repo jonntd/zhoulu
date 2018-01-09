@@ -73,7 +73,7 @@ namespace Summer.Game
             int targetRow = item.itemRow + System.Convert.ToInt32(dir.y);
             int targetColumn = item.itemColumn + System.Convert.ToInt32(dir.x);
             //检测合法
-            bool isLagal = GameController.instance.CheckRCLegal(targetRow, targetColumn);
+            bool isLagal = GameController.instance.CheckRcLegal(targetRow, targetColumn);
             if (!isLagal)
             {
                 GameController.instance.is_operation = false;
@@ -81,11 +81,11 @@ namespace Summer.Game
                 yield break;
             }
             //获取目标
-            Item target = GameController.instance.allItems[targetRow, targetColumn];
+            Item target = GameController.instance.all_items[targetRow, targetColumn];
 
 
             //从全局列表中获取当前item，查看是否已经被消除，被消除后不能再交换
-            Item myItem = GameController.instance.allItems[item.itemRow, item.itemColumn];
+            Item myItem = GameController.instance.all_items[item.itemRow, item.itemColumn];
             if (!target || !myItem)
             {
                 GameController.instance.is_operation = false;
@@ -99,12 +99,12 @@ namespace Summer.Game
             bool reduction = false;
             //消除处理
             item.CheckAroundBoom();
-            if (GameController.instance.boomList.Count == 0)
+            if (GameController.instance.boom_list.Count == 0)
             {
                 reduction = true;
             }
             target.CheckAroundBoom();
-            if (GameController.instance.boomList.Count != 0)
+            if (GameController.instance.boom_list.Count != 0)
             {
                 reduction = false;
             }
@@ -136,7 +136,7 @@ namespace Summer.Game
             item.itemRow = target_row;
             item.itemColumn = target_column;
             //改全局列表
-            GameController.instance.allItems[target_row, target_column] = item;
+            GameController.instance.all_items[target_row, target_column] = item;
             //移动
             //transform.DOMove(pos, 0.2f);
         }
