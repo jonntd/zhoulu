@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+  <string name="firebase_database_url" translatable="false">https://ice-blast-jewel-scatter.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">848870946056</string>
+  <string name="google_storage_bucket" translatable="false">ice-blast-jewel-scatter.appspot.com</string>
+  <string name="project_id" translatable="false">ice-blast-jewel-scatter</string>
+  <string name="google_api_key" translatable="false">AIzaSyADcgPkDI1n2Ew4sbQtW7Dh6L8YLmRiRsg</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyADcgPkDI1n2Ew4sbQtW7Dh6L8YLmRiRsg</string>
+  <string name="google_app_id" translatable="false">1:848870946056:android:5ae85117a6b39198</string>
+  <string name="default_web_client_id" translatable="false">848870946056-t993nb1ls49bfekj6uhjj2jud4lk07ch.apps.googleusercontent.com</string>
+</resources>
