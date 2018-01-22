@@ -60,6 +60,22 @@ public class LevelMakerEditor : EditorWindow
     private LevelManager lm;
     private InitScript initscript;
 
+    [MenuItem("Window/Juice Fresh editor/增加20关")]
+    public static void Add20levels()
+    {
+        GameObject mapobj = GameObject.Find("Map/LevelsMap");
+        GameObject levelsobj = GameObject.Find("Map/LevelsMap/Levels");
+        GameObject pathobj = GameObject.Find("Map/LevelsMap/Path");
+        int oldint = levelsobj.transform.childCount;
+        for (int i = oldint+1;i<= oldint+20;i++)
+        {
+            Transform oldlv = levelsobj.transform.GetChild(oldint-1);
+            Transform newlv;
+            newlv = Instantiate(oldlv, oldlv.position, oldlv.rotation);
+            newlv.SetParent(levelsobj.transform);
+            newlv.name = "Level" + i;
+        }
+    }
 
     [MenuItem("Window/Juice Fresh editor/重置生命为5")]
     public static void AddLife()
@@ -104,8 +120,6 @@ public class LevelMakerEditor : EditorWindow
         // Get existing open window or if none, make a new one:
         window = (LevelMakerEditor)EditorWindow.GetWindow(typeof(LevelMakerEditor));
         window.Show();
-
-
     }
     public static void ShowHelp()
     {
