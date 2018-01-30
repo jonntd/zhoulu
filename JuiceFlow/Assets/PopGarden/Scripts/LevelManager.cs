@@ -575,6 +575,7 @@ public class LevelManager : MonoBehaviour
         if (FacebookEnable)
             FacebookManager.THIS.CallFBInit();
 #endif
+
 #if UNITY_INAPPS
 
         gameObject.AddComponent<UnityInAppsIntegration>();
@@ -586,6 +587,7 @@ public class LevelManager : MonoBehaviour
             GameObject.Find("Gems").gameObject.SetActive(false);
 
         gameStatus = GameState.Map;
+
         for (int i = 0; i < 20; i++)
         {
             itemExplPool[i] = Instantiate(Resources.Load("Prefabs/Effects/ItemExpl"), transform.position, Quaternion.identity) as GameObject;
@@ -593,11 +595,13 @@ public class LevelManager : MonoBehaviour
 
             // itemExplPool[i].SetActive(false);
         }
+
         for (int i = 0; i < 20; i++)
         {
             flowersPool[i] = Instantiate(flower, transform.position, Quaternion.identity) as GameObject;
             flowersPool[i].GetComponent<SpriteRenderer>().enabled = false;
         }
+
         passLevelCounter = 0;
 
 #if UNITY_INAPPS
@@ -853,6 +857,7 @@ public class LevelManager : MonoBehaviour
 
     void PrepareGame()
     {
+        Debug.Log("youxi kaishi shi yichu wujian");
         ActivatedBoost = null;
         Score = 0;
         stars = 0;
