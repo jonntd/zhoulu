@@ -1,12 +1,14 @@
 <dependencies>
   <packages>
     <package>com.google.android.gms:play-services-ads:LATEST</package>
+    <package>com.google.android.gms:play-services-appinvite:11.6.0</package>
     <package>com.google.android.gms:play-services-base:11.6.0</package>
     <package>com.google.firebase:firebase-analytics:11.6.0</package>
     <package>com.google.firebase:firebase-analytics-unity:4.3.0</package>
     <package>com.google.firebase:firebase-app-unity:4.3.0</package>
     <package>com.google.firebase:firebase-common:11.6.0</package>
     <package>com.google.firebase:firebase-core:11.6.0</package>
+    <package>com.google.firebase:firebase-invites-unity:4.3.0</package>
   </packages>
   <files>
     <file>Assets/Plugins/Android/firebase-analytics-11.8.0.aar</file>
@@ -18,12 +20,17 @@
     <file>Assets/Plugins/Android/firebase-common-11.8.0</file>
     <file>Assets/Plugins/Android/firebase-common-license-11.8.0</file>
     <file>Assets/Plugins/Android/firebase-core-11.8.0</file>
+    <file>Assets/Plugins/Android/firebase-dynamic-links-11.8.0.aar</file>
+    <file>Assets/Plugins/Android/firebase-dynamic-links-license-11.8.0</file>
     <file>Assets/Plugins/Android/firebase-iid-11.8.0</file>
     <file>Assets/Plugins/Android/firebase-iid-license-11.8.0</file>
+    <file>Assets/Plugins/Android/firebase-invites-unity-4.3.0.aar</file>
     <file>Assets/Plugins/Android/play-services-ads-11.8.0.aar</file>
     <file>Assets/Plugins/Android/play-services-ads-license-11.8.0</file>
     <file>Assets/Plugins/Android/play-services-ads-lite-11.8.0.aar</file>
     <file>Assets/Plugins/Android/play-services-ads-lite-license-11.8.0</file>
+    <file>Assets/Plugins/Android/play-services-appinvite-11.8.0.aar</file>
+    <file>Assets/Plugins/Android/play-services-appinvite-license-11.8.0</file>
     <file>Assets/Plugins/Android/play-services-base-11.8.0.aar</file>
     <file>Assets/Plugins/Android/play-services-base-license-11.8.0</file>
     <file>Assets/Plugins/Android/play-services-basement-11.8.0.aar</file>
