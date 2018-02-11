@@ -68,6 +68,12 @@ public class LevelMakerEditor : EditorWindow
         PlayerPrefs.Save();
     }
 
+    [MenuItem("Window/Juice Fresh editor/清空数据")]
+    public static void ClearDatt()
+    {
+       PlayerPrefs.DeleteAll();
+    }
+
     [MenuItem("Window/Juice Fresh editor/重置金币为100000")]
     public static void AddGems()
     {
@@ -1263,7 +1269,6 @@ public class LevelMakerEditor : EditorWindow
         {
             AddLevel();
         }
-
 
         GUILayout.EndHorizontal();
         GUILayout.BeginHorizontal();
