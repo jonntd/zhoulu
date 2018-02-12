@@ -386,13 +386,23 @@ public class AnimationManager : MonoBehaviour
             LevelManager.THIS.gameStatus = GameState.Map;
             //判断是否最高关卡
             int num1 = PlayerPrefs.GetInt("lastUnlockedNumber", 1);
-            int num2 = LevelManager.THIS.currentLevel+1;
+            int num2 = LevelManager.THIS.currentLevel + 1;
             Debug.Log(num1.ToString());
             Debug.Log(num2.ToString());
             if (num1 == num2)
             {
                 //打开下一关
-                PlayerPrefs.SetInt("OpenLevel", LevelManager.THIS.currentLevel + 1);
+                /*int next_level = LevelManager.THIS.currentLevel + 1;
+                RandomManager.instance.ResetLevel(next_level);
+                PlayerPrefs.SetInt("OpenLevel", next_level);
+                PlayerPrefs.Save();
+                //LevelManager.THIS.LoadLevel();*/
+                int next_level = LevelManager.THIS.currentLevel + 1;
+                RandomManager.instance.ResetLevel(next_level);
+                PlayerPrefs.SetInt("OpenLevel", next_level);
+                PlayerPrefs.Save();
+                LevelManager.THIS.MenuPlayEvent();
+                LevelManager.THIS.LoadLevel();
                 GameObject.Find("CanvasGlobal").transform.Find("MenuPlay").gameObject.SetActive(true);
             }
         }
@@ -404,7 +414,6 @@ public class AnimationManager : MonoBehaviour
         }
         if (gameObject.name == "Tutorial")
         {
-            //新手引导的关闭设置部分
             //LevelManager.Instance.gameStatus = GameState.WaitForPopup;
         }
 

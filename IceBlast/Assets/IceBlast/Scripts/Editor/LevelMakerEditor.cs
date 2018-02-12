@@ -85,6 +85,14 @@ public class LevelMakerEditor : EditorWindow
         //PlayerPrefs.SetInt("Lifes", 5);
     }
 
+    [MenuItem("Window/Juice Fresh editor/清除Dialy Reward")]
+    public static void ClearDialyReward()
+    {
+        PlayerManager.Instance.Clear(PlayerManager.DAILY_REWARD_DAY);
+        PlayerManager.Instance.Clear(PlayerManager.DAILY_REWARD_TIME);
+        //PlayerPrefs.SetInt("Lifes", 5);
+    }
+
     [MenuItem("Window/Juice Fresh editor/更新本地数据")]
     public static void UpdateCSV()
     {
