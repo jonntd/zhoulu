@@ -60,28 +60,17 @@ public class LevelMakerEditor : EditorWindow
     private LevelManager lm;
     private InitScript initscript;
 
-    [MenuItem("Window/Juice Fresh editor/增加20关")]
-    public static void Add20levels()
-    {
-        GameObject mapobj = GameObject.Find("Map/LevelsMap");
-        GameObject levelsobj = GameObject.Find("Map/LevelsMap/Levels");
-        GameObject pathobj = GameObject.Find("Map/LevelsMap/Path");
-        int oldint = levelsobj.transform.childCount;
-        for (int i = oldint+1;i<= oldint+20;i++)
-        {
-            Transform oldlv = levelsobj.transform.GetChild(oldint-1);
-            Transform newlv;
-            newlv = Instantiate(oldlv, oldlv.position, oldlv.rotation);
-            newlv.SetParent(levelsobj.transform);
-            newlv.name = "Level" + i;
-        }
-    }
-
     [MenuItem("Window/Juice Fresh editor/重置生命为5")]
     public static void AddLife()
     {
         PlayerPrefs.SetInt("Lifes", 5);
         PlayerPrefs.Save();
+    }
+
+    [MenuItem("Window/Juice Fresh editor/清空数据")]
+    public static void ClearDatt()
+    {
+       PlayerPrefs.DeleteAll();
     }
 
     [MenuItem("Window/Juice Fresh editor/重置金币为100000")]
@@ -91,16 +80,7 @@ public class LevelMakerEditor : EditorWindow
         PlayerPrefs.Save();
 
     }
-
-
-    [MenuItem("Window/Juice Fresh editor/清除Dialy Reward")]
-    public static void ClearDialyReward()
-    {
-        PlayerManager.Instance.Clear(PlayerManager.DAILY_REWARD_DAY);
-        PlayerManager.Instance.Clear(PlayerManager.DAILY_REWARD_TIME);
-        //PlayerPrefs.SetInt("Lifes", 5);
-    }
-
+	
     [MenuItem("Window/Juice Fresh editor/清除Dialy Reward")]
     public static void ClearDialyReward()
     {
