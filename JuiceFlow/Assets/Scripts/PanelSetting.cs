@@ -24,22 +24,18 @@ public class PanelSetting : MonoBehaviour
     public void on_more()
     {
         #if UNITY_ANDROID
-                Application.OpenURL("https://play.google.com/store/apps/dev?id=6793500223563275059");
+                Application.OpenURL("market://dev?id=6793500223563275059");
         #elif UNITY_IPHONE
-                Application.OpenURL("https://itunes.apple.com/app/pop-garden/id1291883725");
+                Application.OpenURL("itunes.apple.com/developer/id1040525394");
         #endif
     }
     public void on_rate()
     {
         #if UNITY_ANDROID
-                Application.OpenURL("https://play.google.com/store/apps/details?id=com.codef.popgarden");
+                Application.OpenURL("market://details?id=com.codef.popgarden");
         #elif UNITY_IPHONE
-                Application.OpenURL("https://itunes.apple.com/app/ice-blast-jewel-scatter/id1296636369");
+                Application.OpenURL("itunes.apple.com/app/id1291883725");
         #endif
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

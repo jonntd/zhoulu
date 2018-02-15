@@ -1,1 +1,1 @@
-https://play.google.com/store/apps/details?id=com.codef.popgarden
+market://details?id=com.codef.popgarden
