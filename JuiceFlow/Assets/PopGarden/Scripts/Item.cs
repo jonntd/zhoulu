@@ -19,6 +19,7 @@ public class Item : MonoBehaviour
 {
     public Sprite[] items;
     public Sprite[] itemsAnimation;
+    public ParticleSystem[] itemsPS;
     public List<StripedItem> stripedItems = new List<StripedItem>();
     public Sprite[] packageItems;
     public Sprite[] ChocoBombItems;
@@ -801,6 +802,26 @@ public class Item : MonoBehaviour
                 //SoundBase.Instance.PlaySound(SoundBase.Instance.destroy[UnityEngine.Random.Range(0, SoundBase.Instance.destroy.Length)]);
                 //   Destroy(partcl, 1f);
             }
+            //此处开始播放第二个特效
+            GameObject ItemNewPS = ItemPSManager.Instance.GetNewPSFromPool(itemsPS[color].name);
+            //GameObject ItemNewPsPlayZone = GameObject.Find("ItemPSManager");
+            //GameObject ItemNewPsPool = GameObject.Find("ItemPSManager").transform.Find("Pool").ga;
+            if (ItemNewPS == null)
+            {
+                ItemNewPS = GameObject.Instantiate(itemsPS[color]).gameObject;
+                ItemNewPS.GetComponent<ParticleSystem>().Stop();
+                ItemNewPS.name = itemsPS[color].name;
+            }
+            else
+            {
+                ItemNewPS = ItemPSManager.Instance.GetNewPSFromPool(itemsPS[color].name);
+                ItemNewPS.GetComponent<ParticleSystem>().Stop();
+            }
+
+            ItemNewPS.transform.SetParent(ItemPSManager.Instance.playzone.transform);
+            ItemNewPS.transform.localScale = Vector3.one * 1f;
+            ItemNewPS.transform.position = new Vector3(transform.position.x, transform.position.y, 10);
+            ItemNewPS.GetComponent<ParticleSystem>().Play();
         }
 
         if (LevelManager.THIS.limitType == LIMIT.TIME && transform.Find("5sec") != null)

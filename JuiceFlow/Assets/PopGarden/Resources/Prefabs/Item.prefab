@@ -128,6 +128,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 631d6c6f5738742f7bbef722d36cd6ba, type: 3}
   - {fileID: 21300000, guid: 65d311128a1f54994a5cc6d35bb66659, type: 3}
   - {fileID: 21300000, guid: 331017df3c5c7db44abc8007c5061185, type: 3}
+  itemsPS:
+  - {fileID: 198138110711250596, guid: 169fa01abdf5e114f8017a6bbbb330e9, type: 2}
+  - {fileID: 198138110711250596, guid: d0b5a1bb83a986d48acb373d13d6c484, type: 2}
+  - {fileID: 198138110711250596, guid: 352526d9b523db745a29ac1a29c3751b, type: 2}
+  - {fileID: 198138110711250596, guid: 6d4c3abc103d79740ac047c4f01dfe64, type: 2}
+  - {fileID: 198138110711250596, guid: fdb0012221ef9b34b9f933dd6a2d61cd, type: 2}
+  - {fileID: 198138110711250596, guid: 67605cb6572e40746b56f349fdb34a77, type: 2}
   stripedItems:
   - horizontal: {fileID: 21300000, guid: ab4ddda7d92b01c4085d3ac1a497aa4b, type: 3}
     vertical: {fileID: 21300000, guid: 68c7946ec52a0bb4dbba87e188efccff, type: 3}
