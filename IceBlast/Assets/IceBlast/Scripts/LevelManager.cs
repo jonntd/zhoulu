@@ -196,6 +196,7 @@ public class LevelManager : MonoBehaviour
 
     //pool of explosion effects for items
     public GameObject[] itemExplPool = new GameObject[20];
+
     //pool of flowers
     public GameObject[] flowersPool = new GameObject[20];
     //global Score amount on current level
@@ -1017,6 +1018,7 @@ public class LevelManager : MonoBehaviour
         }
         return null;
     }
+
 
     public bool CheckFlowerStillFly() //check if any flower still not reachec his target
     {

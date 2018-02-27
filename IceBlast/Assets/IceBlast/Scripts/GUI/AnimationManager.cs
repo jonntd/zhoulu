@@ -660,7 +660,7 @@ public class AnimationManager : MonoBehaviour
 
     void ShowGameOver()
     {
-        SoundBase.Instance.PlaySound(SoundBase.Instance.gameOver[1]);
+        SoundBase.Instance.PlaySound(SoundBase.Instance.gameOver[0]);
 
         GameObject.Find("Canvas").transform.Find("MenuGameOver").gameObject.SetActive(true);
         gameObject.SetActive(false);

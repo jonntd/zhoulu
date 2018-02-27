@@ -19,6 +19,7 @@ public class Item : MonoBehaviour
 {
     public Sprite[] items;
     public Sprite[] itemsAnimation;
+    public ParticleSystem[] itemsPS;
     public List<StripedItem> stripedItems = new List<StripedItem>();
     public Sprite[] packageItems;
     public Sprite[] ChocoBombItems;
@@ -735,6 +736,7 @@ public class Item : MonoBehaviour
 
     }
 
+    //此处为元素消除时使用的代码
     IEnumerator DestroyCor(bool showScore = false, string anim_name = "", bool explEffect = false, bool directly = false)
     {
         //if (anim_name == "")
@@ -788,7 +790,6 @@ public class Item : MonoBehaviour
                     spr = 0;
                 if (color == 5)
                     spr = 5;
-
                 var ps = psObj.GetComponent<ParticleSystem>();
                 var ts = ps.textureSheetAnimation;
                 ts.frameOverTime = new ParticleSystem.MinMaxCurve((float)spr / ts.numTilesX);
@@ -801,6 +802,27 @@ public class Item : MonoBehaviour
                 //SoundBase.Instance.PlaySound(SoundBase.Instance.destroy[UnityEngine.Random.Range(0, SoundBase.Instance.destroy.Length)]);
                 //   Destroy(partcl, 1f);
             }
+            //此处开始播放第二个特效
+            GameObject ItemNewPS = ItemPSManager.Instance.GetNewPSFromPool(itemsPS[color].name);
+            //GameObject ItemNewPsPlayZone = GameObject.Find("ItemPSManager");
+            //GameObject ItemNewPsPool = GameObject.Find("ItemPSManager").transform.Find("Pool").ga;
+            if (ItemNewPS == null)
+            {
+                ItemNewPS = GameObject.Instantiate(itemsPS[color]).gameObject;
+                ItemNewPS.GetComponent<ParticleSystem>().Stop();
+                ItemNewPS.name = itemsPS[color].name;
+            }
+            else
+            {
+                ItemNewPS = ItemPSManager.Instance.GetNewPSFromPool(itemsPS[color].name);
+                ItemNewPS.GetComponent<ParticleSystem>().Stop();
+            }
+            
+            ItemNewPS.transform.SetParent(ItemPSManager.Instance.playzone.transform);
+            ItemNewPS.transform.localScale = Vector3.one * 1f;
+            ItemNewPS.transform.position = new Vector3(transform.position.x, transform.position.y,10);
+            ItemNewPS.GetComponent<ParticleSystem>().Play();
+
         }
 
         if (LevelManager.THIS.limitType == LIMIT.TIME && transform.Find("5sec") != null)
