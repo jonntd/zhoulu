@@ -26,7 +26,7 @@ public class PanelSetting : MonoBehaviour
         #if UNITY_ANDROID
                 Application.OpenURL("market://dev?id=6793500223563275059");
         #elif UNITY_IPHONE
-                Application.OpenURL("itunes.apple.com/developer/id1040525394");
+                Application.OpenURL("https://itunes.apple.com/developer/id1040525394");
         #endif
     }
     public void on_rate()
@@ -34,7 +34,7 @@ public class PanelSetting : MonoBehaviour
         #if UNITY_ANDROID
                 Application.OpenURL("market://details?id=com.codef.popgarden");
         #elif UNITY_IPHONE
-                Application.OpenURL("itunes.apple.com/app/id1291883725");
+                Application.OpenURL("https://itunes.apple.com/app/id1291883725");
         #endif
     }
 

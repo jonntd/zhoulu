@@ -41,7 +41,7 @@ public class EventsListener : MonoBehaviour
     void OnEnterGame()
     {
         AnalyticsEvent("OnEnterGame", LevelManager.THIS.currentLevel);
-        //Debug.Log(string.Format("关卡[{0}]开始", LevelManager.THIS.currentLevel.ToString()));
+        Debug.Log(string.Format("关卡[{0}]开始", LevelManager.THIS.currentLevel.ToString()));
         StatisticsManager.StartLevel(LevelManager.THIS.currentLevel.ToString());
     }
     void OnLevelLoaded()
