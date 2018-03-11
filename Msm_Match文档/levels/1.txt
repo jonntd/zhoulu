@@ -4,18 +4,9 @@ height=9
 tilewidth=78
 tileheight=78
 orientation=orthogonal
-BG=level_bg_11.jpg
-CoinsPerCollect=1
-CollectionGoals=1,12
-ColorProbability=0,25,10,10,10,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-InfectionProbability=0
-Moves=10
-StarProgresses=80,90,100
 
 [tilesets]
 tileset=pictures/blocks.png,78,78,0,0
-tileset=pictures/borders.png,78,78,0,0
-tileset=pictures/borders2.png,78,78,0,0
 tileset=pictures/jewels.png,78,78,0,0
 
 [layer]
